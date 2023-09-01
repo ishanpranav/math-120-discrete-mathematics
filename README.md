@@ -1,2 +1,2 @@
-# math-ua-120-discrete-math
-A collection of problem set solutions for NYU MATH 120 Discrete Math
+# Discrete Math
+This is a collection of problem set solutions from the NYU MATH 120 Discrete Math course.
