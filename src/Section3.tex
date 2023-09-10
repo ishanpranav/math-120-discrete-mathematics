@@ -30,6 +30,8 @@ The set of \textit{natural numbers} (the nonnegative integers), denoted by the l
 \section*{Rational number}
 The set of \textit{rational numbers} (the numbers formed by dividing two integers), denoted by the letter $\mathbb{Q}$, is
 \[\mathbb{Q}=\left\{\frac{a}{b}:\,a,b\in\mathbb{Z}\text{ and }b\neq 0\right\}.\]
+\section*{Perfect}
+An integer $n$ is called \textit{perfect} provided it equals the sum of all its divisors that are both positive and less than $n$. For example, 28 is perfect because the positive divisors of 28 are 1, 2, 4, 7, 14, and 28. Note that $1+2+4+7+14=28$.
 \section{Determine}
 Please determine which of the following are true and which are false.
 \begin{enumerate}
@@ -63,4 +65,107 @@ Let $x$ and $y$ be integers. We say that $x$ is \textit{less than} $y$ (denoted 
 Let $x$ and $y$ be integers. We say that $x$ is \textit{greater than or equal to} $y$ (denoted $x\geq y$) provided that $x$ is not less than $y$.
 \subsection{Greater than}
 Let $x$ and $y$ be integers. We say that $x$ is \textit{greater than} $y$ (denoted $x>y$) provided that $x$ is not less than or equal to $y$.
+\section{Explain}
+Every integer is a rational number, but not every rational number is an integer because every integer $k$ can be expressed as a ratio $\frac{k}{1}$, but there are rational numbers that are not integers, such as $\frac{1}{2}.$
+\section{Define perfect square}
+An integer $x$ is called a \textit{perfect square} provided there is an integer $y$ such that $y^2=x$.
+\section{Define square root}
+A number $x$ is a \textit{square root} of a number $y$ provided that $x^2=y$.
+\section{Define perimeter of a polygon}
+The \textit{perimeter} of a polygon is the total length of its boundary.
+\section{Define between}
+\section{Define midpoint of a line segment}
+The \textit{midpoint} of a line segment $\overline{AB}$ is a point $C$ on the segment such that the distance from $A$ to $C$ equals the distance from $C$ to $B$.
+\section{Try writing definitions}
+\subsection{Teenager}
+A person $p$ is called a \textit{teenager} provided that $p$'s age is between thirteen and nineteen.
+\subsection{Grandmother}
+Person $A$ is the \textit{grandmother} of person $B$ provided $A$ is female and $A$ is the parent of one of $B$'s parents.
+\subsection{Leap year}
+A year $Y$ with the number $y$ in the Gregorian Calendar is called a \textit{leap year} provided $y$ is divisible by four hundred or else divisible by four but not one hundred.
+\subsection{Dime}
+A coin $c$ is called a \textit{dime} provided that its face value is five cents.
+\subsection{Palindrome}
+A word $w$ is called a \textit{palindrome} provided its spelling is identical when characters are read from left to right as when read from right to left.
+\subsection{Homophone}
+A pair of words, $w$ and $x$, are called \textit{homophones} if they are spelled differently but share the same pronunciation.
+\subsection{Counting problems}
+\begin{enumerate}
+    \item 8 has four positive divisors: 1, 2, 4, 8.
+    \item 32 has six positive divisors: 1, 2, 4, 8, 16, 32.
+    \item$2^n$ has $n+1$ positive divisors, where $n$ is a positive integer.
+    \item 10 has 4 positive divisors: 1, 2, 5, 10.
+    \item 100 has 9 positive divisors: 1, 2, 4, 5, 10, 20, 25, 50, 100.
+    \item 1,000,000 has 49 positive divisors.
+    \item$10^n$ has $n^2$ positive divisors, where $n$ is a positive integer.
+    \item$30=2\times 3\times 5$ has 8 positive divisors: 1, 2, 3, 5, 6, 10, 15, 30.
+    \item$42=2\times 3\times 7$ has 8 positive divisors: 1, 2, 3, 6, 7, 14, 21, 42. Thirty and forty-two have the same number of positive divisors because the product of the counts of the prime factors, adding one to each, is the same: $2\times 2\times 2 = 2\times 2\times 2 = 8$.
+    \item$2310=2\times 3\times 5\times 7\times 11$ has $2^5=32$ factors.
+    \item$1\times 2\times 3\times 4\times 5\times 6\times 7\times 8$ can be expressed as $2^7\times 3^2\times 5\times 7$. Thus it has $8\times 3\times 2^2=96$ factors.
+    \item 0 has uncountably many positive divisors.
+\end{enumerate}
+\section{Find}
+\begin{enumerate}
+    \item There is a perfect number smaller than 28: 6 is perfect because the positive divisors of 6 are 1, 2, 3, and 6. Note that $1+2+3=6$.
+    \item A computer program to find the next perfect number after 28:
+\begin{verbatim}
+#include <limits.h>
+#include <stdio.h>
+\end{verbatim}
+
+\verb|/**|
+
+\verb| * | Computes the first perfect number greater than the given number.
+
+\verb| * |
+
+\verb| * @param | min the previous perfect number from which to begin the search
+
+\verb| * @return |The next perfect number.
+
+\verb|*/|
+\begin{verbatim}
+static int getPerfectAbove(int min)
+{
+   for (int value = min + 1; value < INT_MAX; value++)
+   {
+      int sum = 0;
+
+      for (int factor = 1; factor < value; factor++)
+      {
+         if (value % factor == 0)
+         {
+            sum += factor;   
+         }
+      }
+        
+      if (value == sum)
+      {
+         return value;
+      }
+    }
+}
+\end{verbatim}
+
+\verb|/**|
+
+\verb| * |The main entry point for the application.
+
+\verb| * |
+
+\verb| * @return |An exit code.
+
+\verb|*/|
+
+\begin{verbatim}
+int main()
+{
+   printf("%d", getPerfectAbove(28));
+
+   return 0;
+}
+\end{verbatim}
+\end{enumerate}
+\section{The mathematician}
+Mathematicians rely on definitions. In the story, the mathematician does not deviate from the definition.
 \end{document}
