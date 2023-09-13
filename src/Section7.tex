@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\title{MATH-UA 120 Section 7}
+\author{Ishan Pranav}
+\date{September 12, 2023}
+\begin{document}
+\maketitle
+\section*{And}
+The operation \textit{and}, denoted $\land$, is defined:
+
+\[\top\land\top=\top,\]
+
+\[\top\land\bot=\bot,\]
+
+\[\bot\land\top=\bot,\]
+
+\[\bot\land\bot=\bot.\]
+\section*{Or}
+The operation \textit{or}, denoted $\lor$, is defined:
+
+\[\top\lor\top=\top,\]
+
+\[\top\lor\bot=\top,\]
+
+\[\bot\lor\top=\top,\]
+
+\[\bot\lor\bot=\bot.\]
+\section*{Not}
+The operation \textit{not}, denoted $\lnot$, is defined:
+
+\[\lnot\top=\bot,\]
+
+\[\lnot\bot=\top.\]
+\section*{Proposition 6}
+The Boolean expressions $\lnot(x\land y)$ and $(\lnot x)\lor(\lnot y)$ are logically equivalent.
+
+\begin{center}
+\begin{tabular}{c|c||c|c||c|c|c}
+$x$&$y$&$x\land y$&$\lnot(x\land y)$&$\lnot x$&$\lnot y$&$(\lnot x)\lor(\lnot y)$\\
+$\top$&$\top$&$\top$&$\bot$&$\bot$&$\bot$&$\bot$\\
+$\top$&$\bot$&$\bot$&$\top$&$\bot$&$\top$&$\top$\\
+$\bot$&$\top$&$\bot$&$\top$&$\top$&$\bot$&$\top$\\
+$\bot$&$\top$&$\bot$&$\top$&$\top$&$\bot$&$\top$
+\end{tabular}
+\end{center}
+\section*{Commutative property of \textit{and}}
+\[x\land y=y\land x.\]
+\section*{Commutative property of \textit{or}}
+\[x\lor y=y\lor x.\]
+\section*{Associative property of \textit{and}}
+\[(x\land y)\land z=x\land(y\land z).\]
+\section*{Associative property of \textit{or}}
+\[(x\lor y)\lor z=x\lor(y\lor z).\]
+\section*{Identity property of \textit{and}}
+\[x\land\top=x.\]
+\section*{Identity property of \textit{or}}
+\[x\lor\bot=x.\]
+\section*{\textit{And} property}
+\[x\land x=x.\]
+\section*{\textit{Or} property}
+\[x\lor x=x.\]
+\section*{\textit{Not} property}
+\[\lnot(\lnot x)=x.\]
+\section*{Distributive property of \textit{and}}
+\[x\land(y\lor z)=(x\land y)\lor(x\land z).\]
+\section*{Distributive property of \textit{or}}
+\[x\lor(y\land z)=(x\lor y)\land(x\lor z).\]
+\section*{\textit{False} property}
+\[x\land(\lnot x)=\bot.\]
+\section*{\textit{True} property}
+\[x\lor(\lnot x)=\top.\]
+\section*{DeMorgan's law for \textit{and}}
+\[\lnot(x\land y)=(\lnot x)\lor(\lnot y).\]
+\section*{DeMorgan's law for \textit{or}}
+\[\lnot(x\lor y)=(\lnot x)\land(\lnot y).\]
+\section*{If-then}
+The operation \textit{if-then}, denoted $\rightarrow$, is defined:
+\begin{center}
+\begin{tabular}{c|c||c}
+$x$&$y$&$x\rightarrow y$\\
+$\top$&$\top$&$\top$\\
+$\top$&$\bot$&$\bot$\\
+$\bot$&$\top$&$\top$\\
+$\bot$&$\bot$&$\top$
+\end{tabular}
+\end{center}
+\section*{If and only if}
+The operation \textit{if and only if}, denoted $\leftrightarrow$, is defined:
+\begin{center}
+\begin{tabular}{c|c||c}
+$x$&$y$&$x\leftrightarrow y$\\
+$\top$&$\top$&$\top$\\
+$\top$&$\bot$&$\bot$\\
+$\bot$&$\top$&$\bot$\\
+$\bot$&$\bot$&$\top$
+\end{tabular}
+\end{center}
+\section*{Proposition 7}
+The expressions $x\rightarrow y$ and $(\lnot x)\lor y$ are logically equivalent.
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$x$&$y$&$x\rightarrow y$&$\lnot x$&$(\lnot x)\lor y$\\
+$\top$&$\top$&$\top$&$\bot$&$\top$\\
+$\top$&$\bot$&$\bot$&$\bot$&$\bot$\\
+$\bot$&$\top$&$\top$&$\top$&$\top$\\
+$\bot$&$\bot$&$\top$&$\top$&$\top$
+\end{tabular}
+\end{center}
+The columns for $x\rightarrow y$ and $(\lnot x)\lor y$ are the same, and therefore these expressions are logically equivalent.
+\end{document}

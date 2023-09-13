@@ -8,9 +8,48 @@
 \renewcommand{\labelenumi}{\alph{enumi}.}
 \title{MATH-UA 120 Section 5}
 \author{Ishan Pranav}
-\date{September 1, 2023}
+\date{September 10, 2023}
 \begin{document}
 \maketitle
 \section*{Goldbach conjecture}
 Every even integer greater than two is the sum of two primes.
+\section*{Proposition 1}
+The sum of two even integers is even.
+
+We show that if $x$ and $y$ are even integers, then $x+y$ is an even integer. Let $x$ and $y$ be even integers. Since $x$ is even, we know $2\,|\,x$ by definition. Likewise, since $y$ is even, $2\,|\,y$. Since $2\,|\,y$, we know that there is an integer $a$ such that $x=2a$ by definition. Likewise, since $2\,|\,y$, there is an integer $b$ such that $y=2b$. Observe that $x+y=2+2b=2(a+b)$. Therefore there is an integer $c$ (namely, $a+b$) such that $x+y=2c$. Therefore $2|(x+y)$. Therefore $x+y$ is even.
+\section*{Proposition 2}
+Let $a$, $b$, and $c$ be integers. If $a\,|\,b$ and $b\,|\,c$, then $a\,|\,c$.
+
+Suppose $a$, $b$, and $c$ are integers with $a\,|\,b$ and $b\,|\,c$. Since $a\,|\,b$, there is an integer $x$ such that $b=ax$. Likewise there is an integer $y$ such that $c=by$. Let $z=xy$. Then $az=a(xy)=(ax)y=by=c$.
+
+Therefore there is an integer $z$ such that $c=az$. Therefore $a\,|\,c$.
+\section*{Proposition 3}
+Let $x$ be an integer and suppose $x>1$. Note that $x^3+1=(x+1)(x^2-x+1)$. Because $x$ is an integer, both $x+1$ and $x^2-x+1$ are integers. Therefore $(x+1)\,|\,(x^3+1)$.
+
+Since $x>1$, we have $x+1>1+1=2>1$.
+
+Also, $x>1$ implies that $x^2>x$, and since $x>1$, we have $x^2>1$. Multiplying both sides by $x$ again yields $x^3>x$. Adding 1 to both sides gives $x^3+1>x+1$.
+
+Thus $x+1$ is an integer with $1<x+1<x^3+1$.
+
+Since $x+1$ is a divisor of $x^3+1$ and $1<x+1<x^3+1$, we have that $x^3+1$ is composite.
+\section*{Proposition 4}
+Let $x$ be an integer. Then $x$ is even if and only if $x+1$ is odd.
+
+Suppose $x$ is even. This means that $2\,|\,x$. Hence there is an integer $a$ such that $x=2a$. Adding 1 to both sides gives $x+1=2a+1$. By the definition of \textit{odd}, $x+1$ is odd.
+Suppose $x+1$ is odd. So there is an integer $b$ such that $x+1=2b+1$. Subtracting 1 from both sides gives $x=2b$. This shows that $2\,|\,x$ and therefore $x$ is even.
+\section*{Proposition 5}
+Let $a$, $b$, $c$, and $d$ be integers. If $a\,|\,b$, $b\,|\,c$, and $c\,|\,d$, then $a\,|\,d$.
+
+Since $a\,|\,b$, there is an integer $x$ such that $ax=b$.
+
+Since $b\,|\,c$, there is an integer $y$ such that $by=c$.
+
+Since $c\,|\,d$, there is an integer $z$ such that $cz=d$.
+
+Note that $a(xyz)=(ax)(yz)=b(yz)=(by)z=cz=d$.
+
+Therefore there is an integer $w=xyz$ such that $aw=d$.
+
+Therefore $a\,|\,d$.
 \end{document}
