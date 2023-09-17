@@ -36,20 +36,20 @@ An integer $n$ is called \textit{perfect} provided it equals the sum of all its 
 Please determine which of the following are true and which are false.
 \begin{enumerate}
     \item$3\nmid 100$. We want to find an integer $c$ such that $100=3c$. No such $c\in\mathbb{Z}$ exists. Therefore, $3\nmid 100$.
-    \item$3\,|\,99$. We want to find an integer $c$ such that $99=3c$. Let $c=33$. Thus, $99=3\times 33$. Therefore, $3\,|\,99$.
-    \item$-3\,|\,3$. We want to find an integer $c$ such that $3=-3c$. Let $c=-1$. Thus, $3=-3\times-1$. Therefore, $-3\,|\,3.$
-    \item$-5\,|\,-5$. We want to find an integer $c$ such that $-5=-5c$. Let $c=1$. Thus, $-5=-5\times 1$. Therefore, $-5\,|\,-5.$
+    \item$3 \mid 99$. We want to find an integer $c$ such that $99=3c$. Let $c=33$. Thus, $99=3\times 33$. Therefore, $3 \mid 99$.
+    \item$-3 \mid 3$. We want to find an integer $c$ such that $3=-3c$. Let $c=-1$. Thus, $3=-3\times-1$. Therefore, $-3 \mid 3.$
+    \item$-5 \mid -5$. We want to find an integer $c$ such that $-5=-5c$. Let $c=1$. Thus, $-5=-5\times 1$. Therefore, $-5 \mid -5.$
     \item$-2\nmid-7$. We want to find an integer $c$ such that $-7=-2c$. No such $c\in\mathbb{Z}$ exists. Therefore $-2\nmid -7$.
     \item$0\nmid 4$. We want to find an integer $c$ such that $4=0c$, or $4=0$. This statement is absurd. Therefore, $0\nmid 4$.
-    \item$4\,|\,0$. We want to find an integer $c$ such that $0=4c$. Let $c=0$. Thus, $0=4\times 0$. Therefore, $4\,|\,0$.
-    \item$0\,|\,0$. We want to find an integer $c$ such that $0=0c$. Let $c=1$. Thus, $0=0\times 1$. Therefore, by our definition of \textit{divisible}, $0\,|\,0$.
+    \item$4 \mid 0$. We want to find an integer $c$ such that $0=4c$. Let $c=0$. Thus, $0=4\times 0$. Therefore, $4 \mid 0$.
+    \item$0 \mid 0$. We want to find an integer $c$ such that $0=0c$. Let $c=1$. Thus, $0=0\times 1$. Therefore, by our definition of \textit{divisible}, $0 \mid 0$.
 \end{enumerate}
 \section{A possible alternative}
-The alternative definition of \textit{divisible} states that ``$a$ is divisible by $b$ provided $\frac{a}{b}$ is an integer.'' This alternative definition is different from the definition above because it involves division instead of multiplication. Division enforces an additional restriction on the inputs: The divisor must not be zero. According to the original definition, $0\,|\,0$ because an integer $c$ exists such that $0=0c$ (for example, letting $c=1$ yields $0=0\times 1$). However, the alternative definition disagrees: $0\nmid 0$ because $\frac{0}{0}$ is undefined.
+The alternative definition of \textit{divisible} states that ``$a$ is divisible by $b$ provided $\frac{a}{b}$ is an integer.'' This alternative definition is different from the definition above because it involves division instead of multiplication. Division enforces an additional restriction on the inputs: The divisor must not be zero. According to the original definition, $0 \mid 0$ because an integer $c$ exists such that $0=0c$ (for example, letting $c=1$ yields $0=0\times 1$). However, the alternative definition disagrees: $0\nmid 0$ because $\frac{0}{0}$ is undefined.
 \section{None}
 None of the following numbers is prime. Explain why. Which of the following are composite?
 \begin{enumerate}
-    \item 21 is composite. To demonstrate that 21 is prime, want to show that the only positive divisors of 21 are 1 and 21 and that 21 is greater than 1. $21>1$ and $3\,|\,21$. To illustrate that $3\,|\,1$, we must find an integer $c$ such that $21=3c$. Let $c=7$. Thus, $21=3\times 7$. Therefore, $3\,|\,21$. However, 3 is neither 1 nor 21, so 21 is not prime. For 21 to be composite, there must be an integer $b$ such that $1<b<21$ and $b\,|\,21$. Let $b=3$. $1<3<21$ and $3\,|\,21$, so 21 is composite.
+    \item 21 is composite. To demonstrate that 21 is prime, want to show that the only positive divisors of 21 are 1 and 21 and that 21 is greater than 1. $21>1$ and $3 \mid 21$. To illustrate that $3 \mid 1$, we must find an integer $c$ such that $21=3c$. Let $c=7$. Thus, $21=3\times 7$. Therefore, $3 \mid 21$. However, 3 is neither 1 nor 21, so 21 is not prime. For 21 to be composite, there must be an integer $b$ such that $1<b<21$ and $b \mid 21$. Let $b=3$. $1<3<21$ and $3 \mid 21$, so 21 is composite.
     \item 0 is not prime. By definition, prime numbers must be greater than 1. $0<1$. Therefore, 0 is not prime. For 0 to be composite, there must be an integer $b$ such that $1<b<0$, which is absurd. Therefore, 0 is not composite.
     \item$\pi$ is not prime. By definition, prime and composite numbers must be integers. $\pi\notin\mathbb{Z}$. Therefore, $\pi$ is neither prime nor composite.
     \item$\frac{1}{2}$ is not prime. By definition, prime and composite numbers must be integers. $\pi\notin\mathbb{Z}$. Therefore, $\pi$ is neither prime nor composite.

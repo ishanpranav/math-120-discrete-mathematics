@@ -16,15 +16,15 @@ Every even integer greater than two is the sum of two primes.
 \section*{Proposition 1}
 The sum of two even integers is even.
 
-We show that if $x$ and $y$ are even integers, then $x+y$ is an even integer. Let $x$ and $y$ be even integers. Since $x$ is even, we know $2\,|\,x$ by definition. Likewise, since $y$ is even, $2\,|\,y$. Since $2\,|\,y$, we know that there is an integer $a$ such that $x=2a$ by definition. Likewise, since $2\,|\,y$, there is an integer $b$ such that $y=2b$. Observe that $x+y=2+2b=2(a+b)$. Therefore there is an integer $c$ (namely, $a+b$) such that $x+y=2c$. Therefore $2|(x+y)$. Therefore $x+y$ is even.
+We show that if $x$ and $y$ are even integers, then $x+y$ is an even integer. Let $x$ and $y$ be even integers. Since $x$ is even, we know $2 \mid x$ by definition. Likewise, since $y$ is even, $2 \mid y$. Since $2 \mid y$, we know that there is an integer $a$ such that $x=2a$ by definition. Likewise, since $2 \mid y$, there is an integer $b$ such that $y=2b$. Observe that $x+y=2+2b=2(a+b)$. Therefore there is an integer $c$ (namely, $a+b$) such that $x+y=2c$. Therefore $2|(x+y)$. Therefore $x+y$ is even.
 \section*{Proposition 2}
-Let $a$, $b$, and $c$ be integers. If $a\,|\,b$ and $b\,|\,c$, then $a\,|\,c$.
+Let $a$, $b$, and $c$ be integers. If $a \mid b$ and $b \mid c$, then $a \mid c$.
 
-Suppose $a$, $b$, and $c$ are integers with $a\,|\,b$ and $b\,|\,c$. Since $a\,|\,b$, there is an integer $x$ such that $b=ax$. Likewise there is an integer $y$ such that $c=by$. Let $z=xy$. Then $az=a(xy)=(ax)y=by=c$.
+Suppose $a$, $b$, and $c$ are integers with $a \mid b$ and $b \mid c$. Since $a \mid b$, there is an integer $x$ such that $b=ax$. Likewise there is an integer $y$ such that $c=by$. Let $z=xy$. Then $az=a(xy)=(ax)y=by=c$.
 
-Therefore there is an integer $z$ such that $c=az$. Therefore $a\,|\,c$.
+Therefore there is an integer $z$ such that $c=az$. Therefore $a \mid c$.
 \section*{Proposition 3}
-Let $x$ be an integer and suppose $x>1$. Note that $x^3+1=(x+1)(x^2-x+1)$. Because $x$ is an integer, both $x+1$ and $x^2-x+1$ are integers. Therefore $(x+1)\,|\,(x^3+1)$.
+Let $x$ be an integer and suppose $x>1$. Note that $x^3+1=(x+1)(x^2-x+1)$. Because $x$ is an integer, both $x+1$ and $x^2-x+1$ are integers. Therefore $(x+1) \mid (x^3+1)$.
 
 Since $x>1$, we have $x+1>1+1=2>1$.
 
@@ -36,22 +36,22 @@ Since $x+1$ is a divisor of $x^3+1$ and $1<x+1<x^3+1$, we have that $x^3+1$ is c
 \section*{Proposition 4}
 Let $x$ be an integer. Then $x$ is even if and only if $x+1$ is odd.
 
-Suppose $x$ is even. This means that $2\,|\,x$. Hence there is an integer $a$ such that $x=2a$. Adding 1 to both sides gives $x+1=2a+1$. By the definition of \textit{odd}, $x+1$ is odd.
-Suppose $x+1$ is odd. So there is an integer $b$ such that $x+1=2b+1$. Subtracting 1 from both sides gives $x=2b$. This shows that $2\,|\,x$ and therefore $x$ is even.
+Suppose $x$ is even. This means that $2 \mid x$. Hence there is an integer $a$ such that $x=2a$. Adding 1 to both sides gives $x+1=2a+1$. By the definition of \textit{odd}, $x+1$ is odd.
+Suppose $x+1$ is odd. So there is an integer $b$ such that $x+1=2b+1$. Subtracting 1 from both sides gives $x=2b$. This shows that $2 \mid x$ and therefore $x$ is even.
 \section*{Proposition 5}
-Let $a$, $b$, $c$, and $d$ be integers. If $a\,|\,b$, $b\,|\,c$, and $c\,|\,d$, then $a\,|\,d$.
+Let $a$, $b$, $c$, and $d$ be integers. If $a \mid b$, $b \mid c$, and $c \mid d$, then $a \mid d$.
 
-Since $a\,|\,b$, there is an integer $x$ such that $ax=b$.
+Since $a \mid b$, there is an integer $x$ such that $ax=b$.
 
-Since $b\,|\,c$, there is an integer $y$ such that $by=c$.
+Since $b \mid c$, there is an integer $y$ such that $by=c$.
 
-Since $c\,|\,d$, there is an integer $z$ such that $cz=d$.
+Since $c \mid d$, there is an integer $z$ such that $cz=d$.
 
 Note that $a(xyz)=(ax)(yz)=b(yz)=(by)z=cz=d$.
 
 Therefore there is an integer $w=xyz$ such that $aw=d$.
 
-Therefore $a\,|\,d$.
+Therefore $a \mid d$.
 \section{The sum of two odd integers is even}
 Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is odd and $y$ is odd. Since $x$ is odd, there exists $a\in\mathbb{Z}$ such that $x=2a+1$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
 \begin{align*}
@@ -62,7 +62,7 @@ x+y
 \end{align*}
 Let $c=a+b+1\in\mathbb{Z}$. There exists $c\in\mathbb{Z}$ such that $x+y=2c$. Therefore, $x+y$ is even. $\blacksquare$
 \section{The sum of an odd integer and an even integer is odd}
-Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is odd. Since $x$ is even, $2\,|\,x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
+Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is odd. Since $x$ is even, $2 \mid x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
 \begin{align*}
 x+y
 &=(2a)+(2b+1)\\
@@ -80,21 +80,21 @@ Let $n\in\mathbb{Z}$ such that $n$ is odd. Since $n$ is odd, there exists $a\in\
 \end{align*}
 Let $b=-a-1\in\mathbb{Z}$. There exists $b\in\mathbb{Z}$ such that $-n=2b+1$. Therefore, $-n$ is odd. $\blacksquare$
 \section{The product of two even integers is even}
-Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is even. Since $x$ is even, $2\,|\,x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is even, $2\,|\,y$. Thus, there exists $b\in\mathbb{Z}$ such that $y=2b$. Observe
+Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is even. Since $x$ is even, $2 \mid x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is even, $2 \mid y$. Thus, there exists $b\in\mathbb{Z}$ such that $y=2b$. Observe
 \begin{align*}
 xy
 &=(2a)(2b)\\
 &=2(2ab).
 \end{align*}
-Let $c=2ab\in\mathbb{Z}$. There exists $c\in\mathbb{Z}$ such that $xy=2c$. Thus, $2\,|\,xy$. Therefore, $xy$ is even. $\blacksquare$
+Let $c=2ab\in\mathbb{Z}$. There exists $c\in\mathbb{Z}$ such that $xy=2c$. Thus, $2 \mid xy$. Therefore, $xy$ is even. $\blacksquare$
 \section{The product of an even integer and an odd integer is even}
-Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is odd. Since $x$ is even, $2\,|\,x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
+Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is even and $y$ is odd. Since $x$ is even, $2 \mid x$. Thus, there exists $a\in\mathbb{Z}$ such that $x=2a$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
 \begin{align*}
 xy
 &=(2a)(2b+1)\\
 &=2(2ab+a).
 \end{align*}
-Let $c=2ab+a\in\mathbb{Z}$. There exists $c\in\mathbb{Z}$ such that $xy=2c$. Thus, $2\,|\,xy$. Therefore, $xy$ is even. $\blacksquare$
+Let $c=2ab+a\in\mathbb{Z}$. There exists $c\in\mathbb{Z}$ such that $xy=2c$. Thus, $2 \mid xy$. Therefore, $xy$ is even. $\blacksquare$
 \section{The product of two odd integers is odd}
 Let $x\in\mathbb{Z}$ and $y\in\mathbb{Z}$ such that $x$ is odd and $y$ is odd. Since $x$ is odd, there exists $a\in\mathbb{Z}$ such that $x=2a+1$. Since $y$ is odd, there exists $b\in\mathbb{Z}$ such that $y=2b+1$. Observe
 \begin{align*}
@@ -123,30 +123,30 @@ x^3
 &=2(4a^3+6a^2+3a)+1.
 \end{align*}
 Let $b=4a^3+6a^2+3a\in\mathbb{Z}$. There exists $b\in\mathbb{Z}$ such that $x^3=2b+1$. Therefore, $x^3$ is odd. $\blacksquare$
-\section{Given $a,b,c\in\mathbb{Z}$, if $a\,|\,b$ and $a\,|\,c$, then $a\,|\,(b+c)$}
-Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, and $c\in\mathbb{Z}$ such that $a\,|\,b$ and $a\,|\,c$. Since $a\,|\,b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Since $a\,|\,c$, there exists $y\in\mathbb{Z}$ such that $c=ay$. Observe
+\section{Given $a,b,c\in\mathbb{Z}$, if $a \mid b$ and $a \mid c$, then $a \mid (b+c)$}
+Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, and $c\in\mathbb{Z}$ such that $a \mid b$ and $a \mid c$. Since $a \mid b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Since $a \mid c$, there exists $y\in\mathbb{Z}$ such that $c=ay$. Observe
 \begin{align*}
 b+c
 &=ax+ay\\
 &=a(x+y).
 \end{align*}
-Let $z=x+y\in\mathbb{Z}$. There exists $z\in\mathbb{Z}$ such that $b+c=az$. Therefore, $a\,|\,(b+c).\,\blacksquare$
-\section{Given $a,b,c\in\mathbb{Z}$, if $a\,|\,b$, then $a\,|\,bc$}
-Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, and $c\in\mathbb{Z}$ such that $a\,|\,b$. Since $a\,|\,b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Note $bc=acx$. Let $y=cx\in\mathbb{Z}$. There exists $y\in\mathbb{Z}$ such that $bc=ay$. Therefore, $a\,|\,bc.\,\blacksquare$
-\section{Given $a,b,d,x,y\in\mathbb{Z}$, if $d\,|\,a$ and $d\,|\,b$, then $d\,|\,(ax+by)$}
-Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, $d\in\mathbb{Z}$, $x\in\mathbb{Z}$, and $y\in\mathbb{Z}$ such that $d\,|\,a$ and $d\,|\,b$. Since $d\,|\,a$, there exists $c\in\mathbb{Z}$ such that $a=cd$. Since $d\,|\,b$, there exists $z\in\mathbb{Z}$ such that $b=dz$. Observe
+Let $z=x+y\in\mathbb{Z}$. There exists $z\in\mathbb{Z}$ such that $b+c=az$. Therefore, $a \mid (b+c).\,\blacksquare$
+\section{Given $a,b,c\in\mathbb{Z}$, if $a \mid b$, then $a \mid bc$}
+Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, and $c\in\mathbb{Z}$ such that $a \mid b$. Since $a \mid b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Note $bc=acx$. Let $y=cx\in\mathbb{Z}$. There exists $y\in\mathbb{Z}$ such that $bc=ay$. Therefore, $a \mid bc.\,\blacksquare$
+\section{Given $a,b,d,x,y\in\mathbb{Z}$, if $d \mid a$ and $d \mid b$, then $d \mid (ax+by)$}
+Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, $d\in\mathbb{Z}$, $x\in\mathbb{Z}$, and $y\in\mathbb{Z}$ such that $d \mid a$ and $d \mid b$. Since $d \mid a$, there exists $c\in\mathbb{Z}$ such that $a=cd$. Since $d \mid b$, there exists $z\in\mathbb{Z}$ such that $b=dz$. Observe
 \begin{align*}
 ax+by
 &=(cd)(x)+(dz)(z)\\
 &=d(cx+yz).
 \end{align*}
-Let $r=cx+yz\in\mathbb{Z}$. There exists $r\in\mathbb{Z}$ such that $ax+by=dr$. Therefore, $d\,|\,(ax+by).\,\blacksquare$
-\section{Given $a,b,c,d\in\mathbb{Z}$, if $a\,|\,b$ and $c\,|\,d$, then $ac\,|\,bd$}
-Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, $c\in\mathbb{Z}$, and $d\in\mathbb{Z}$ such that $a\,|\,b$ and $c\,|\,d$. Since $a\,|\,b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Since $c\,|\,d$, there exists $y\in\mathbb{Z}$ such that $d=cy$. Note $bd=acxy$. Let $z=xy\in\mathbb{Z}$. There exists $z\in\mathbb{Z}$ such that $bd=acz$. Therefore $ac\,|\,bd.\,\blacksquare$
-\section{Given $x\in\mathbb{Z}$, $x$ is odd $\iff x+1$ is even}
+Let $r=cx+yz\in\mathbb{Z}$. There exists $r\in\mathbb{Z}$ such that $ax+by=dr$. Therefore, $d \mid (ax+by).\,\blacksquare$
+\section{Given $a,b,c,d\in\mathbb{Z}$, if $a \mid b$ and $c \mid d$, then $ac \mid bd$}
+Let $a\in\mathbb{Z}$, $b\in\mathbb{Z}$, $c\in\mathbb{Z}$, and $d\in\mathbb{Z}$ such that $a \mid b$ and $c \mid d$. Since $a \mid b$, there exists $x\in\mathbb{Z}$ such that $b=ax$. Since $c \mid d$, there exists $y\in\mathbb{Z}$ such that $d=cy$. Note $bd=acxy$. Let $z=xy\in\mathbb{Z}$. There exists $z\in\mathbb{Z}$ such that $bd=acz$. Therefore $ac \mid bd.\,\blacksquare$
+\section{Given $x\in\mathbb{Z}$, $x$ is odd if and only if $x+1$ is even}
 Let $x\in\mathbb{Z}$.
 
-First, we will prove that if $x+1$ is even, then $x$ is odd. Suppose $x+1$ is even. Since $x+1$ is even, $2\,|\,(x+1)$. Thus, there exists $y\in\mathbb{Z}$ such that $x+1=2y$. Observe
+First, we will prove that if $x+1$ is even, then $x$ is odd. Suppose $x+1$ is even. Since $x+1$ is even, $2 \mid (x+1)$. Thus, there exists $y\in\mathbb{Z}$ such that $x+1=2y$. Observe
 \begin{align*}
 x+1&=2y\\
 x&=2y-1\\
@@ -163,7 +163,7 @@ x+1&=2(a+1).
 Let $b=a+1\in\mathbb{Z}$. There exists $b\in\mathbb{Z}$ such that $x+1=2b$. Therefore, $x+1$ is even if $x$ is odd.
 
 We conclude that $x$ is odd if and only if $x+1$ is even. $\blacksquare$
-\section{$x$ is odd $\iff\exists\,b\in\mathbb{Z}$ such that $x=2b-1$}
+\section{$x$ is odd if and only if $\exists\,b\in\mathbb{Z}$ such that $x=2b-1$}
 Let $x\in\mathbb{Z}$. 
 
 First, we will prove that if there exists $b\in\mathbb{Z}$ such that $x=2b-1$, then $x$ is odd. Suppose there exists $b\in\mathbb{Z}$ such that $x=2b-1$. Observe
@@ -175,12 +175,12 @@ Next, we will prove that if $x$ is odd, then there exists $b\in\mathbb{Z}$ such 
 Let $b=c+1\in\mathbb{Z}$. Therefore, there exists $b\in\mathbb{Z}$ such that $x=2b-1$.
 
 We conclude that $x$ is odd if and only if there exists $b\in\mathbb{Z}$ such that $x=2b-1.\,\blacksquare$
-\section{Given $x\in\mathbb{Z}$, $0\,|\,x \iff x=0$}
+\section{Given $x\in\mathbb{Z}$, $0 \mid x$ if and only if $x=0$}
 Let $x\in\mathbb{Z}$.
 
-First, we will prove that if $x=0$, then $0\,|\,x$. We want to find $n\in\mathbb{Z}$ such that $x=0n$. Note $x=0n=0$ for all integers $n$ (including 0). Let $n=0$. Therefore $0\,|\,x$.
+First, we will prove that if $x=0$, then $0 \mid x$. We want to find $n\in\mathbb{Z}$ such that $x=0n$. Note $x=0n=0$ for all integers $n$ (including 0). Let $n=0$. Therefore $0 \mid x$.
 
-Next, we will prove that if $0\,|\,x$, then $x=0$. Since $0\,|\,x$, there exists $n\in\mathbb{Z}$ such that $x=0n=0$. Therefore $x=0$.
+Next, we will prove that if $0 \mid x$, then $x=0$. Since $0 \mid x$, there exists $n\in\mathbb{Z}$ such that $x=0n=0$. Therefore $x=0$.
 
-We conclude that $0\,|\,x$ if and only if $x=0.\,\blacksquare$
+We conclude that $0 \mid x$ if and only if $x=0.\,\blacksquare$
 \end{document}

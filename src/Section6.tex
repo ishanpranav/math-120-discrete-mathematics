@@ -1,0 +1,16 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\title{MATH-UA 120 Section 1}
+\author{Ishan Pranav}
+\date{September 12, 2023}
+\begin{document}
+\maketitle
+\section{Disprove: Given $a,b\in\mathbb{Z}$, if $a \mid b$, then $a\leq b$}
+Consider $a=1\in\mathbb{Z},b=0\in\mathbb{Z}$. Let $c\in\mathbb{Z}$ such that $b=ac$. Note $0=1c$. Let $c=0$. Note $0=1(0)=0$. There exists $c\in\mathbb{Z}$ such that $b=ac$. Therefore, $a \mid b$. However, $1>0$, so $a>b$. We reject the claim that $a \mid b$ implies $a\leq b$.
+\section{Disprove: Given $a,b\in\mathbb{Z}$, if $a\geq 0$ and $a \mid b$, then $a\leq b$}
+Consider $a=1\in\mathbb{Z},b=0\in\mathbb{Z}$. Note $1\geq 0$, so $a\geq 0$. Let $c\in\mathbb{Z}$ such that $b=ac$. Note $0=1c$. Let $c=0$. Note $0=1(0)=0$. There exists $c\in\mathbb{Z}$ such that $b=ac$. Therefore, $a \mid b$. However, $1>0$, so $a>b$. We reject the claim that $a \mid b$ implies $a\leq b$.
+\end{document}
