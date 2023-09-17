@@ -3,14 +3,27 @@
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
-\title{MATH-UA 120 Section 1}
+\title{MATH-UA 120 Section 6}
 \author{Ishan Pranav}
 \date{September 12, 2023}
 \begin{document}
 \maketitle
+\section*{Palindrome}
+An integer $n$ is a palindrome if it reads the same forward and backward when expressed in base-10.
 \section{Disprove: Given $a,b\in\mathbb{Z}$, if $a \mid b$, then $a\leq b$}
 Consider $a=1\in\mathbb{Z},b=0\in\mathbb{Z}$. Let $c\in\mathbb{Z}$ such that $b=ac$. Note $0=1c$. Let $c=0$. Note $0=1(0)=0$. There exists $c\in\mathbb{Z}$ such that $b=ac$. Therefore, $a \mid b$. However, $1>0$, so $a>b$. We reject the claim that $a \mid b$ implies $a\leq b$.
 \section{Disprove: Given $a,b\in\mathbb{Z}$, if $a\geq 0$ and $a \mid b$, then $a\leq b$}
 Consider $a=1\in\mathbb{Z},b=0\in\mathbb{Z}$. Note $1\geq 0$, so $a\geq 0$. Let $c\in\mathbb{Z}$ such that $b=ac$. Note $0=1c$. Let $c=0$. Note $0=1(0)=0$. There exists $c\in\mathbb{Z}$ such that $b=ac$. Therefore, $a \mid b$. However, $1>0$, so $a>b$. We reject the claim that $a \mid b$ implies $a\leq b$.
+\section{Disprove: Given $a,b,c\in\mathbb{N}$, if $a \mid (bc)$, then $a \mid b$ or $a \mid c$}
+Consider $a=4\in\mathbb{N},b=2\in\mathbb{N},c=6\in\mathbb{N}$. Let $d\in\mathbb{Z}$ such that $bc=ad$. Note $12=4d$. Let $d=3$. There exists $d\in\mathbb{Z}$ such that $bc=ad$. Therefore, $a \mid (bc)$. However, no such $x\in\mathbb{Z}$ exists such that $2=4x$ and no such $y\in\mathbb{Z}$ exists such that $6=4y$. Therefore, $a \nmid b$ and $a \nmid c$. We reject the claim that $a \mid (bc)$ implies $a \mid b$ or $a \mid c$.
+\section{Disprove: Given $a,b,c\in\mathbb{Z}$, if $a>0$, $b>0$, and $c>0$, then $a^{\left(b^c\right)}=\left(a^b\right)^c$}
+Consider $a=3\in\mathbb{Z},b=3\in\mathbb{Z},c=3\in\mathbb{Z}$. Note $(a=b=c=3)>0$. However, $\left(3^{\left(3^3\right)}=3^{27}\right)\neq\left(\left(3^3\right)^3=27^3\right)$.
+\section{Disprove: Given $p,q\in\mathbb{Z}$, if $p$ and $q$ are prime, then $p+q$ is composite}
+Consider $p=2\in\mathbb{Z},q=3\in\mathbb{Z}$. Note $(p=2)>1$. The only positive divisors of 2 are 1 and 2. Therefore, $p$ is prime. Note $(q=3)>1$. The only positive divisors of 3 are 1 and 3. Therefore, $q$ is prime. However, $p+q=5$. Let $a\in\mathbb{Z}$; $p+q$ is called composite provided there exists $a\in\mathbb{Z}$ such that $1<a<p+q$ and $a \mid (p+q)$. No such $a\in\mathbb{Z}$ exists, therefore $p+q$ is not composite. We reject the claim that $p$ and $q$ being primes implies that $p+q$ is composite.
+\section{Disprove: Given $p\in\mathbb{Z}$, if $p$ is prime, then $2^p-1$ is prime}
+Consider $p=5\in\mathbb{Z}$. Note $(p=11)>0$. The only positive divisors of 11 are 1 and 11. Therefore, $p$ is prime. However, $2^p-1=2^{11}-1=2047$. 2047 is called prime provided the only positive divisors of 2047 are 1 and 2047. However, let $89(23)=2047$. There exists $a\in\mathbb{Z}$ such that $2047=89a$. Thus, $89 \mid 2047$. Note $89\neq 1$ and $89\neq 2047$. Therefore $2^p-1$ is not prime.
+\section{Disprove: Given $p\in\mathbb{Z}$, if $p$ is a palindrome and $p$ has more than 1 digit, then $p$ is divisible by 11}
+Consider $p=232$; $p$ has more than 1 digit. However, there exists no $a\in\mathbb{Z}$ such that $232=11a$. Therefore, $11 \nmid 232$. We reject the claim that if $p$ is a palindrome and $p$ has more than 1 digit, then $p$ is divisible by 11.
 \end{document}
