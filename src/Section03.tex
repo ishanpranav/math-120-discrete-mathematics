@@ -73,7 +73,6 @@ An integer $x$ is called a \textit{perfect square} provided there is an integer 
 A number $x$ is a \textit{square root} of a number $y$ provided that $x^2=y$.
 \section{Define perimeter of a polygon}
 The \textit{perimeter} of a polygon is the total length of its boundary.
-\section{Define between}
 \section{Define midpoint of a line segment}
 The \textit{midpoint} of a line segment $\overline{AB}$ is a point $C$ on the segment such that the distance from $A$ to $C$ equals the distance from $C$ to $B$.
 \section{Try writing definitions}
@@ -121,7 +120,7 @@ A pair of words, $w$ and $x$, are called \textit{homophones} if they are spelled
 
 \verb| * @param | min the previous perfect number from which to begin the search
 
-\verb| * @return |The next perfect number.
+\verb| * @return |The next perfect number, or the given \verb|min| if no such number exists.
 
 \verb|*/|
 \begin{verbatim}
@@ -143,7 +142,9 @@ static int getPerfectAbove(int min)
       {
          return value;
       }
-    }
+   }
+
+   return min;
 }
 \end{verbatim}
 
