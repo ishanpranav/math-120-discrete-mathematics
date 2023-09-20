@@ -9,7 +9,7 @@
  * Computes the first perfect number greater than the given number.
  * 
  * @param min the previous perfect number from which to begin the search
- * @return The next perfect number.
+ * @return The next perfect number, or the given `min` if no such number exists.
 */
 static int getPerfectAbove(int min)
 {
@@ -30,6 +30,8 @@ static int getPerfectAbove(int min)
             return value;
         }
     }
+
+    return min;
 }
 
 /**
