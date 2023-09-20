@@ -18,4 +18,73 @@ occurs frequently in mathematics and has a special name and notation; it is call
 
 Formally,
 \[n!=\prod_{k=1}^{n}{k}.\]
+\section{}
+A computer program to find the next factorion after 145: 
+
+\begin{verbatim}
+   #include <limits.h>
+   #include <stdio.h>
+\end{verbatim}
+
+\verb|/**|
+
+\verb| * |Computes the first factorion greater than the given number.
+
+\verb| * |
+
+\verb| * @param |min the previous factorion from which to begin the search
+
+\verb| * @return |The next factorion, or the given \verb|min| if no such number exists.
+
+\verb|*/|
+\begin{verbatim}
+   static int getFactorionAbove(int min)
+   {
+      for (int k = min + 1; k < INT_MAX; k++)
+      {
+         int sum = 0;
+         int n = k;
+    
+         while (n)
+         {
+            int digit = n % 10;
+            int factorial = 1;
+    
+            for (int i = 1; i <= digit; i++)
+            {
+               factorial *= i;
+            }
+    
+            n /= 10;
+            sum += factorial;
+         }
+    
+         if (k == sum)
+         {
+            return k;
+         }
+      }
+    
+      return min;
+   }
+\end{verbatim}
+
+\verb|/**|
+
+\verb| * |The main entry point for the application.
+
+\verb| * |
+
+\verb| * @return |An exit code.
+
+\verb|*/|
+
+\begin{verbatim}
+   int main()
+   {
+      printf("%d", getFactorionAbove(145));
+    
+      return 0;
+   }
+\end{verbatim}
 \end{document}
