@@ -9,7 +9,7 @@
  * Computes the first factorion greater than the given number.
  *
  * @param min the previous factorion from which to begin the search
- * @return The next factorion, or the given `min` if no such number exists
+ * @return The next factorion, or the given `min` if no such number exists.
 */
 static int getFactorionAbove(int min)
 {
