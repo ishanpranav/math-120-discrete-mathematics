@@ -1,0 +1,195 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 2}
+\author{%
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due September 22, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newcommand{\xor}{\underline{\lor}}
+\begin{document}
+\maketitle
+These are to be written up and turned in to Gradescope.\\
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+\section*{Assigned Problems}
+\begin{question}
+    \begin{enumerate}
+        \item Disprove: Every triangle has at least one obtuse angle.
+        \item Disprove: For all real numbers $x$, $2^x\geq x+1$.
+        \item Disprove: For every positive non-prime integers $n$, if some prime $p$ divides $n$, 
+            then some other prime $q$ ($q\neq p$) also divides $n$.
+        \item Disprove: For all integers $n$, if $n^5-n$ is even, then $n$ is even.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+\begin{question}
+   (Scheinerman, Exercise 7.12:)
+    Another method to prove that certain Boolean formulas
+    are tautologies is to use the properties in Theorem~7.2
+    together with the fact that $x \rightarrow y$ is equivalent
+    to $(\neg x) \vee y$ (Proposition~7.3)
+    For example, Exercise 7.11, part (b) asks you to establish that the formula $(x \wedge (x \rightarrow y)) \rightarrow y$ is 
+    a tautology.  Here is a derivation of that fact:
+    % This is an "align" environment for aligning
+    % mathematical equations.  Ampersands (&) denote 
+    % separation between columns.  The first one means
+    % there will be alignment around the equal sign.
+    % The double-ampersands put a second column, left-
+    % justified.  Double-backslashes (\\) separate lines.
+    \begin{align*}
+        (x \wedge (x \rightarrow y)) \rightarrow y
+        &= [x \wedge (\neg x \vee y)] \rightarrow y
+        && \text{translate $\rightarrow$} 
+        \\
+        &= [(x \wedge \neg x) \vee (x \wedge y)] \rightarrow y
+        && \text{distributive}
+        \\
+        &= [\mathrm{FALSE} \vee (x\wedge y)] \rightarrow y
+        && \text{inverse elements}
+        \\
+        &= (x\wedge y) \rightarrow y
+        && \text{identity element}
+        \\
+        &= \neg(x\wedge y) \vee y
+        && \text{translate $\rightarrow$}
+        \\
+        &= (\neg x \vee \neg y) \vee y
+        && \text{De~Morgan's laws}
+        \\
+        &= \neg x \vee (\neg y \vee y)
+        && \text{associativity}
+        \\
+        &= \neg x \vee \mathrm{TRUE}
+        && \text{inverse elements}
+        \\
+        &= \mathrm{TRUE}
+        && \text{identity element}
+        \\
+    \end{align*}
+    Use this technique [not truth tables] to prove that these formulas
+    are tautologies:
+    \begin{enumerate}
+        \item $(x \rightarrow \mathrm{FALSE}) \rightarrow \neg x$
+        \item $(x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x$
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+	Let the following statements be given.
+		\begin{align*}
+		p &= \text{``Jeremiah is hungry.''}\\
+		q &= \text{``The refrigerator is empty.''}\\
+		r &= \text{``Jeremiah is mad.''}
+		\end{align*}
+	\begin{enumerate}
+		\item Rewrite the following statement as a Boolean expression.\\
+			\begin{center}
+			If Jeremiah is hungry and the refrigerator is empty, then Jeremiah is mad.
+			\end{center}
+		\item Construct a truth table for the statement in part (a).
+		\item Suppose that the statement given in part (a) is true, and suppose also that Jeremiah is not mad and the refrigerator is empty. Is Jeremiah hungry? Justify your answer using the truth table.
+	\end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+\begin{question}
+    Suppose each single character stored in a computer uses eight bits. 
+    Then each character is represented by a different sequence of eight 0's and 1's called a bit pattern, 
+    such as 10011101 or 00100010. Provide a brief reasoning for the following questions.
+        \begin{enumerate}
+            \item How many different bit patterns are there?
+            \item How many different bit patterns are palindromes (the same backwards as forwards)?
+            \item How many different bit patterns have an even number of 1's?
+            \item How many different bit patterns have the property that their second and fourth digits are 1's?
+            \item How many different bit patterns have the property that their second or fourth digits are 1's?
+        \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Suppose we want to make a list of length 5 from the letters $A, B, C, D, E, F, G, H, I, J$. Provide a brief reasoning for the following questions.
+        \begin{enumerate}
+            \item How many such lists can be made if repetition is not allowed and the list must begin with a vowel?
+            \item How many such lists can be made if repetition is not allowed and the list must end with a vowel?
+            \item How many such lists can be made if repetition is not allowed and the list must contain exactly one $A$?
+            \item How many such lists can be made if repetition is not allowed and the list must contain exactly two vowels?
+        \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\end{document}
