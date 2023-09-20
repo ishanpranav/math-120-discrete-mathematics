@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\title{MATH-UA 120 Section 12}
+\author{Ishan Pranav}
+\date{September 16, 2023}
+\begin{document}
+\maketitle
+\section*{Union}
+Let $A$ and $B$ be sets. The \textit{union} of $A$ and $B$ is the set of all elements that are in $A$ or $B$ (or both), denoted $A\cup B$.
+\[A\cup B=\{x:x\in A\text{ or }x\in B\}.\]
+\section*{Intersection}
+Let $A$ and $B$ be sets. The \textit{intersection} of $A$ and $B$ is the set of all elements that are in both $A$ and $B$, denoted $A\cap B$.
+\[A\cap B=\{x:x\in A\text{ and }x\in B\}.\]
+\section*{Commutative property of union}
+\[A\cup B=B\cup A.\]
+\section*{Commutative property of intersection}
+\[A\cap B=B\cap A.\]
+\section*{Associative property of union}
+\[A\cup(B\cup C)=(A\cup B)\cup C.\]
+\section*{Associative property of intersection}
+\[A\cap(B\cap C)=(A\cap B)\cap C.\]
+\section*{Union identity}
+\[A\cup\emptyset=A.\]
+\section*{Null property}
+\[A\cap\emptyset=\emptyset.\]
+\section*{Distributive property of union}
+\[A\cup(B\cap C)=(A\cup B)\cap(A\cup C).\]
+\section*{Distributive property of intersection}
+\[A\cap(B\cup C)=(A\cap B)\cup(A\cap C).\]
+\section*{Size of a union theorem}
+Let $A$ and $B$ be finite sets. Then $|A|+|B|=|A\cup B|+|A\cap B|$.
+\section*{Disjoint}
+Let $A$ and $B$ be sets. We call $A$ and $B$ \textit{disjoint} provided $A\cap B=\emptyset$.
+\section*{Pairwise disjoint}
+Let $A_1,A_2,\dots A_n$ be a collection of sets. These sets are called \textit{pairwise disjoint} provided $A_i\cap A_j=\emptyset$ whenever $i\neq j$. In other words, they are pairwise disjoint provided no two of them have an element in common.
+\section*{Addition principle}
+Let $A$ and $B$ be finite sets. If $A$ and $B$ are disjoint, then $|A\cup B|=|A|+|B|$.
+\[\left|\bigcup_{k=1}^n{A_k}\right|=\sum_{k=1}^n{|A_k|}.\]
+\section*{Set difference}
+Let $A$ and $B$ be sets. The \textit{set difference}, $A-B$, is the set of all elements in $A$ that are not in $B$:
+\[A-B=\{x:x\in A\text{ and }x \notin B\}.\]
+\section*{Symmetric difference}
+The \textit{symmetric difference} of $A$ and $B$, denoted $A\Delta B=(A-B)\cup(B-A)$.
+\section*{Proposition 11}
+\[A\Delta B=(A\cup B)-(A\cap B).\]
+\section{DeMorgan's laws}
+Let $A$, $B$, and $C$ be sets.
+\[A-(B\cup C)=(A-B)\cap(A-C).\]
+
+\[A-(B\cap C)=(A-B)\cup(A-C).\]
+\section*{Cartesian product}
+Let $A$ and $B$ be sets. The \textit{Cartesian product} of $A$ and $B$, denoted $A\times B$, is the set of all ordered pairs (two-element lists) formed by taking an element from $A$ together with an element from $B$ in all possible ways. That is,
+\[A\times B=\{(a,b):a\in A,b\in B\}.\]
+\section*{Proposition 12}
+Let $A$ and $B$ be finite sets. Then $|A\times B|=|A|\times|B|$.
+\end{document}

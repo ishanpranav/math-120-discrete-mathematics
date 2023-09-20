@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\title{MATH-UA 120 Section 10}
+\author{Ishan Pranav}
+\date{September 16, 2023}
+\begin{document}
+\maketitle
+\section*{Set}
+A \textit{set} is a repetition-fee, unordered collection of objects. A given object either is a member of a set or it is not--an object cannot be in a set ``more than once.'' There is no order to the members of a set.
+\section*{Element}
+An object that belongs to a set is called an \textit{element} of the set. Membership in a set is denoted with the symbol $\in$.
+\section*{Cardinality}
+The number of elements in a set $A$, called the \textit{cardinality} or \textit{size} of $A$, is denoted $|A|$ or $#A$.
+\section*{Finite}
+A set is called \textit{finite} if its cardinality is an integer.
+\section*{Infinite}
+A set is called \textit{infinite} if its cardinality is not finite.
+\section*{Empty set}
+The \textit{empty set} or \textit{null set} is the set with no members. The empty set may be denoted $\{ \}$, but it is better to use the symbol $\emptyset$. The statement $x\in\emptyset$ is false regardless of what object $x$ might represent. The cardinality of the empty set is zero ($|\emptyset|=0$).
+\section*{Proposition 8}
+The following two sets are equal:
+
+\begin{align*}
+E&=\{x\in\mathbb{Z}:x\text{ is even}\},&\text{ and}\\
+F&=\{z\in\mathbb{Z}:z=a+b\text{ where }a\text{ and }b\text{ are both odd}\}
+\end{align*}
+Let $E=\{x\in\mathbb{Z}:x\text{ is even}\}$ and $F=\{z\in\mathbb{Z}:z=a+b\text{ where }a\text{ and }b\text{ are both odd}\}$. We seek to prove that $E=F$.
+
+Suppose $x\in E$. Therefore $x$ is even, and hence divisible by 2, so $x=2y$ for some integer $y$. Note that $2y+1$ and -1 are both odd, and since $x=2y=(2y+1)+(-1)$, we see that $x$ is the sum of two odd numbers. Therefore $x\in F$.
+
+Suppose $x\in F.$ Therefore $x$ is the sum of two odd numbers. As we showed in Section 5, $x$ must be even and so $x\in E$. 
+
+We conclude that an integer is even if and only if it can be expressed as the sum of two odd numbers.
+\section*{Subset}
+Suppose $A$ and $B$ are sets. We say that $A$ is a \textit{subset} of $B$ provided every element of $A$ is also an element of $B$. The notation $A\subset B$ means $A$ is a subset of $B$.
+\section*{Proposition 9}
+Let $x$ be anything and let $A$ be a set; then $x\in A$ if and only if $\{x\}\subseteq A$. 
+Let $x$ be any object and let $A$ be a set.
+
+Suppose that $x\in A$. We want to show ${x}\subseteq A$. To do this, we need to show that every element of $\{x\}$ is also an element of $A$. But the only element of $\{x\}$ is $x$, and we are given that $x\in A$. Therefore $\{x\}\subseteq A$.
+
+Suppose that $\{x\}\subseteq A$. This means that every element of the first set ($\{x\}$) is also a member of the second set ($A$). But the only element of $\{x\}$ is certainly $x$ and so $x\in A$.
+\section*{Pythagorean triple}
+A list of three integers $(a,b,c)$ is called a \textit{Pythagorean triple} provided $a^2+b^2=c^2$.
+\section*{Proposition 10}
+Let $P$ be the set of Pythagorean triples; that is,
+\[P=\{(a,b,c):a,b,c\in\mathbb{Z}\text{ and }a^2+b^2=c^2\}\]
+and let $T$ be the set
+\[T=\{(p,q,r):p=x^2-y^2,q=2xy\text{ and }r=x^2+y^2\text{ where }x,y\in\mathbb{Z}\}.\]
+
+Let $(p,q,r)\in T$. Therefore there are integer $x$ and $y$ such taht $p=x^2-y^2$, $q=2xy$, and $r=x^2+y^2$. Note that $p$, $q$, and $r$ are integers because $x$ and $y$ are integers. We calculate
+\begin{align*}
+p^2+q^2
+&=(x^2-y^2)^2+(2xy)^2\\
+&=(x^4-2x^2y^2+y^4)+4x^2y^2\\
+&=x^4+2x^2y^2+y^4\\
+&=(x^2+y^2)^2\\
+&=r^2.
+\end{align*}
+
+Therefore $(p,q,r)$ is a Pythagorean triple and so $(p,q,r)\in P$.
+\section*{Number of subsets}
+Let $A$ be a finite set. The number of subsets of $A$ is $2^{|A|}$.
+\section*{Power set}
+Let $A$ be a set. The \textit{power set} of $A$ is the set of all subsets of $A$. The cardinality of the power set of $A$ is denoted $|2^A|=2^{|A|}$.
+\end{document}

@@ -7,12 +7,13 @@
 \title{MATH-UA 120 Section 8}
 \author{Ishan Pranav}
 \date{September 16, 2023}
+\DeclareMathOperator{\len}{len}
 \begin{document}
 \maketitle
 \section*{List}
 A \textit{list} or \textit{tuple} is an ordered sequence of objects. Elements in a list might be repeated.
 \section*{Length}
-The number of elements in a list is called its \textit{length}.
+The number of elements in a list $l$ is called its \textit{length} and is denoted $\len(l)$.
 \section*{Ordered pair}
 A list of length two is called an \textit{ordered pair}.
 \section*{Empty list}
@@ -21,4 +22,12 @@ A list of length zero is called the \textit{empty list} and is denoted $(\,)$.
 Two lists are \textit{equal} provided they have the same length, and elements in the corresponding positions on the two lists are equal. Lists $(a,b,c)$ and $(x,y,z)$ are equal if and only if $a=x,b=y$.
 \section*{Concatenation}
 Suppose $A$ and $B$ are lists. Their \textit{concatenation} is the new list formed by listing first the elements of $A$ and then the elements $B$. The concatenation of the lists $(1,2,1)$ and $(1,3,5)$ is the list $(1,2,1,1,3,5)$.
+\section*{Multiplication principle}
+Consider two-element lists for which there are $n$ choices for the first element, and for each choice of the first element, there are $m$ choices for the second element. Then the number of such lists is $nm$. 
+\section*{Falling factorial}
+The quantity
+\[(x)_n=\prod_{k=1}^n{(x-k+1)}=\prod_{k=0}^{n-1}{(x-k)}.\]
+is called a \textit{falling factorial}, \textit{descending factorial}, \textit{falling sequential product}, or \textit{lower factorial}. The quantity $(r)_n$ is equal to the number of $r$-permutations from a set of $n$ items, called a \textit{partial permutation} and denoted ${}_nP_r=\frac{n!}{(n-r)!}$.
+\section*{List-counting theorem}
+The number of lists of length $k$ whose elements are chosen from a pool of $n$ possible elements is $n^k$ if repetitions are permitted and $(n)_k$ if repetitions are forbidden.
 \end{document}

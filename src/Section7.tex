@@ -57,29 +57,27 @@ $\bot$&$\top$&$\bot$&$\top$&$\top$&$\bot$&$\top$
 \[(x\land y)\land z=x\land(y\land z).\]
 \section*{Associative property of \textit{or}}
 \[(x\lor y)\lor z=x\lor(y\lor z).\]
-\section*{Identity property of \textit{and}}
+\section*{\textit{True} identity}
 \[x\land\top=x.\]
-\section*{Identity property of \textit{or}}
+\section*{\textit{False} identity}
 \[x\lor\bot=x.\]
-\section*{\textit{And} property}
+\section*{Idemopotency}
 \[x\land x=x.\]
-\section*{\textit{Or} property}
 \[x\lor x=x.\]
-\section*{\textit{Not} property}
+\section*{Double negative}
 \[\lnot(\lnot x)=x.\]
 \section*{Distributive property of \textit{and}}
 \[x\land(y\lor z)=(x\land y)\lor(x\land z).\]
 \section*{Distributive property of \textit{or}}
 \[x\lor(y\land z)=(x\lor y)\land(x\lor z).\]
-\section*{\textit{False} property}
+\section*{Inverse element}
 \[x\land(\lnot x)=\bot.\]
-\section*{\textit{True} property}
 \[x\lor(\lnot x)=\top.\]
 \section*{De Morgan's laws}
 \[\lnot(x\land y)=(\lnot x)\lor(\lnot y),\]
 
 \[\lnot(x\lor y)=(\lnot x)\land(\lnot y).\]
-\section*{Material conditional}
+\section*{Implication}
 The \textit{material conditional} operation (also called an \textit{if-then} or \textit{implication}), denoted $\rightarrow$, is defined:
 \begin{center}
 \begin{tabular}{c|c||c}
@@ -90,7 +88,7 @@ $\bot$&$\top$&$\top$\\
 $\bot$&$\bot$&$\top$
 \end{tabular}
 \end{center}
-\section*{Material biconditional}
+\section*{Equivalence}
 The \textit{material biconditional} operation (also called an \textit{if and only if} or \textit{equivalence}), denoted $\leftrightarrow$, is defined:
 \begin{center}
 \begin{tabular}{c|c||c}
@@ -113,4 +111,51 @@ $\bot$&$\bot$&$\top$&$\top$&$\top$
 \end{tabular}
 \end{center}
 The columns for $x\rightarrow y$ and $(\lnot x)\lor y$ are the same, and therefore these expressions are logically equivalent.
+\section*{Tautology}
+A Boolean expression is a \textit{tautology} if the evaluation of all possible values of its variables is true.
+\section*{Contradiction}
+A Boolean expression is a \textit{contradiction} if the evaluation of all possible values of its variables is false.
+\section*{Contingency}
+A Boolean expression is a \textit{contingency} if its evaluation is sometimes true and sometimes false.
+\section{Calculations}
+\begin{enumerate}
+    \item$\top\land\top\land\top\land\top\land\bot$=$\bot$.
+    \item$(\lnot\top)\lor\top=\top$.
+    \item$\lnot(\top\lor\top)=\bot$.
+    \item$(\top\lor\top)\land\bot=\bot$.
+    \item$\top\lor(\top\land\bot)=\top$.
+\end{enumerate}
+\section{Prove: $(x\land y)\lor(x\land\lnot y)=x$}
+\begin{align*}
+(x\land y)\lor(x\land\lnot y)
+&=x\land(y\lor\lnot y),&\textit{distributive property;}\\
+&=x\land\top,&\textit{inverse elements;}\\
+&=x,&\textit{identity.}&\,\blacksquare
+\end{align*}
+\section{Prove: $x\rightarrow y=(\lnot y)\rightarrow(\lnot x)$}
+\begin{align*}
+x\rightarrow y
+&=(\lnot x)\lor y,&\textit{Proposition 7;}\\
+&=y\lor(\lnot x),&\textit{commutative property;}\\
+&=\lnot(\lnot y)\lor(\lnot x),&\textit{double negative;}\\
+&=(\lnot y)\rightarrow(\lnot x),&\textit{Proposition 7.}
+\end{align*}
+We conclude that an \textit{if-then} statement ($x\rightarrow y$) is logically equivalent to its contrapositive, $(\lnot y)\rightarrow(\lnot x)$. $\blacksquare$
+\section{Prove: $x\leftrightarrow y=(\lnot x)\leftrightarrow(\lnot y)$}
+\section{Prove: $x\leftrightarrow y=(x\rightarrow y)\land(y\rightarrow x)$}
+\begin{align*}
+x\leftrightarrow y
+&=((\lnot x)\lor y)\land((\lnot y)\lor x)\\
+&=((\lnot x)\lor y)\land(y\rightarrow x)\\
+&=(x\rightarrow y)\land(y\rightarrow x)\\
+\end{align*}
+\section{Prove: $x\rightarrow y=(\lnot x)\lor y$}
+\begin{center}\begin{tabular}{c|c||c||c|c}
+$x$&$y$&$x\rightarrow y$&$\lnot x$&$(\lnot x)\lor y$\\
+1&1&1&0&1\\
+1&0&0&0&0\\
+0&1&1&1&1\\
+0&0&1&1&1
+\end{tabular}\end{center}
+We conclude that $x\rightarrow y$ implies $(\lnot x)\lor y$. $\blacksquare$
 \end{document}
