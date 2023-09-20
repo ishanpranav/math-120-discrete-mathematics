@@ -1,4 +1,4 @@
-// section09.cs
+// section09.c
 // Copyright (c) 2023 Ishan Pranav. All rights reserved.
 // Licensed under the MIT License.
 
