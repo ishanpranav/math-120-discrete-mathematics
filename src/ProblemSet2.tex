@@ -43,7 +43,6 @@
 \else
     \SetupExSheets{solution/print=false}
 \fi
-
 % Bug workaround: http://tex.stackexchange.com/a/146536/1402
 %\newenvironment{exercise}{}{}
 \RenewQuSolPair{question}{solution}
@@ -62,6 +61,7 @@
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 \newcommand{\xor}{\underline{\lor}}
+\DeclareMathOperator{\len}{len}
 \begin{document}
 \maketitle
 These are to be written up and turned in to Gradescope.\\
@@ -85,47 +85,46 @@ These are to be written up and turned in to Gradescope.\\
         \item Disprove: For all integers $n$, if $n^5-n$ is even, then $n$ is even.
     \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
+\begin{solution}\begin{enumerate}
+\item An obtuse angle is one whose measure is greater than 90 degrees. Consider a triangle with angles measuring 30 degrees, 60 degrees, and 90 degrees. The sum of the three angles of a triangle must be 180 degrees, and $30+60+90=180$. Therefore, the hypothesized angles form a triangle. However, none of these angles has a measure greater than 90 degrees: $30<90$, $60<90$, and $90=90$. Therefore, none of the angles is obtuse. We reject the claim that every triangle has at least one obtuse angle.
+\item Consider $x=\frac{1}{2}\in\mathbb{R}$. Note $\frac{1}{2}$ is a real number. However $\left(2^{\frac{1}{2}}=\sqrt{2}\approx 1.4142\dots\right)<\left(1+\frac{1}{2}=1.5\right)$. We reject the claim that for all $x\in\mathbb{R}$, $2^x\geq x+1$.
+\item Consider $n=4\in\mathbb{Z}$ and $p=2\in\mathbb{Z}$. Note $n$ is an integer, $p$ is an integer, $n>0$, and $p>0$. We want to show that $p \mid n$; that is, we want to find $a\in\mathbb{Z}$ such that $n=ap$. Thus, $4=2a$. Then, $a=2$. Since 2 is a factor of $n=4$, $n$ is not prime. But 2 is a prime ($2>1$ and its only factors are 1 and 2). This gives the prime factorization $4=2(2)$. If there exists some other prime $q\in\mathbb{Z}$ such that $q \mid n$, then there exists $b\in\mathbb{Z}$ such that $n=bq$. But the only prime factors of $n=4$ are 2 and 2; thus $b=2$ and $q=2$. But if $q=2$ and $p=2$, then $p=q$. We reject the claim that if $n>0$, $n$ is not prime, and some prime $p \mid n$, then there exists some other prime $q$ such that $q\neq p$ and $q \mid n$.
+
+\item Consider $n=3$. Note $n^5-n=(3)^5-n=243-3=240$. We want to find $a\in\mathbb{Z}$ such that $240=2a$. Let $a=120$. Then, $240=2(120)$. Thus, $2 \mid 240$. Therefore, $n^5-n=240$ is even. However, for 3 to be even, $2 \mid 3$, so there must exist $b\in\mathbb{Z}$ such that $3=2b$. But no such $b\in\mathbb{Z}$ exists. We reject the claim that if $n^5-n$ is even, then $n$ is even.
+\end{enumerate}
 \end{solution}
 \begin{question}
    (Scheinerman, Exercise 7.12:)
     Another method to prove that certain Boolean formulas
     are tautologies is to use the properties in Theorem~7.2
     together with the fact that $x \rightarrow y$ is equivalent
-    to $(\neg x) \vee y$ (Proposition~7.3)
-    For example, Exercise 7.11, part (b) asks you to establish that the formula $(x \wedge (x \rightarrow y)) \rightarrow y$ is 
+    to $(\lnot x) \lor y$ (Proposition~7.3)
+    For example, Exercise 7.11, part (b) asks you to establish that the formula $(x \land (x \rightarrow y)) \rightarrow y$ is 
     a tautology.  Here is a derivation of that fact:
-    % This is an "align" environment for aligning
-    % mathematical equations.  Ampersands (&) denote 
-    % separation between columns.  The first one means
-    % there will be alignment around the equal sign.
-    % The double-ampersands put a second column, left-
-    % justified.  Double-backslashes (\\) separate lines.
     \begin{align*}
-        (x \wedge (x \rightarrow y)) \rightarrow y
-        &= [x \wedge (\neg x \vee y)] \rightarrow y
+        (x \land (x \rightarrow y)) \rightarrow y
+        &= [x \land (\lnot x \lor y)] \rightarrow y
         && \text{translate $\rightarrow$} 
         \\
-        &= [(x \wedge \neg x) \vee (x \wedge y)] \rightarrow y
+        &= [(x \land \lnot x) \lor (x \land y)] \rightarrow y
         && \text{distributive}
         \\
-        &= [\mathrm{FALSE} \vee (x\wedge y)] \rightarrow y
+        &= [\mathrm{FALSE} \lor (x\land y)] \rightarrow y
         && \text{inverse elements}
         \\
-        &= (x\wedge y) \rightarrow y
+        &= (x\land y) \rightarrow y
         && \text{identity element}
         \\
-        &= \neg(x\wedge y) \vee y
+        &= \lnot(x\land y) \lor y
         && \text{translate $\rightarrow$}
         \\
-        &= (\neg x \vee \neg y) \vee y
+        &= (\lnot x \lor \lnot y) \lor y
         && \text{De~Morgan's laws}
         \\
-        &= \neg x \vee (\neg y \vee y)
+        &= \lnot x \lor (\lnot y \lor y)
         && \text{associativity}
         \\
-        &= \neg x \vee \mathrm{TRUE}
+        &= \lnot x \lor \mathrm{TRUE}
         && \text{inverse elements}
         \\
         &= \mathrm{TRUE}
@@ -135,15 +134,34 @@ These are to be written up and turned in to Gradescope.\\
     Use this technique [not truth tables] to prove that these formulas
     are tautologies:
     \begin{enumerate}
-        \item $(x \rightarrow \mathrm{FALSE}) \rightarrow \neg x$
-        \item $(x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x$
+        \item $(x \rightarrow \mathrm{FALSE}) \rightarrow \lnot x$
+        \item $(x \rightarrow y) \land (x \rightarrow \lnot y) \rightarrow \lnot x$
     \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+\item\begin{align*}
+(x\rightarrow\mathrm{FALSE})\rightarrow\lnot x
+&=((\lnot x)\lor\mathrm{FALSE})\rightarrow\lnot x&\textit{Proposition 7.3}\\
+&=(\lnot x)\rightarrow(\lnot x)&\textit{identity element}\\
+&=(\lnot(\lnot x))\lor(\lnot x)&\textit{Proposition 7.3}\\
+&=x\lor(\lnot x)&\textit{double negative}\\
+&=\mathrm{TRUE}.&\textit{inverse elements}
+\end{align*}
+\item\begin{align*}
+(x\rightarrow y)\land(x\rightarrow\lnot y)\rightarrow\lnot x
+&=((\lnot x)\lor y)\land((\lnot x)\lor(\lnot y))\rightarrow\lnot x&\textit{Proposition 7.3}\\
+&=\lnot[((\lnot x)\lor y)\land((\lnot x)\lor(\lnot y))]\lor\lnot x&\textit{Proposition 7.3}\\
+&=\lnot((\lnot x)\lor y)\lor\lnot((\lnot x)\lor(\lnot y))\lor\lnot x&\textit{De Morgan's law}\\
+&=(x\land(\lnot y))\lor(x\land y)\lor\lnot x&\textit{De Morgan's law}\\
+&=[(x\land(\lnot y))\lor(x\land y)]\lor\lnot x&\textit{associative property}\\
+&=[x\land((\lnot y)\lor y)]\lor\lnot x&\textit{distributive property}\\
+&=[x\land\mathrm{TRUE}]\lor\lnot x&\textit{inverse elements}\\
+&=x\lor\lnot x&\textit{identity element}\\
+&=\mathrm{TRUE}.&\textit{inverse elements}
+\end{align*}
+\end{enumerate}
 \end{solution}
-
-
 \begin{question}
 	Let the following statements be given.
 		\begin{align*}
@@ -160,9 +178,30 @@ These are to be written up and turned in to Gradescope.\\
 		\item Suppose that the statement given in part (a) is true, and suppose also that Jeremiah is not mad and the refrigerator is empty. Is Jeremiah hungry? Justify your answer using the truth table.
 	\end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
+\begin{solution}\begin{enumerate}
+    \item$(p\land q)\rightarrow r.$
+    \item See the truth table below.
+    
+\begin{center}\begin{tabular}{c|c|c||c||c}
+$p$&$q$&$r$&$p\land q$&$(p\land q)\rightarrow r$\\\hline
+TRUE&TRUE&TRUE&TRUE&TRUE\\
+TRUE&TRUE&FALSE&TRUE&FALSE\\
+TRUE&FALSE&TRUE&FALSE&TRUE\\
+TRUE&FALSE&FALSE&FALSE&TRUE\\
+FALSE&TRUE&TRUE&FALSE&TRUE\\
+FALSE&TRUE&FALSE&FALSE&TRUE\\
+FALSE&FALSE&TRUE&FALSE&TRUE\\
+FALSE&FALSE&FALSE&FALSE&TRUE\\
+\end{tabular}\end{center}
+\item The given statement is true, so $(p\land q)\rightarrow r$ is given to be TRUE. Jeremiah is not mad, so $r$ is given to be FALSE. The refrigerator is empty, so $q$ is given to be TRUE.
+
+Suppose $p$ is TRUE. There is no situation in the truth table in which $p$ is TRUE, $(p\land q)\rightarrow r$ is TRUE, and the $r$ is FALSE. This situation is impossible according to the truth table.
+
+Suppose $p$ is FALSE. There is a situation in the truth table in which $p$ is FALSE, $(p\land q)\rightarrow r$ is TRUE, and $r$ is FALSE. This situation \textit{is} possible according to the truth table.
+
+Therefore, we conclude that $p$ is FALSE. That is, Jeremiah is not hungry.
+
+\end{enumerate}\end{solution}
 \begin{question}
     Suppose each single character stored in a computer uses eight bits. 
     Then each character is represented by a different sequence of eight 0's and 1's called a bit pattern, 
@@ -175,9 +214,39 @@ These are to be written up and turned in to Gradescope.\\
             \item How many different bit patterns have the property that their second or fourth digits are 1's?
         \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
-\end{solution}
+Let $B$ be the set of bits. That is, $B=\{0,1\}$. The bit pattern is an ordered sequence of elements that allows repetition. Therefore it is called a list $L$ of bits. Note $\len(L)=8$, so we can say that $L=(b_0,b_1,b_2,b_3,b_4,b_5,b_6,b_7)$, where $b_0,b_1,b_2,b_3,b_4,b_5,b_6,b_7\in B$.
+\begin{enumerate}
+\item Let $b_n\in B$. Note $|B|=2$ so there are 2 options for $b_n$. Note also $b_n$ could be any element in $L$. Since $\len(L)=8$, there are 8 bits each with 2 options: $2^8$. There are $2^8=256$ different bit patterns.
+\item If $L$ is a palindrome, then $b_0=b_7$, $b_1=b_6$, $b_2=b_5$, and $b_3=b_4$. Note $L=(b_0,b_1,b_2,b_3,b_3,b_2,b_1,b_0)$. There are 2 options for each of $b_0,b_1,b_2,$ and $b_3$: $2^4$. There are $2^4=16$ different palindrome bit patterns.
+\item  Let $l\in\mathbb{N}$ be the number of 1's in $L$. Let $m\in\mathbb{N}$ be the number of 1's in the list $M=(b_0,b_1,b_2,b_3,b_4,b_5,b_6)$.
+
+Suppose $m$ is even. Let $b_7=0$. Since $b_7$ is not a 1, $l=m$. Note $m$ is even, so the number of 1's in $L$ is even.
+
+Suppose $m$ is odd. Then there exists $c\in\mathbb{Z}$ such that $m=2c+1$. Let $b_7=1$. Having added a 1, $l=m+1$. Observe
+\begin{align*}
+l
+&=m+1\\
+&=2c+1+1\\
+&=2c+2\\
+&=2(c+1).
+\end{align*}
+Let $a=c+1\in\mathbb{Z}$. Then, there exists $a\in\mathbb{Z}$ such that $l=2a$. Thus, $2 \mid l$. Therefore, $l$ is even, so the number of 1's in $L$ is even.
+
+We have shown that, regardless of the values of the first 7 elements of $L$, $b_7$ can be fixed to ensure that the number of 1's in $L$ is even. This allows 2 options for each of the first 7 bits and 1 for the last bit: $\left(2^7\right)(1)$. There are $\left(2^7\right)(1)=128$ different bit patterns with even numbers of 1's.
+
+\item The second and fourth bits are fixed as 1's. That is, $b_1=1$ and $b_3=1$. Note $L=(b_0,1,b_2,1,b_4,b_5,b_6,b_7)$. There are 2 options for each of $b_0,b_2,b_4,b_5,b_6,$ and $b_7$: $2^6$. There are $2^6=64$ different bit patterns where the second and fourth bits are 1's.
+
+\item There are three possibilities for $L$.
+
+Suppose the second bit is a 1, but the fourth is not. That is, $b_1=1$ and, since $b_3\in B$, $b_3=0$. Then $L=(b_0,1,b_2,0,b_4,b_5,b_6,b_7)$. There are 2 options for each of $b_0,b_2,b_4,b_5,b_6,$ and $b_7$: $2^6$.
+
+Suppose the fourth bit is a 1, but the second is not. That is, $b_3=1$ and, since $b_1\in B$, $b_1=0$. Then $L=(b_0,0,b_2,1,b_4,b_5,b_6,b_7)$. There are 2 options for each of $b_0,b_2,b_4,b_5,b_6,$ and $b_7$: $2^6$.
+
+Otherwise, the second and fourth bits are 1's. We have already shown that there are $2^6$ different bit patterns where the second and fourth bits are 1 in the previous part.
+
+Summing the possibilities from these non-overlapping cases yields $3\left(2^6\right)$. There are $3\left(2^6\right)=192$ different bit patterns where the second or fourth bit is a 1.
+\end{enumerate}\end{solution}
 
 \begin{question}
     Suppose we want to make a list of length 5 from the letters $A, B, C, D, E, F, G, H, I, J$. Provide a brief reasoning for the following questions.
@@ -188,8 +257,13 @@ These are to be written up and turned in to Gradescope.\\
             \item How many such lists can be made if repetition is not allowed and the list must contain exactly two vowels?
         \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+Let $L$ be the set of letters. Note $L=\{\mathrm{A},\mathrm{B},\mathrm{C},\mathrm{D},\mathrm{E},\mathrm{F},\mathrm{G},\mathrm{H},\mathrm{I},\mathrm{J}\}$. Let $V$ be the set of vowels in $L$. Note $V=\{\mathrm{A},\mathrm{E},\mathrm{I}\}$. Let $K$ be the list of letters. Note $\len(K)=5$, so we can say that $K=(l_0,l_1,l_2,l_3,l_4)$, where $l_0,l_1,l_2,l_3,l_4\in L$. 
+\begin{enumerate}
+\item The list must begin with a vowel. That is, $l_1\in V$. Note $|V|=2$ so there are 3 options for $l_0$. Note also $|L|=10$ so if repetition is allowed there are 10 options for $l_1$. However, repetition is not allowed, so $l_0\neq l_1$, leaving $10-1=9$ options for $l_1$. Similarly, $l_2\neq l_0$ and $l_2\neq l_1$, so there are $10-1-1=8$ options for $l_2$. It follows that $l_3$ has 7 options and $l_4$ has 6 options. This can be modeled using a falling factorial: $(9)_4$. The product of all the options yields $3(9)_4$. There are $3(9)_4=9072$ lists beginning with a vowel.
+\item The list must end with a vowel. That is, $l_4\in V$. This scenario is identical in nature to the scenario in which the list begins with a vowel. There are 3 options for $l_4$, 9 options for $l_0$, 8 options for $l_1$, 7 options for $l_2$, and 6 options for $l_3$. There are $3(9)_4=9072$ lists ending with a vowel.
+\item One of the letters must be A. For that letter, there is only 1 option. However, any 1 of $l_0,l_1,l_2,l_3,$ or $l_4$ can be the A, so there are 5 options for the position. Then, the remaining 4 letters must not be A, since there should be exactly one. This leaves at most $10-1=9$ options for those 4 letters, with each option eliminated once selected: $(9)_4$. The product of all the options yields $5(9)_4$. There are $5(9)_4=15120$ lists with exactly one A.
+\item The list must contain exactly 2 vowels. That is, 2 of the 5 letters in $K$ must be elements of $V$. There are 10 options for where the 2 vowels can be since there are 10 ways to choose 2 items from a pool of 5. Any 1 of $l_0,l_1,l_2,l_3,$ or $l_4$ can be the first vowel, and there are 3 vowel options available. Once the first vowel has been selected, any 1 of the remaining 4 letters can be the second vowel, and there are 2 remaining vowel options. The options for the vowels can be expressed using the falling factorial $(3)_2$. The remaining 3 letters cannot be vowels, since there are exactly 2 vowels. This leaves at most $10-3=7$ options for those 3 letters, with each option eliminated once selected: $(7)_3$. The product of all the options yields $10(3)_2(7)_3=12600$.
+\end{enumerate}
 \end{solution}
-
 \end{document}
