@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{slashed}
+\title{MATH-UA 120 Section 14}
+\author{Ishan Pranav}
+\date{October 1, 2023}
+\begin{document}
+\maketitle
+\section*{Relation}
+A \textit{relation} is a set of ordered pairs.
+\section*{Relation between sets}
+Let $R$ be a relation and let $A$ and $B$ be sets. We say $R$ is a \textit{relation on} $A$ provided $R\subseteq A\times A$, and we say $R$ is a \textit{relation from} $A$ to $B$ provided $R\subseteq A\times B$.
+\section*{Inverse}
+Let $R$ be a relation. The \textit{inverse} of $R$, denoted $R^{-1}$, is the relation formed by reversing the order of all the ordered pairs in $R$.
+\section*{Reflexive}
+If for all $x\in A$ we have $x~R~x$, we call $R$ \textit{reflexive}.
+\section*{Irreflexive}
+If for all $x\in A$ we have $x~\slashed{R}~x$, we call $R$ \textit{irreflexive}.
+\section*{Symmetric}
+If for all $x,y\in A$ we have $x~R~y\implies y~R~x$, we call $R$ \textit{symmetric}.
+\section*{Antisymmetric}
+If for all $x,y\in A$ we have $(x~R~y\land y~R~x)\implies x=y$, we call $R$ \textit{antisymmetric}.
+\section*{Transitive}
+If for all $x,y,z\in A$ we have $(x~R~y\land y~R~z)\implies x~R~z$, we call $R$ \textit{transitive}.
+\section*{Equality}
+The equality relation ($=$) on the integers is reflexive, symmetric, transitive, and antisymmetric. The equality relation is not irreflexive.
+\section*{Less than or equal to}
+The less-than-or-equal-to relation ($\leq$) on the integers is reflexive, transitive, and antisymmetric. The less-than-or-equal-to relation is not symmetric and is not irreflexive.
+\section*{Less than}
+The less-than relation ($<$) on the integers is irreflexive, antisymmetric (vacuously), and transitive. The less-than relation is not reflexive and is not symmetric.
+\section*{Divides}
+The divides ($\mid$) relation on the natural numbers is antisymmetric. However, the divides relation on the integers is not antisymmetric. The divides relation is never symmetric. It is possible for a relation to be neither symmetric nor antisymmetric.
+\end{document}

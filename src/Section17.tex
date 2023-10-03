@@ -1,0 +1,23 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\title{MATH-UA 120 Section 17}
+\author{Ishan Pranav}
+\date{October 3, 2023}
+\begin{document}
+\maketitle
+\section*{Binomial coefficient}
+Let $n,k\in\mathbb{N}$. The symbol $\binom{n}{k}$ denotes the number of $k$-element subsets of an $n$-element set. We call the number $\binom{n}{k}$ a \textit{binomial coefficient}. The reason for this nomenclature is that the numbers $\binom{n}{k}$ are the coefficients of binomial $(x+y)^n$.
+\section*{Binomial theorem}
+Let $n\in\mathbb{N}$. Then
+
+\[(x+y)^n=\sum_{k=0}^n{\binom{n}{k}x^{n-k}y^k.}\]
+\section*{Pascal's identity}
+Let $n,k\in\mathbb{Z}$ such that $0<k<n$. Then
+\[\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}.\]
+\section*{Binomial coefficient identity}
+\[\binom{n}{k}=\frac{n!}{k!(n-k)!}.\]
+\end{document}
