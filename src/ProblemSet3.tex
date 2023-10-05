@@ -1,0 +1,187 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 3}
+\author{
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due October 6, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\usepackage{subcaption}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{claim}{Claim}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\begin{document}
+\maketitle
+These are to be written up and turned in to Gradescope.\\
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+\section*{Assigned Problems}
+\begin{question}
+   \begin{enumerate}
+   \item Consider the following subsets of $\N$.
+       \begin{align*}
+           A &= \text{The set of all even numbers.}\\
+           B &= \text{The set of all prime numbers.}\\
+           C &= \text{The set of all perfect squares.}\\
+           D &= \text{The set of all multiples of 10.}
+       \end{align*}
+       Using \textbf{only} the symbols $3, A, B, C, D, \N, \in, \subseteq, =, \neq, \cap, \cup, \times, -, \emptyset$, ``('', and  ``)'', rewrite the following statements in set notation. 
+           \begin{enumerate}
+               \item None of the perfect squares are prime numbers. 
+               \item The number 3 is a prime number that is not even.
+               \item If you take all the prime numbers, all the even numbers, all the perfect squares, and all the multiples of 10, you still won't have all the natural numbers.
+           \end{enumerate}
+   \item Consider the following subsets of the set of all students at some university. 
+       \begin{align*}
+           F &= \text{The set of all freshmen.}\\
+           S &= \text{The set of all seniors.}\\
+           M &= \text{The set of all math majors.}\\
+           C &= \text{The set of all CS majors.}
+       \end{align*}
+           \begin{enumerate}
+               \item Using only the symbols $F, S, M, C, | ~ |, \cap, \cup, -$, and $>$, translate the following statement into the language of set theory. 
+               \begin{quote}
+                   ``There are more freshmen who aren't math majors than there are senior CS majors.''
+               \end{quote}
+               \item Translate the following statement in set theory into everyday English. 
+               $$(F\cap M)\subseteq C$$
+           \end{enumerate}
+   \end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+    \item\begin{enumerate}
+        \item$B\cup C=\emptyset$
+        \item$3\in(B-A)$
+        \item$(A\cup B\cup C\cup D)\neq\mathbb{N}$
+    \end{enumerate}
+    \item\begin{enumerate}
+        \item$|F-M|>|S\cap C|$
+        \item Every Freshman pursuing a math degree is also pursuing a CS degree; that is, the group of CS majors includes all Freshman math majors.
+    \end{enumerate}
+\end{enumerate}
+\end{solution}
+\begin{question}
+Describe explicitly in English the following sets, then give their cardinality.
+\begin{enumerate}
+\item $\{x \in 2^{\Z} : 5 \in x \}$
+\item $\{x \in 2^{\Z} : x \subseteq \{ 1, 2, 3\} \}$
+\item $\{x \in 2^{\Z} : x \subseteq \{ 1, 2, \{3, 4\} \} \}$
+\item $\{x \in 2^{\Z} : x \in \{ 1, 2, \{3, 4\} \} \}$
+\item $\{x \in 2^{\Z} : y \in x \implies y = 0 \}$
+\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+    \item The set of all sets of integers containing the integer 5. The set is infinite: Its cardinality is not a finite number.
+    \item The set of sets of integers that are subsets of the set containing 1, 2, and 3 only; in other words, the power set of the set containing 1, 2, and 3 only. Its cardinality is $\left|2^{\{1,2,3\}}\right|=2^{|\{1,2,3\}|}=2^3=8$.
+    \item The set of all sets of integers that are subsets of the set containing the following: 1, 2, and the set containing 3 and 4; in other words, the empty set. The set contains no elements because $\{3,4\}\notin 2^\Z$, so its cardinality is $|\emptyset|=0$.
+    \item The set of all sets of integers that are elements of the set containing the following: 1, 2, and the set containing 3 and 4; in other words, the set containing 1 and 2 only. The set contains only 1 and 2 because $\{3,4\}\notin 2^\Z$, so its cardinality is $|\{1,2\}|=2$.
+    \item The set of all sets of integers such that if a given element is in one of its subsets, then that element is equal to zero; in other words, the set containing the set containing zero. The set can be expressed as $\left\{\{0\}\right\}$ because the condition requires every element in every subset to be 0, so its cardinality is $\left|\left\{\{0\}\right\}\right|=1$.
+\end{enumerate}
+\end{solution}
+\begin{question}
+\begin{enumerate}
+    \item For each of the following statements, describe it in English, and say if it is true or false (without proof). Then write its negation using quantifiers, and express this negation in English. For instance, the statement $\forall x \in \Z \; x < 0$ means every integer is negative, and it is false. Its negation is $\exists x \in \Z \; x \geq 0$, which means that there exists a nonnegative integer.
+	\begin{enumerate}
+		\item $\forall x \in \Z \; \exists y \in \Z \; x^2 + y = 4$
+		\item $\exists y \in \Z \; \forall x \in \Z \; x^2 + y = 4$
+		\item $\forall n \in \Z \; \exists k \in \Z \; \exists d \in \Z \; k+ n = 2d$
+		\item $\exists n \in \Z \; \forall k \in \Z \; \exists d \in \Z \; k+ n = 2d$
+	\end{enumerate}
+	\item For each of the statements (iii) and (iv): prove it if it is true, or prove the negation if it is false. These proofs are short.
+\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+    \item\begin{enumerate}
+        \item The statement $\forall x\in\Z\;\exists y\in\Z\;x^2+y=4$ means that every perfect square can be added to some integer to obtain a sum of 4.
+        \item The statement $\exists y\in\Z\;\forall x\in\Z\;x^2+y=4$ means that there is an integer that can be added to any perfect square to obtain a sum of 4.
+        \item The statement $\forall n\in\Z\;\exists k\in\Z\;\exists d\in\Z\;k+n=2d$ means that every integer can be added to some integer to obtain an even sum.
+        \item the statement $\exists n\in\Z\;\forall k\in\Z\;\exists d\in\Z\;k+n=2d$ means that there is an integer that can be added to any integer to obtain an even sum.
+    \end{enumerate}
+    \item\begin{enumerate}
+        \item[iii.]
+        \item[iv.]
+    \end{enumerate}
+\end{enumerate}
+\end{solution}
+\begin{question}
+   Let $I=\{1, 2, \dots, n\}$. Given a collection of sets $\{A_1,A_2,\dots, A_n\}$, denoted by $\{A_i\}_{i\in I}$. $\{A_i\}_{i\in I}$ is said to be \textbf{disjoint} if $\cap_{i\in I}A_i=\emptyset$, and it is said to be \textbf{pairwise disjoint} if $A_i\cap A_j=\emptyset$ whenever $i\neq j$. What is the difference between a \textbf{disjoint} collection of sets and a \textbf{pairwise disjoint} collection of sets? (\textit{Draw a picture to convince yourself. You do not need to submit this picture.}) Give an example of a collection of sets that is disjoint, but not pairwise disjoint. (\textit{Hint: You need a minimum of three sets.})
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+\begin{question}
+   Let $E$ be the set of all even integers and let $O$ be the set of all odd integers. Let $X=\{ n\in \Z : n = x+y \text{ for some } x, y\in O\}$. Prove $X=E$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\end{document}
