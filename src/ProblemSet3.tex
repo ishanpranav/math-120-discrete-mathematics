@@ -115,13 +115,13 @@ These are to be written up and turned in to Gradescope.\\
 \begin{solution}
 \begin{enumerate}
     \item\begin{enumerate}
-        \item$B\cup C=\emptyset$
+        \item$C\cap B=\emptyset$
         \item$3\in(B-A)$
-        \item$(A\cup B\cup C\cup D)\neq\mathbb{N}$
+        \item$N-(B\cup A\cup C\cup D)\neq\emptyset$
     \end{enumerate}
     \item\begin{enumerate}
         \item$|F-M|>|S\cap C|$
-        \item Every Freshman pursuing a math degree is also pursuing a CS degree; that is, the group of CS majors includes all Freshman math majors.
+        \item Every Freshman pursuing a math degree is also pursuing a CS degree.
     \end{enumerate}
 \end{enumerate}
 \end{solution}
@@ -137,11 +137,11 @@ Describe explicitly in English the following sets, then give their cardinality.
 \end{question}
 \begin{solution}
 \begin{enumerate}
-    \item The set of all sets of integers containing the integer 5. The set is infinite: Its cardinality is not a finite number.
-    \item The set of sets of integers that are subsets of the set containing 1, 2, and 3 only; in other words, the power set of the set containing 1, 2, and 3 only. Its cardinality is $\left|2^{\{1,2,3\}}\right|=2^{|\{1,2,3\}|}=2^3=8$.
-    \item The set of all sets of integers that are subsets of the set containing the following: 1, 2, and the set containing 3 and 4; in other words, the empty set. The set contains no elements because $\{3,4\}\notin 2^\Z$, so its cardinality is $|\emptyset|=0$.
-    \item The set of all sets of integers that are elements of the set containing the following: 1, 2, and the set containing 3 and 4; in other words, the set containing 1 and 2 only. The set contains only 1 and 2 because $\{3,4\}\notin 2^\Z$, so its cardinality is $|\{1,2\}|=2$.
-    \item The set of all sets of integers such that if a given element is in one of its subsets, then that element is equal to zero; in other words, the set containing the set containing zero. The set can be expressed as $\left\{\{0\}\right\}$ because the condition requires every element in every subset to be 0, so its cardinality is $\left|\left\{\{0\}\right\}\right|=1$.
+    \item The set of all subsets of the integers containing the integer 5. The set is infinite: Its cardinality is infinite.
+    \item The set of all subsets of the integers that are subsets of the set containing 1, 2, and 3 only; in other words, the power set of the set containing 1, 2, and 3 only. Its cardinality is $\left|2^{\{1,2,3\}}\right|=2^{|\{1,2,3\}|}=2^3=8$.
+    \item The set of all subsets of the integers that are subsets of the set containing the following: 1, 2, and the set containing 3 and 4. That is, $\{\emptyset,\{1\},\{2\},\{1,2\}\}$. The cardinality is 4.
+    \item The set of all subsets of the integers that are elements of the set containing the following: 1, 2, and the set containing 3 and 4. That is, $\{{3,4}\}$. Its cardinality is 1.
+    \item The set of all subsets of the integers such that every element of every subset is equal to zero. The set can be expressed as $\left\{\emptyset,\{0\}\right\}$ because the condition requires every element in every subset to be 0 (vacuously true for the empty set). Its cardinality is 2.
 \end{enumerate}
 \end{solution}
 \begin{question}
@@ -159,29 +159,87 @@ Describe explicitly in English the following sets, then give their cardinality.
 \begin{solution}
 \begin{enumerate}
     \item\begin{enumerate}
-        \item The statement $\forall x\in\Z\;\exists y\in\Z\;x^2+y=4$ means that every perfect square can be added to some integer to obtain a sum of 4.
-        \item The statement $\exists y\in\Z\;\forall x\in\Z\;x^2+y=4$ means that there is an integer that can be added to any perfect square to obtain a sum of 4.
-        \item The statement $\forall n\in\Z\;\exists k\in\Z\;\exists d\in\Z\;k+n=2d$ means that every integer can be added to some integer to obtain an even sum.
-        \item the statement $\exists n\in\Z\;\forall k\in\Z\;\exists d\in\Z\;k+n=2d$ means that there is an integer that can be added to any integer to obtain an even sum.
+        \item The statement $\forall x\in\Z\;\exists y\in\Z\;x^2+y=4$ means that every perfect square can be added to some integer to obtain a sum of 4. The statement is true.
+        
+        The negation of this statement is $\exists x\in\Z\;\forall y\in\Z\;x^2+y\neq 4$. The negation means that there is a perfect square that can be added to any integer to obtain a sum other than 4.
+        \item The statement $\exists y\in\Z\;\forall x\in\Z\;x^2+y=4$ means that there is an integer that can be added to any perfect square to obtain a sum of 4. The statement is false.
+
+        The negation of this statement is $\forall y\in\Z\;\exists x\in\Z\;x^2+y\neq 4$. The negation means that every perfect square can be added to some integer to obtain a sum other than 4.
+        \item The statement $\forall n\in\Z\;\exists k\in\Z\;\exists d\in\Z\;k+n=2d$ means that any integer can be added to some integer to obtain an even sum. The statement is true.
+
+        The negation of this statement is $\exists n\in\Z\;\forall k\in\Z\;\forall d\in\Z;k+n\neq 2d$. The negation means that there is some integer that can be added to any integer to obtain a sum that is not even.
+        \item The statement $\exists n\in\Z\;\forall k\in\Z\;\exists d\in\Z\;k+n=2d$ means that there is an integer that can be added to any integer to obtain an even sum. The statement is false.
+
+        The negation of this statement is $\forall n\in\Z\;\exists k\in\Z\;\forall d\in\Z;k+n\neq 2d$. The negation means that any integer can be added to some integer to obtain a sum that is not even.
     \end{enumerate}
     \item\begin{enumerate}
-        \item[iii.]
-        \item[iv.]
+        \item[iii.] The statement is true, and we will prove it.
+        \begin{claim}
+        $\forall n\in\Z\;\exists k\in\Z\;\exists d\in\Z\;k+n=2d.$
+        \end{claim}
+        \begin{proof}
+        Let $n\in\Z$.
+        
+        Suppose $n$ is even. Then $2\mid n$, so $n=2d$ for some $d\in\Z$. Consider $k=0\in\Z$. Then $k+n=0+2d=2d$.
+
+        Suppose instead $n$ is odd. Then $n=(2d+1)$ for some $d\in\Z$. Consider $k=(-1)\in\Z$. Then $k+n=(-1)+(2d+1)=2d$.
+
+        Hence, for all $n\in\Z$, there exists $k,d\in\Z$ such that $k+n=2d$.
+        \end{proof}
+        \item[iv.] The statement is false, but we will prove its negation.
+        \begin{claim}
+        $\forall n\in\Z\;\exists k\in\Z\;\forall d\in\Z\;k+n\neq 2d.$
+        \end{claim}
+        \begin{proof}
+        Let $n\in\Z$.
+        
+        Suppose $n$ is even. Then $2\mid n$ so $n=2a$ for some $a\in\Z$. Consider $k=1\in\Z$. Then $k+n=1+2a$. Then $k+n$ is odd. But $2d$ is even. Therefore $k+n\neq 2d$.
+        
+        Suppose instead $n$ is odd. Then $n=2a+1$ for some $a\in\Z$. Consider $k=0\in\Z$. Then $k+n=1+2a$. Then $k+n$ is odd. But $2d$ is even. Therefore $k+n\neq 2d$.
+        
+        Hence, for all $n\in\Z$, there exists $k\in\Z$ such that for all $d\in\Z, k+n\neq 2d$.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 \end{solution}
 \begin{question}
-   Let $I=\{1, 2, \dots, n\}$. Given a collection of sets $\{A_1,A_2,\dots, A_n\}$, denoted by $\{A_i\}_{i\in I}$. $\{A_i\}_{i\in I}$ is said to be \textbf{disjoint} if $\cap_{i\in I}A_i=\emptyset$, and it is said to be \textbf{pairwise disjoint} if $A_i\cap A_j=\emptyset$ whenever $i\neq j$. What is the difference between a \textbf{disjoint} collection of sets and a \textbf{pairwise disjoint} collection of sets? (\textit{Draw a picture to convince yourself. You do not need to submit this picture.}) Give an example of a collection of sets that is disjoint, but not pairwise disjoint. (\textit{Hint: You need a minimum of three sets.})
+   Let $I=\{1, 2, \dots, n\}$. Given a collection of sets $\{A_1,A_2,\dots, A_n\}$, denoted by $\{A_i\}_{i\in I}$. $\{A_i\}_{i\in I}$ is said to be \textbf{disjoint} if $\cap_{i\in I}A_i=\emptyset$, and it is said to be \textbf{pairwise disjoint} if $A_i\cap A_j=\emptyset$ whenever $i\neq j$. What is the difference between a \textbf{disjoint} collection of sets and a \textbf{pairwise disjoint} collection of sets?
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+A \textit{disjoint} collection of sets is one such that the intersection of all the sets is equal to the empty set. In other words, there is no element such that every set contains that element. Meanwhile, a \textit{pairwise disjoint} collection of sets is one such that the intersection of every pair of sets is equal to the empty set. In other words, no two sets in a pairwise disjoint collection have elements in common. Pairwise disjoint implies disjoint, but disjoint does not necessarily imply pairwise disjoint. The difference becomes apparent when there are more than two sets in a collection. For example, the collection of sets $\{\{0,1\},\{1,2\},\{0,2\}\}$ is disjoint because there is no element that all three sets have in common ($\bigcap_{i\in I}{A_i}=\emptyset$), but it is not pairwise disjoint because $\{0,1\}\cap\{1,2\}=\{1\}$ ($A_i\cap A_j\neq\emptyset$).
 \end{solution}
 \begin{question}
    Let $E$ be the set of all even integers and let $O$ be the set of all odd integers. Let $X=\{ n\in \Z : n = x+y \text{ for some } x, y\in O\}$. Prove $X=E$.
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+\begin{claim}
+Let $E=\{x\in\Z:2\mid x\}$ and $O=\{x\in\Z:x=2k+1\text{ for some }k\in\Z\}$. Then $X=E$.
+\end{claim}
+\begin{proof}
+$\subseteq$) Let $n\in X$. Then there exists $x\in O$ and $y\in O$ such that $n=x+y$. Since $x\in O$, there exists $a\in\Z$ such that $x=2a+1$. Since $y\in O$, there exists $b\in\Z$ such that $y=2b+1$. Observe
+\begin{align*}
+n
+&=x+y\\
+&=(2a+1)+(2b+1)\\
+&=2a+2b+2\\
+&=2(a+b+1).
+\end{align*}
+Since $a+b+1\in\Z$ and $n=2(a+b+1)$, $2\mid n$. Therefore, $n$ is even, so $n\in E$.
+\newline
+
+$\supseteq$) Let $n\in E$. Then there exists $a\in\Z$ such that $n=2a$. Let $p\in\Z$ and $q\in\Z$ such that $a=p+q+1$. Observe
+\begin{align*}
+n
+&=2a\\
+&=2(p+q+1)\\
+&=2p+2q+2\\
+&=2p+1+2q+1\\
+&=(2p+1)+(2q+1).
+\end{align*}
+Let $x=2p+1\in\Z$ and $y=2q+1\in\Z$. Since $p$ and $q$ are integers, $x$ is odd and $y$ is odd, so $x\in O$ $y\in O$. Therefore $n=x+y$  for some $x,y\in O$.
+\newline
+
+Hence, $X=E$.
+\end{proof}
 \end{solution}
-
-
 \end{document}

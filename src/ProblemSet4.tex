@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 4}
+\author{%
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due October 13, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\modulo}{\text{mod }}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\begin{document}
+\maketitle
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+\section*{Assigned Problems}
+\begin{question}
+    Consider the set $A = \{0, 1, 2, \dots, 8 \}$. Define a relation $R$ on $A$ by
+	\[
+	a\mathrel{R}b \iff a^2 \equiv b^2 \pmod{9}.
+	\]
+	\begin{enumerate}
+	\item Show that $R$ is an equivalence relation, 
+	\item then determine all its (distinct) equivalence classes.
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item
+Let $R$ be the relation $R=\{(x,y)\in\Z^2:x^2\equiv y^2\pmod{9}\}$. We must demonstrate that $R$ is an equivalence relation. An equivalence relation is reflexive, symmetric, and transitive.
+\newline
+
+\noindent Claim: $R$ is reflexive. Let $x\in\Z$. Since $0\cdot 9=0$, we have $9\mid 0$, which we can rewrite as $9\mid(x^2-x^2)$. So $x^2\equiv x^2\pmod{9}$. Therefore $x\mathrel{R}x$. Thus $R$ is reflexive.
+\newline
+
+\noindent Claim: $R$ is symmetric. Let $x,y\in\Z$ such that $x~R~y$. This means that $9\mid(x^2-y^2)$. So there exists $k\in\Z$ such that $(x^2-y^2)=9k$. Then $(y^2-x^2)=9\cdot(-k)$. And so $9\mid(y^2-x^2)$. So $x^2\equiv y^2\pmod{9}$. Therefore $y\mathrel{R}x$. Thus $R$ is symmetric. 
+\newline
+
+\noindent Claim: $R$ is transitive. Let $x,y,z\in\Z$ such that $x~R~y$ and $y~R~z$. Then $9\mid(x^2-y^2)$ and $9\mid(y^2-z^2)$. So there exists $k_1\in\Z$ such that $(x^2-y^2)=9k_1$ and $k_2\in\Z$ such that $(y^2-z^2)=9k_2$. Observe
+\begin{align*}
+(x^2-y^2)+(y^2-z^2)&=9k_1+9k_2\\
+x^2-z^2&=9k_1+9k_2\\
+x^2-z^2&=9(k_1+k_2).
+\end{align*}
+Since $(x^2-z^2)=9(k_1+k_2)$, $9\mid(x^2-z^2)$. So $x^2\equiv z^2\pmod{9}$. Therefore $x\mathrel{R}z$. Thus $R$ is transitive.
+\newline
+
+\noindent Hence $R$ is an equivalence relation.$~\square$
+\item There distinct equivalence classes are:
+\begin{align*}
+[0]=[3]=[6]&=\{0,3,6\}.\\
+[1]=[8]&=\{1,8\}.\\
+[2]=[7]&=\{2,7\}.\\
+[4]=[5]&=\{4,5\}.
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\begin{question}
+    Are the given relations irreflexive? antisymmetric? transitive? Either \textit{prove} generally or \textit{disprove} via 
+    counterexample.
+    	\begin{enumerate}
+	\item For $x, y \in \Z$,  $x\mathrel{R}y \iff |x - y| > 0$. 
+	\item  $x\mathrel{R}y$ means that $x$ and $y$ have a common prime factor (a prime number that divides both $x$ and $y$), 
+	where $x, y \in \Z$.
+	\item For $x, y \in 2^{\Z}$. $x\mathrel{R}y \iff x \cap y \neq \emptyset$.
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item Let $R$ be the relation $R=\{(x,y)\in\Z^2:|x-y|>0\}$.
+
+Claim: $R$ is irreflexive. Suppose for the sake of contradiction that $R$ is not irreflexive. Then there exists some $x\in\Z$ such that $x\mathrel{R}x$ is true. So $|x-x|>0$, thus $0>0$. This is absurd. Therefore $R$ is irreflexive.$~\square$
+
+Claim: $R$ is not antisymmetric. Consider $0\in\Z$ and $1\in\Z$. Note $|0-1|>0$. So $0\mathrel{R}1$. Note also $|1-0|>0$. So $1\mathrel{R}0$. However, $0\neq 1$. Therefore $R$ is not antisymmetric.$~\square$
+
+Claim: $R$ is not transitive. Consider $0\in\Z$, $1\in\Z$, and $\0\in\Z$. Note $|0-1|>0$, and $|1-0|>0$. So $0\mathrel{R}1$, and $1\mathrel{R}0$. However, $|0-0|=0$, so $0\not\mathrel{R}0$. Therefore $R$ is not transitive.$~\square$
+\item Let $R$ be the relation $R=\{(x,y)\in\Z^2:x\text{ and }y\text{ have a common prime factor}\}$.
+
+Claim: $R$ is not irreflexive. Consider $2\in\Z$. The only prime factor of 2 is 2. Note $2=2\cdot 1$. So $2\mid 2$, and 2 is prime. Thus $2\in\Z$ and $2\mathrel{R}2$. Therefore $R$ is not irreflexive.$~\square$ 
+
+Claim: $R$ is not antisymmetric. Consider $2\in\Z$ and $4\in\Z$. Note $2=2\cdot 1$, and $4=2\cdot 2$, so $2\mid 2$, $2\mid 4$, and 2 is prime. Since 2 and 4 share the same prime factor 2, $2\mathrel{R}4$. Similarly, 4 and 2 share the prime factor 2, so $4\mathrel{R}2$. However, $2\neq 4$. Therefore, $R$ is not antisymmetric.$~\square$
+
+Claim: $R$ is not transitive. Consider $2\in\Z$, $6\in\Z$, and $9\in\Z$. Note $2=2\cdot 1$, and $6=3\cdot 2$, so $2\mid 2$, $2\mid 6$, $3\mid 6$, and 2 is prime. Since 2 and 6 share the same prime factor 2, $2\mathrel{R}6$. Of course, $3=3\cdot 1$, so 3 is prime. Note also $9=3\cdot 3$, so $3\mid 9$. Since $3\mid 6$, $3\mid 9$, and 3 is prime, 6 and 9 share the same prime factor 3. Thus $6\mathrel{R}9$. Now $2\mathrel{R}6$ and $6\mathrel{R}9$. However, 2 and 9 share no prime factors, so $2\not\mathrel{R}9$. Therefore, $R$ is not transitive.$~\square$
+\item Let $R$ be the relation $R=\{(x,y)\in 2^\Z\times 2^\Z:x\cap y\neq\emptyset\}$.
+
+Claim: $R$ is not irreflexive. Consider $\{0\}\in 2^\Z$. Note $(\{0\}\cap\{0\})\neq\emptyset$. Thus, $\{0\}\mathrel{R}\{0\}$. Therefore, $R$ is not irreflexive.$~\square$
+
+Claim: $R$ is not antisymmetric. Consider $\{0\}\in 2^\Z$ and $\{0,1\}\in\Z$. Note $\{0\}\cap\{0,1\}\neq\emptyset$, and $(\{0,1\}\cap\{0\})\neq\emptyset$. Thus, $\{0\}\mathrel{R}\{0,1\}$, and $\{0,1\}\mathrel{R}\{0\}$. However, $1\notin\{0\}$ so $\{1,0\}\subseteq\{0\}$, and thus $\{0\}\neq\{0,1\}$. Therefore, $R$ is not antisymmetric.$~\square$
+
+Claim: $R$ is not transitive. Consider $\{0,1\}\in 2^\Z$, $\{1,2\}\in 2^\Z$, and $\{2,3\}\in 2^\Z$. Note $\{0,1\}\cap\{1,2\}\neq\emptyset$, and $\{1,2\}\cap\{2,3\}\neq\emptyset$. Thus, $\{0,1\}\mathrel{R}\{1,2\}$, and $\{1,2\}\mathrel{R}\{2,3\}$. However, $\{0,1\}\cap\{2,3\}=\emptyset$. Thus, $\{0,1\}\not\mathrel{R}\{2,3\}$. Therefore, $R$ is not transitive.$~\square$
+\end{enumerate}
+\end{solution}
+\begin{question}
+    \begin{enumerate}
+   	\item What is the total number of partitions in two of $\{1, 2, \dots, 100 \}$? 
+	Remember, both parts should be non-empty.
+        \item Suppose that a single character is stored in a computer using eight bits. 
+        How many bit patterns have at least two 1's?
+   	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item  There are $2^{99}-1$ possibilities. There are 2 options for each of the 100 elements in the set: it is either in the first partition or the second. This gives $2^{100}$ possibilities. However, a partition is a set of non-empty subsets. If all 100 elements are in one partition, then the other partition must be empty. We must remove the possibility that the first set is empty and the possibility that the second set is empty. Subtracting these cases gives $2^{100}-2$. However, a partition is a set of sets, and the ordering of the parts is irrelevant. Therefore we divide by $2!$, the number of rearrangements of the 2 parts within the partition. This gives $\frac{2^{100}-2}{2!}=2^{99}-1$ possibilities.
+\item There are $2^8-9$ possibilities. Without constraining the number of 1 bits, there are $2^8$ possibilities where each of 8 bits has 2 options. However, the number of 1 bits must be at least 2. That is, the number of 1 bits is not 0 and not 1. There is only 1 possibility where there are no 1 bits: The case in which all bits are 0. There are 8 possibilities where there is only a single 1 bit: either the first, second, third, fourth, fifth, sixth, seventh, or eighth bit is the 1. After subtracting the $1+8=9$ unfeasible possibilities, we have $2^8-9$ possibilities.
+\end{enumerate}
+\end{solution}
+\begin{question}
+    \begin{enumerate}
+	\item Twenty people are to be divided into two teams with ten players on each team.  
+	In how many ways can this be done?
+        \item Thirty five discrete math students are to be divided into seven discussion groups, each consisting of five students.  
+        In how many ways can this be done?
+   	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item This can be done in $\frac{\binom{20}{10}}{2!}$ ways. We will choose one team of ten players from 20: $\binom{20}{10}$. The remaining 10 will form the other team: $\binom{10}{10}=1$. There are $\binom{20}{10}$ ways to select 10 elements from a set of size 20. However, if two teams could be identical. To eliminate double counting, we must divide by the number of teams counted per unique teams: $2!$. This gives the solution $\frac{\binom{20}{10}}{2}$.
+\item The number of possibilities is given by the product:
+
+\[\frac{\prod_{i=1}^{7}{\binom{35-5(i-1)}{5}}}{7!}=\frac{\prod_{i=0}^{6}{\binom{35-5i}{5}}}{7!}.\]
+
+For the first group, there are $\binom{35}{5}$ ways to select a group of 5 students from the class of 35. For the second group, there are $\binom{30}{5}$ options, followed by $\binom{25}{5}$ for the third, $\binom{20}{5}$ for the fourth, $\binom{15}{5}$ for the fifth, and $\binom{10}{5}$ for the sixth. The seventh group is made up of the remaining 5 students: $\binom{5}{5}=1$. Their product gives the total number of possibilities. Then, we eliminate the ``double-counting'' of identical teams by dividing by $7!$, the number of groups counted per unique group.
+\end{enumerate}
+\end{solution}
+\begin{question}
+    Prove \textbf{combinatorially} that
+    \[ 3^n = \binom{n}{0} \cdot 2^0 + \binom{n}{1}\cdot 2^1+ \binom{n}{2}\cdot 2^2+\cdots +\binom{n}{n}\cdot 2^n. \]
+    \textbf{You may not manipulate the question algebraically.}
+\end{question}
+\begin{solution}
+Claim: Let $n\in\Z$. Then
+
+\[3^n = \binom{n}{0} \cdot 2^0 + \binom{n}{1}\cdot 2^1+ \binom{n}{2}\cdot 2^2+\cdots +\binom{n}{n}\cdot 2^n.\]
+
+We seek a question to which both sides of the equation give a correct answer. Suppose that question is ``On a route with $n$ traffic lights where each traffic light is either red, yellow, or green, how many unique sequences of light colors are possible?'' 
+
+Answer 1: We can treat the sequence as an ordered list of $n$ elements. Each element represents a light color. Therefore, there are 3 options for each of $n$ lights. Hence, the number of unique sequences is $3^n$. 
+
+Answer 2: We will separate the problem into $n+1$ cases from $i=0$ to $i=n$. Each case corresponds to the number of lights that are not red (that is, the number of lights that are either yellow or green). For example, in the first case, there are 0 non-red lights, there is 1 in the second, and so on. In the last case, all $n$ lights are not red. In each case $i$, the number of non-red lights selected from $n$ lights is $\binom{n}{i}$. For each of these cases, there are 2 options for each of the $i$ non-red lights, since it could be either yellow or green. Thus, each case $i$ has $\binom{n}{i}\cdot 2^i$ possibilities. These cases are mutually exclusive and collectively exhaustive. Therefore, the sum of their possibilities gives the solution $\binom{n}{0} \cdot 2^0 + \binom{n}{1}\cdot 2^1+ \binom{n}{2}\cdot 2^2+\cdots +\binom{n}{n}\cdot 2^n$.
+
+Since Answers 1 and 2 are both correct solutions to the counting problem, we have
+\[3^n = \binom{n}{0} \cdot 2^0 + \binom{n}{1}\cdot 2^1+ \binom{n}{2}\cdot 2^2+\cdots +\binom{n}{n}\cdot 2^n.~\square\]
+\end{solution}
+\end{document}

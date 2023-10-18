@@ -8,43 +8,25 @@
 \author{\textbf{Ishan Pranav}}
 \begin{document}
 \maketitle
-\section*{Claim}
-Let $a\in \mathbb{Z}$. $14\mid a$ if and only if $7\mid a$ and $2\mid a$.
-\section*{Proof}
-$\Rightarrow$) First, we will demonstrate that if $14\mid a$, then $7\mid a$ and $2\mid a$. Suppose $14\mid a$. Since $14\mid a$, there exists $n\in\mathbb{Z}$ such that $a=14n$. Note $a=7(2n)$ by multiplication. There exists $(2n)\in\mathbb{Z}$ such that $a=7(2n)$. Thus, $7\mid a$. Note also $a=2(7n)$ by multiplication. There exists $(7n)\in\mathbb{Z}$ such that $a=2(7n)$. Thus, $2\mid a$. Therefore, $7\mid a$ and $2\mid a$.
+\noindent\textit{Claim. }Let $a\in \mathbb{Z}$. $14\mid a$ if and only if $7\mid a$ and $2\mid a$.
 \newline
 
-\noindent$\Leftarrow$) Next, we will demonstrate that if $7\mid a$ and $2\mid a$, then $14\mid a$. Suppose $7\mid a$ and $2\mid a$. Since $7\mid a$, there exists $b\in\mathbb{Z}$ such that $a=7b$. We know that for all integers, the terms ``even'' and ``odd'' are mutually exclusive. Since $b\in\mathbb{Z}$, $b$ is either even or odd.
-
-Suppose $b$ is odd. Then there exists $c\in\mathbb{Z}$ such that $b=2c+1$. Observe
-\begin{align*}
-b&=2c+1&\textit{definition of odd}\\
-7b&=7(2c+1)&\textit{multiplication property of equality}\\
-7b&=14c+7&\textit{distributive property of multiplication}\\
-7b&=14c+6+1&\textit{addition}\\
-7b&=2(7c+3)+1.&\textit{distributive property of multiplication}
-\end{align*}
-
-There exists $(7c+3)\in\mathbb{Z}$ such that $7b=2(7c+3)+1$. Thus, $7b$ is odd. Note $2\mid a$, so $a$ is even. However, $a=7b$, and $7b$ is odd, so $a$ is odd. This is absurd. The statements ``$a$ is even'' and ``$a$ is odd'' lead to a contradiction, and hence our supposition that $b$ is odd is false: $b$ is not odd.
-
-Since $b$ is not odd, $b$ is even. Since $b$ is even, 2 is a factor of $b$. Since $2\mid b$, there exists $m\in\mathbb{Z}$ such that $b=2m$. Observe
-\begin{align*}
-b&=2m&\textit{definition of even}\\
-7b&=7(2m)&\textit{multiplication property of equality}\\
-a&=7(2m)&\textit{substitution property of equality}\\
-a&=14m.&\textit{multiplication}
-\end{align*}
-
-There exists $m\in\mathbb{Z}$ such that $a=14m$. Therefore, $14\mid a$.
+\noindent\textit{Proof. }Let $a\in\mathbb{Z}$. We will demonstrate that $14\mid a$ if and only if $7\mid a$ and $2\mid a$.
 \newline
 
-\noindent We conclude that $14\mid a$ if and only if $7\mid a$ and $2\mid a$.$\,\,\blacksquare$
+\noindent$\Rightarrow$) Suppose $14\mid a$. Then there exists $n\in\mathbb{Z}$ such that $a=14n$. Note $a=7(2n)$. There exists $(2n)\in\mathbb{Z}$ such that $a=7(2n)$. Thus, $7\mid a$. Note also $a=2(7n)$. There exists $(7n)\in\mathbb{Z}$ such that $a=2(7n)$. Thus, $2\mid a$. Therefore, $7\mid a$ and $2\mid a$. 
+\newline
+
+\noindent$\Leftarrow$) Suppose $7\mid a$ and $2\mid a$. Then there exists $b\in\mathbb{Z}$ such that $a=7b$. Since $2\mid a$, there exists $c\in\mathbb{Z}$ such that $a=2c$. Thus $a=7b=2c$. There exists $c\in\mathbb{Z}$ such that $7b=2c$, so $2\mid 7b$. Thus $7b$ is even, so either 7 is even or $b$ is even; but 7 is not even, so $b$ is even. Since $b$ is even, $2\mid b$ and there exists $d\in\mathbb{Z}$ such that $b=2d$. Observe
+\begin{align*}
+a&=7b\\
+a&=7(2d)\\
+a&=14d.
+\end{align*}
+There exists $d\in\mathbb{Z}$ such that $a=14d$. Therefore, $14\mid a$.
+\newline
+
+\noindent Hence, $14\mid a$ if and only if $7\mid a$ and $2\mid a$.$\,\,\blacksquare$
 \section*{Reflection}
-This proof is built upon concepts from Sections 1-8 of the textbook. I did not find it daunting or impossible. From the phrase ``A if and only if B,'' I immediately knew that the demonstration would involve two parts, one proving ``if B, then A'' and the other proving ``A only if B.'' So while I wasn't working off of a rigid ``template,'' I was scaffolding a framework and filling in the gaps as I went.
-
-I began the proof by converting the problem into a claim, establishing the key variable ($a$) and its type (integer). Then, I set up the sub-claims and conclusions for each part and began working backward. The first part (if $14\mid a$, then $7\mid a$ and $2\mid a$) was straightforward. I immediately knew how to approach it and completed it.
-
-The second part required additional cases and some tricky logic. My first approach was to make a claim about $a\cdot a$, attempting to use the fact that 7 and 2 were factors of $a$, and the fact that $7\cdot 2=14$ to my advantage. That meant I would have to divide by $a$ to get the equation into the form $a=(\dots)$. For the first half hour, every algebraic approach I tried involved some form of division that destroyed any guarantee that my result would be an integer.  
-
-After taking a break and revisiting the problem after dinner, I realized that I could circumvent the division issue if I could guarantee that my expression was even. If it were, I could divide by 2 and still have an integer! This was the ``\textit{ah-ha}'' moment. I realized there were two cases, one where $b$ is even, and the other where $b$ is odd---which (fortunately) was absurd. With $b$ guaranteed to be even, my roadblocks had been eliminated. Within the next 15 minutes, I finished the proof. Overall, the process took about 2 hours. My ``startup time'' is slow since I do all my thinking directly in the \LaTeX\, editor. Still, I prefer typing rather than paper, since once I've solved it, there's nothing more to be done.
+After the first draft, I learned about proof by contradiction and realized that the logic that I used was effectively a proof by contradiction---which wasn't a technique that we used in class. This meant I would have to rework the proof to conclude that the integer $b$ mentioned in the proof is even, this time using a direct proof technique. My new approach was to use the fact that $2a=7b$, and thus $7b$ is even. Then, I employed one of the fundamental properties of even and odd that we had covered in class, the idea that if there are two integer factors of an even number, one of the factors must be even. I incorporated this strategy, and I also cleaned up some of the proof to make it more concise and straightforward, removing unnecessary lines of explanation wherever I saw them. Compared with my first draft, the bulk of the logic remains the same as in the final draft. However, I believe the new proof is more elegant, straightforward, and streamlined. There are fewer redundant explanations, and the entire argument follows from definitions from start to finish.
 \end{document}
