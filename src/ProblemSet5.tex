@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 5}
+\author{
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due October 27, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\newcommand{\Z}{\mathbb{Z}}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\begin{document}
+\maketitle
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+
+\section*{Assigned Problems}
+
+\begin{question}
+    Prove the following statement by contrapositive: \\
+    For all $n\in \mathbb{N}$, if $2^n<n!$, then $n>3$.
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Claim. }Let $n\in\mathbb{N}$. If $2^n<n!$, then $n>3$.
+\begin{proof}
+Let $n\in\mathbb{N}$. We demonstrate the validity of the contrapositive of the claim. Since $n\in\mathbb{N}$, and $n\leq 3$, we have $n=0$, $n=1$, $n=2$, or $n=3$.
+
+\noindent Suppose $n=0$. Then $2^0=1$, and $0!=1$. Since $1=1$, we have $2^n\geq n!$.
+
+\noindent Suppose $n=1$. Then $2^1=2$, and $1!=1$. Since $2>1$, we have $2^n\geq n!$.
+
+\noindent Suppose $n=2$. Then $2^2=4$, and $2!=2$. Since $4>2$, we have $2^n\geq n!$.
+
+\noindent Suppose $n=3$. Then $2^3=8$, and $3!=6$. Since $8>6$, we have $2^n\geq n!$.
+
+\noindent For all $n\leq 3$, we have $2^n\geq n!$. Hence if $2^n<n!$, then $n>3$.
+\end{proof}
+\end{solution}
+\begin{question}
+    Prove the following by contradiction:\\
+    Let $A, B, C$ be sets. If $A\subseteq B$ and $B\cap C=\emptyset$, then $A\cap C=\emptyset$.
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Claim. }Let $A$, $B$, and $C$ be sets. If $A\subseteq B$, and $B\cap C=\emptyset$, then $A\cap C=\emptyset$.
+\begin{proof}
+Let $A$, $B$, and $C$ be sets. Suppose $A\subseteq B$, and $B\cap C=\emptyset$. Assume, for the sake of contradiction, that there exists $x\in A\cap C$. Then $x\in A$, and $x\in C$. Since $A\subseteq B$, we have $x\in B$. However, $B\cap C=\emptyset$ even while $x\in B$ and $x\in C$---which is absurd. Ergo, our assumption is false. There exists no $x\in A\cap C$. Hence $A\cap C=\emptyset$.
+\end{proof}
+\end{solution}
+\begin{question}
+    Prove the following statement by contradiction:\\
+    Let $x, y\in \Z$. Then $x^2-4y-3\neq 0$.
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Claim. }Let $x,y\in\Z$. Then $x^2-4y-3\neq 0$.
+\begin{proof}
+Let $x,y\in\Z$. Assume, for the sake of contradiction, that $x^2-4y-3=0$. Note $x^2=4y+3$. Since $x\in\Z$, we have $x^2\geq 0$. Thus $4y+3\geq 0$. Now $y\geq-\frac{3}{4}$. However, $y$ is an arbitrary integer, so $y$ is not necessarily greater than $-\frac{3}{4}$. Ergo, our assumption is false. Hence $x^2-4y-3\neq 0$. 
+\end{proof}
+\end{solution}
+\begin{question}
+    Prove the following by smallest counterexample:\\
+    Let $n\in \mathbb{N}$. If $n\geq 1$, then $4 \mid (5^n-1)$.
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Claim. }Let $n\in\mathbb{N}$. If $n\geq 1$, then $4\mid(5^n-1)$.
+\begin{proof}
+Let $n\in\mathbb{N}$. Suppose $n\geq 1$. Assume, for the sake of contradiction, that $4\nmid\left(5^n-1\right)$. Let $X=\left\{n\in\mathbb{N}:n\geq 1\text{ and }4\nmid\left(5^n-1\right)\right\}$. Then $X\neq\emptyset$. By the well-ordering principle, there exists $x\in X$ such that $x$ is the least element of $X$. Note $\left(5^1-1\right)=4$, and $4\mid 4$, so $x\neq 1$. Then $x-1\in\mathbb{N}$, but, $x-1\notin X$. Thus $4\mid\left(5^{x-1}-1\right)$, so there exists $k\in\Z$ such that $\left(5^{x-1}-1\right)=4k$. Observe
+\begin{align*}
+\left(5^{x-1}-1\right)&=4k\\
+5\left(5^{x-1}-1\right)&=5(4k)\\
+\left(5^x-5\right)&=20k\\
+\left(5^x-1\right)&=20k+4\\
+\left(5^x-1\right)&=4(5k+1).
+\end{align*}
+Note $5k+1\in\Z$, so $4\mid\left(5^x-1\right)$, even while $x\in X$---which is absurd. Ergo, our assumption is false. Hence if $n\geq 1$,  then $4\mid\left(5^n-1\right)$.
+\end{proof}
+\end{solution}
+\begin{question}
+    Let $n\in \Z$. Use induction to prove there are $3 \mid (n^3+2n)$. 
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Claim: }Let $n\in\Z$. Then $3\mid\left(n^3+2n\right)$.
+\begin{proof}
+Let $n\in\Z$. We demonstrate $3\mid\left(n^3+2n\right)$ by induction on $n$.
+\begin{description}
+    \item[Base case: ] Consider $n=0$. Note $0^3+2\cdot 0=0$. Note also $0=3\cdot 0$ and $0\in\Z$, so $3\mid 0$. Therefore $3\mid\left(n^3+2n\right)$ for $n=0$.
+    \item[Inductive hypothesis: ] Let $k\in\Z$ such that $k\geq 0$. Consider $n=k$. Assume the result is true for $n=k$; that is, assume $3\mid\left(k^3+2k\right)$.
+    \item[Inductive step: ] Consider $n=k+1$. By the inductive hypothesis, $3\mid\left(k^3+2k\right)$. Thus there exists $a\in\Z$ such that $\left(k^3+2k\right)=3a$. Observe
+    \begin{align*}
+    \left(k^3+2k\right)&=3a\\
+    \left(k^3+2k\right)+\left(3k^2+3k+3\right)&=3a+\left(3k^2+3k+3\right)\\
+    \left(k^3+3k^2+3k+1\right)+2k+2&=3a+\left(3k^2+3k+3\right)\\
+    \left(k+1\right)^3+2(k+1)&=3a+\left(3k^2+3k+3\right)\\
+    \left(k+1\right)^3+2(k+1)&=3\left(a+k^2+k+1\right).
+    \end{align*}
+    Note $\left(a+k^2+k+1\right)\in\Z$, so $3\mid\left((k+1)^3+2(k+1)\right)$.
+\end{description}
+Hence, by the principle of mathematical induction, for all $n\in\Z$, we have $3\mid\left(n^3+2n\right)$.
+\end{proof}
+\end{solution}
+\end{document}
