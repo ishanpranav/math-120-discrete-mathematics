@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\title{MATH-UA 120 Section 22}
+\author{Ishan Pranav}
+\date{October 27, 2023}
+\begin{document}
+\maketitle
+\section*{Principle of mathematical induction}
+Let $A\subseteq\mathbb{N}$. If $0\in A$, and for all $k\in\mathbb{N}$, $k\in A$ implies $k+1\in A$, then $A=\mathbb{N}$.
+
+Suppose $0\in A$, and for all $k\in\mathbb{N}$, $k\in A$ implies $k+1\in A$. Assume, for the sake of contradiction, that the claim is false. That is, assume $A\neq\mathbb{N}$. Let $X$ be the set of counterexamples. Then $X=\mathbb{N}-A\neq\emptyset$.
+
+By the well-ordering principle, since $X\neq\emptyset$ and $X\subseteq\mathbb{N}$, there exists $x\in X$ that is the least element of $X$. So $x$ is the smallest natural number not in $A$.
+
+Note $0\in A$ so $0\notin X$, and thus $x\neq 0$. Therefore $x\geq 1$. Thus $x-1\geq 0$, so $x-1\in\mathbb{N}$. Furthermore, since $x$ is the smallest element not in $A$, we have $x-1\in A$.
+
+Since $x-1\in A$, we have $(x-1)+1\in A$. So $x\in A$, even while $x\in X$---which is absurd. So our assumption is false.
+
+Hence, if $0\in A$, and for all $k\in\mathbb{N}$, $k\in A$ implies $k+1\in A$, then $A=\mathbb{N}.~\square$
+\section*{Principle of mathematical induction---strong version}
+Let $A\subseteq\mathbb{N}$. If $0\in A$ and for all $k\in\mathbb{N}$, if $0,1,2,\dots,k\in A$ implies $k+1\in A$, then $A=\mathbb{N}$.
+\section*{L-shaped tetromino}
+An \textit{L-shaped tetromino} is a tile formed from four $1\times 1$ squares joined at their edges to form an ``L'' shape.
+\section*{Triangulate}
+To \textit{triangulate} a polygon is to draw diagonals through the interior angles of the polygon so that the diagonals do not cross each other and every region created is a triangle.
+\section*{Exterior triangle}
+A triangle is called an \textit{exterior triangle} provided that it is produced by triangulating a polygon and that two of its three sides are on the exterior of the original polygon.
+\section*{Proposition}
+Let $n\in\mathbb{N}$. Then
+
+\[\sum_{i=0}^{n}{i^2}=\frac{n(n+1)(2n+1)}{6}.\]
+\section*{Proposition}
+Let $n\in\mathbb{Z}$ such that $n>0$. Then
+
+\[\sum_{i=1}^{n}{2^{i-1}}=2^n-1.\]
+\section*{Proposition}
+Let $n\in\mathbb{N}$. Then
+
+\[\sum_{i=0}^{n}{10^i}<10^{n+1}.\]
+\section*{Proposition}
+Let $n\in\mathbb{N}$. Then $3\mid(4^n-1)$.
+\section*{Proposition}
+Let $n\in\mathbb{Z}$ such that $n>0$. For every square on a $2^n\times 2^n$ chess board, there is a tiling by L-shaped tetrominoes of the remaining $4^n-1$ squares. 
+\section*{Proposition}
+If a polygon with four or more sides is triangulated, then at least two of the triangles formed are exterior.
+\section*{Proposition}
+Let $n\in\mathbb{N}$. Then
+
+\[\sum_{i=0}^{n}\binom{n-i}{i}=F_n.\]
+\end{document}

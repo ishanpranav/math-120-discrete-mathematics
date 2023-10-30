@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\title{MATH-UA 120 Section 26}
+\author{Ishan Pranav}
+\date{October 30, 2023}
+\begin{document}
+\maketitle
+\section*{Composition of functions}
+Let $A,B,$ and $C$ be sets, and let $f:A\to B$, and $g:B\to C$. Then the function $g\circ f$ is a function from $A$ to $C$ defined by
+\[(g\circ f)(a)=g\left[f(a)\right]\]
+where $a\in A$. The function $g\circ f$ is called the \textit{composition of $g$ and $f$}.
+\section*{Identity function}
+Let $A$ be a set. The \textit{identity function on $A$} is the function $\mathrm{id}_A$ with $\dom{\mathrm{id}_A}=A$, and for all $a\in A$, we have $\mathrm{id}_A(a)=a$. In other words,
+\[\mathrm{id}_A=\{(a,a):a\in A\}.\]
+\section*{Proposition}
+Let $A,B,C,$ and $D$ be sets, and let $f:A\to B$, $g:B\to C$, and $h:C\to D$. Then
+\[h\circ(g\circ f)=(h\circ g)\circ f.\]
+\section*{Proposition}
+Let $A$ and $B$ be sets. Let $f:A\to B$. Then
+\[f\circ\mathrm{id}_A=\mathrm{id}_B\circ f=f.\]
+\section*{Proposition}
+Let $A$ and $B$ be sets and suppose $f:A\to B$ is an injection. Then
+\[f\circ f^{-1}=\mathrm{id}_B.\]
+\[f^{-1}\circ f=\mathrm{id}_A.\]
+\end{document}

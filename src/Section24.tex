@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\title{MATH-UA 120 Section 24}
+\author{Ishan Pranav}
+\date{October 30, 2023}
+\begin{document}
+\maketitle
+\section*{Function}
+A relation $f$ is called a \textit{function} provided $(a,b)\in f$ and $(a,c)\in f$ imply $b=c$.
+\section*{Function notation}
+Let $f$ be a function and let $a$ be an object. The notation $f(a)$ is defined provided there exists an object $b$ such that $(a,b)\in f$. In this case $f(a)=b$.
+\section*{Domain}
+Let $f$ be a function. The set of all possible first elements of the ordered pairs in $f$ is called the \textit{domain} of $f$ and is denoted $\dom{f}$.
+\section*{Image}
+Let $f$ be a function. The set of all possible second elements of the ordered pairs in $f$ is called the \textit{image} of $f$ and is denoted $\im{f}$.
+\section*{Mapping}
+Let $f$ be a function and let $A$ and $B$ be sets. We say that $f$ is a \textit{function from} or a \textit{mapping from $A$ to $B$} provided $\dom{f}=A$ and $\im{f}\subseteq B$. In this case, we write $f:A\to B$.
+\section*{Injection}
+A function $f$ is called \textit{one-to-one} provided that, whenever $(x,b),(y,b)\in f$, we must have $x=y$. In other words, if $x\neq y$, then $f(x)\neq f(y)$. A one-to-one function is called an \textit{injection}.
+\section*{Surjection}
+Let $f:A\to B$. We say that $f$ is \textit{onto} $B$ provided that for every $b\in B$ there is an $a\in A$ such that $f(a)=b$. In other words, $\im{f}=B$. An ``onto'' function is called a \textit{surjection.}
+\section*{Theorem}
+Let $A$ and $B$ be sets and let $f:A\to B$. The inverse relation $f^{-1}$ is a function from $B$ to $A$ if and only if $f$ is one-to-one and onto $B$.
+\section*{Bijection}
+Let $f:A\to B$. We call $f$ a \textit{bijection} provided it is both an injection and a surjection.
+\section*{Pigeonhole principle}
+Let $A$ and $B$ be finite sets and let $f:A\to B$. If $|A|>|B|$, then $f$ is not an injection. If $|A|<|B|$, then $f$ is not a surjection.
+\section*{Theorem}
+Let $A$ and $B$ be finite sets such that $|A|=a$ and $|B|=b$. Then the number of functions from $A$ to $B$ is $b^a$.
+\section*{Theorem}
+Let $A$ and $B$ be finite sets such that $|A|=a$ and $|B|=b$. If $a\leq b$, then the number of injections $f:A\to B$ is $\frac{b!}{(b-a)!}$. If $a>b$, then the number of injections $f:A\to B$ is 0.
+\section*{Theorem}
+Let $A$ and $B$ be finite sets such that $|A|=a$ and $|B|=b$. If $a\geq b$, the number of surjections $f:A\to B$ is
+
+\[\sum_{i=0}^{b}{(-1)^i\binom{b}{i}(b-i)^a}.\]
+
+If $a<b$, then the number of surjections $f:A\to B$ is 0.
+\section*{Theorem}
+Let $A$ and $B$ be finite sets such that $|A|=a$ and $|B|=b$. If $a=b$, then the number of bijections $f:A\to B$ is $a!$. If $a\neq b$, then the number of bijections $f:A\to B$ is 0.
+\section*{Proposition}
+Let $A$ and $B$ be finite sets. If $f$ is a bijection, then $|A|=|B|$. 
+\end{document}
