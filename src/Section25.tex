@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\title{MATH-UA 120 Section 25}
+\author{Ishan Pranav}
+\date{November 1, 2023}
+\begin{document}
+\maketitle
+\section*{Pigeonhole principle}
+Let $A$ and $B$ be finite sets and let $f:A\to B$. If $|A|>|B|$, then $f$ is not injective. If $|A|<|B|$, then $f$ is not surjective.
+\section*{Lattice point}
+A point whose coordinates are both integers is called a \textit{lattice point}.
+\section*{Sequence}
+A \textit{sequence} is simply a list.
+\section*{Subsequence}
+Given a sequence, a \textit{subsequence} is a list formed by deleting elements from the original list and keeping the remaining elements in the same order in which they originally appeared.
+\section*{Decreasing subsequence}
+If the elements of a subsequence are in decreasing order, then we call the subsequence a \textit{decreasing subsequence}.
+\section*{Increasing subsequence}
+If the elements of a subsequence are in increasing order, then we call the subsequence an \textit{increasing subsequence}.
+\section*{Monotone sequence}
+A sequence that is either increasing or decreasing is called \textit{monotone}.
+\section*{Erdős--Szekeres theorem}
+Let $n\in\mathbb{Z}$ such that $n>0$. Every sequence of $n^2+1$ distinct integers must contain a monotone subsequence of length $n+1$.
+\section*{Cantor's theorem}
+\noindent\textit{Claim. }Let $A$ be a set. If $f:A\to 2^A$, then $f$ is not surjective.\newline 
+
+\noindent\textit{Proof. } Let $A$ be a set and let $f:A\to 2^A$. Let $B=\{x\in A:x\notin f(x)\}$.\newline
+
+\noindent Assume, for the sake of contradiction, that there exists $a\in A$ such that $f(a)=B$. Then $a\in B$ or $a\notin B$.\newline
+
+\noindent Suppose $a\in B$. Since $B=f(a)$, we have $a\in f(a)$, even while $a\in B$---which is absurd. So our assumption is false.\newline
+
+\noindent Suppose $a\notin B$. Since $B=f(a)$, we have $a\notin f(a)$, even while $a\notin B$---which is absurd. So our assumption is false.\newline
+
+\noindent In all cases, our assumption is false: There does not exist $a\in A$ such that $f(a)=B$. There exists $B\in 2^A$ for which there does not exist $a\in A$ such that $f(a)=B$. Hence, $f$ is not surjective. $\square$
+\section*{Proposition}
+Let $n\in\mathbb{N}$. Then there exist $a,b\in\mathbb{Z}$ such that $a>0$ and $b>0$ and such that $a\neq b$ and such that $10\mid\left(n^a-n^b\right)$.
+\section*{Proposition}
+Given five distinct lattice points in the plane, at least one of the line segments determined by these points has a lattice point as its midpoint.
+\end{document}

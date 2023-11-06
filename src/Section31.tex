@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\title{MATH-UA 120 Section 31}
+\author{Ishan Pranav}
+\date{November 5, 2023}
+\begin{document}
+\maketitle
+\section*{Event}
+Let $(S,P)$ be a sample space. An \textit{event} $A$ is a subset of $S$ ($A\subseteq S$). The probability of an event $A$, denoted $P(A)$ is
+\[P(A)=\sum_{a\in A}{P(a)}.\]
+\section*{Proposition}
+Let $A$ and $B$ be events in a sample space $(S,P)$. Then
+\[P(A)+P(B)=P(A\cup B)+P(A\cap B).\]
+\section*{Proposition}
+Let $A$ and $B$ be events. If $A\cap B=\emptyset$, then $P(A\cup B)=P(A)+P(B).$
+\section*{Proposition}
+Let $A$ and $B$ be events. Then $P(A\cup B)\leq P(A)+P(B)$.
+\section*{Proposition}
+Let $(S,P)$ be a sample space. Then $P(S)=1.$
+\section*{Proposition}
+Note $P(\emptyset)=0.$
+\section*{Proposition}
+Let $(S,P)$ be a sample space and let $A$ be an event. Then $P(\overline{A})=1-P(A)$.
+\end{document}
