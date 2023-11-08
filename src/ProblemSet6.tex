@@ -1,0 +1,264 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 6}
+\author{%
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due November 10, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\id}{\operatorname{id}}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\begin{document}
+\maketitle
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+\section*{Assigned Problems}
+\begin{question}
+    Suppose that we have two piles of cards each containing $n$ cards. Two players play a game as follows. Each player, in turn, chooses one pile and then removes any number of cards, but at least one, from the chosen pile. The player who removes the last card wins the game. Show that the second player can always win the game. 
+    \textit{Hint: Use strong induction.}
+\end{question}
+\begin{solution}
+~\newline
+
+\noindent\textit{Claim. }Let there be two piles each containing $n$ cards. Two players play a game as follows. Each player, in turn, chooses one pile and then removes at least one card from it. The player who removes the last card wins. The second player can always win.\newline
+
+\noindent\textit{Proof. }Let there be two piles. At the \textit{beginning} of a given turn $j\in\mathbb{N}$, let $a_j$ be the number of cards in one pile and $b_j$ be the number of cards in the other pile. Suppose there is a first player and a second player, such that the first player takes the first turn and the second player takes the second turn. The first turn has $j=1$. Let $n\in\mathbb{N}$ be the initial number of cards in each pile, so $a_1=b_1=n$. For every turn $j$ where $j$ is odd, the first player chooses one pile and then removes at least one card, but no more than the number of cards in the pile. For every turn $j$ where $j$ is not odd, the second player chooses one pile and then removes at least one card, but no more than the number of cards in the pile. If, at the beginning of turn $j+1$, we have $a_{j+1}=0$ and $b_{j+1}=0$, the game ends. If $j+1$ is odd, then the second player wins; otherwise, the first player wins.\newline
+
+\noindent First, we will eliminate the possibility that $n=0$. Assume, for the sake of contradiction, that $n=0$. We know
+\[a_1=b_1=n=0.\]
+On turn $j=1$, the first player chooses one pile and then removes $x\in\mathbb{N}$ cards from it, where $1\leq x\leq n$. But $n=0$, which is absurd. So our assumption is false: $n\neq 0$.
+
+\begin{description}
+\item[Basis case.] Consider $n=1$. Then $a_1=b_1=1$. On turn $j=1$, suppose the first player chooses one pile and removes one card. Then $a_2=0$ and $b_2=1$. On turn $j=2$, if the second player chooses the other pile, then $a_3=0$ and $b_3=0$. Thus the second player wins. Therefore, if $n=1$, then the second player can win.
+\item[Inductive hypothesis.] Let $k\in\mathbb{N}$ such that $k\geq 1$. Assume that if $n=1,2,3,\dots,\text{ or }k$, then the second player can always win. In other words, if for some natural number $k$ greater than 1, the number of cards in both piles is between 1 and $k$, then the second player can win.
+\item[Inductive step.] Consider $n=k+1$.
+
+We know
+\[a_1=b_1=n=(k+1).\]
+On turn $j=1$, the first player chooses $x\in\mathbb{N}$ cards where $1\leq x\leq (k+1)$. So $a_2=(k+1)-x$ and $b_2=(k+1)$. Then on turn $j=2$, the second player can choose the same $x$ cards from the other pile, so $a_3=(k+1)-x$ and $b_3=(k+1)-x$. Since $1\leq x\leq(k+1)$, we have $0\leq (a_3=b_3)\leq k$.
+
+Suppose $a_3=b_3=0$. Then the second player wins.
+
+Suppose instead $(a_3=b_3)\neq 0$. Then $1\leq(a_3=b_3)\leq k$. Thus the second player can win by the inductive hypothesis. This completes the inductive step.
+\end{description}
+Hence, by the principle of mathematical induction, the second player can always win.$~\square$
+\end{solution}
+\begin{question}
+    For each of the following functions, say if it is one-to-one and / or onto? Prove or disprove each statement.
+    \begin{enumerate}
+	\item $f : \Z \to \Z$ with $f(n) = n^2 + 1$ for $n \in \Z$.
+	\item $f : \Z \to \Z$ with $f(n) = n/2$ if $n$ is even, and $f(n) = 0$ if $n$ is odd.
+	\item $f : \R \to \R$ with $f(x) = 1/x$ if $x \neq 0$, and $f(0) = 0$.
+	\item $f: \N \to \N$ with $f(n) = 2^n$ if $n$ is even and $f(n) = n$ if $n$ is odd.
+	\item $f : \mathcal{P}(\Z) \to \mathcal{P}(\Z)$ with $f(A) = A \cup \{ 0 \}$ for $A \in \mathcal{P}(\Z)$.
+    \end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item\textit{Claim. }Let $f:\Z\to\Z$ with $f(n)=n^2+1$ for $n\in\Z$. Then $f$ is not one-to-one and $f$ is not onto.\newline
+
+\textit{Proof. }Let $f:\Z\to\Z$ with $f(n)=n^2+1$ for $n\in\Z$. We want to show that $f$ is neither injective nor surjective.
+
+(Not injective) Consider $1,-1\in\Z$. We have $f(1)=1^2+1=2$ and $f(-1)=(-1)^2+1=2$, thus $f(1)=f(-1)$. However, $1\neq -1$. Therefore, $f$ is not injective.
+
+(Not surjective) Let $y\in\Z$. Assume, for the sake of contradiction, that there exists $x\in\Z$ such that $f(x)=y$. Then $y=f(x)=x^2+1$, so $x^2=y-1$. Since $x\in\Z$, we have $x^2>0$. So $y-1\geq 0$, thus $y\geq 1$. But $y$ is an arbitrary integer, with no conditions, which is absurd. Thus our assumption is false: there exists does not necessarily exist $x\in\Z$ such that $f(x)=y$. Therefore, $f$ is not surjective.
+
+Hence, $f$ is neither injective nor surjective.$~\square$
+\item\textit{Claim. }Let $f:\Z\to\Z$ with 
+\[f(n) = \begin{cases} 
+\frac{n}{2}&n\text{ is even}\\
+0&n\text{ is odd}
+\end{cases}
+\]
+for $n\in\Z$. Then $f$ is not one-to-one, but $f$ is onto.\newline
+
+\textit{Proof. }Let $f:\Z\to\Z$ with 
+\[f(n) = \begin{cases} 
+\frac{n}{2}&n\text{ is even}\\
+0&n\text{ is odd}
+\end{cases}
+\]
+for $n\in\Z$. We want to show that $f$ is not injective but surjective.
+
+(Not injective) Consider $f(1)$ and $f(3)$. We have $f(1)=f(3)=0$. However, $1\neq 3$. Therefore, $f$ is not injective.
+
+(Surjective) Let $y\in\Z$. Note $2y\in\Z$ and $2y$ is even. So there exists $2y\in\Z$ such that $f(2y)=y$. Therefore, $f$ is surjective.
+
+Hence, $f$ is not injective, but $f$ is surjective.$~\square$
+\item\textit{Claim. }Let $f:\R\to\R$ with 
+\[f(n) = \begin{cases} 
+\frac{1}{x}&x\neq 0\\
+0&x=0
+\end{cases}
+\]
+for $x\in\R$. Then $f$ is one-to-one and $f$ is onto.\newline
+
+\textit{Proof. }Let $f:\R\to\R$ with 
+\[f(n) = \begin{cases} 
+\frac{1}{x}&x\neq 0\\
+0&x=0
+\end{cases}
+\]
+for $x\in\R$. We want to show that $f$ is bijective.\newline
+
+(Injective) Let $x_1,x_2\in\R$. Suppose $f(x_1)=f(x_2)$. Then $f(x_1)=f(x_2)=0$ or $\left(f(x_1)=f(x_2)\right)\neq 0$.
+
+Suppose $f(x_1)=f(x_2)=0$. We know $\frac{1}{x}\neq 0$ for all $x\in\R$, so $x_1=x_2=0$.
+
+Suppose $\left(f(x_1)=f(x_2)\right)\neq 0$. Then $\frac{1}{x_1}=\frac{1}{x_2}$, and $x_1\neq 0$ and $x_2\neq 0$, so $x_1=x_2$.
+
+In all cases, if $f(x_1)=f(x_2)$, then $x_1=x_2$. Therefore $f$ is injective.\newline
+
+(Surjective) Let $y\in\R$. Then $y=0$ or $y\neq 0$.
+
+Suppose $y=0$. Consider $0\in\R$. We have $y=f(0)=0$. There exists $0\in\R$ such that $y=f(0)$.
+
+Suppose $y\neq 0$. Note $\frac{1}{y}\in\R$ and $\frac{1}{y}\neq 0$. So there exists $\frac{1}{y}\in\Z$ such that $\frac{1}{y}\neq 0$ and $f\left(\frac{1}{y}\right)=y$.
+
+In all cases, $f$ is surjective. Therefore, $f$ is surjective.\newline
+
+Hence, $f$ is bijective.$~\square$
+\item\textit{Claim. }Let $f:\N\to\N$ with 
+\[f(n) = \begin{cases} 
+2^n&n\text{ is even}\\
+n&n\text{ is odd}
+\end{cases}
+\]
+for $n\in\N$. Then $f$ is neither one-to-one nor onto.\newline
+
+\textit{Proof. }Let $f:\N\to\N$ with 
+\[f(n) = \begin{cases} 
+2^n&n\text{ is even}\\
+n&n\text{ is odd}
+\end{cases}
+\]
+for $x\in\N$. We want to show that $f$ is not injective and not surjective.\newline
+
+(Not injective) Consider $0,1\in\N$. We have $f(0)=2^0=1$ and $f(1)=1$, thus $f(0)=f(1)$. However $0\neq 1$. Therefore, $f$ is not injective.\newline
+
+(Not surjective) Let $y\in\N$. Assume, for the sake of contradiction, there exists $x\in\N$ such that $f(x)=y$. Then $x$ is even or $x$ is odd.
+
+Suppose $x$ is even. Then there exists $k\in\Z$ such that $x=2k$. So $y=f(2k)=2^{2k}$. Thus $y=4^k$, so $k=\log_4{y}$. But $k$ is an arbitrary integer, and $\log_4{y}$ where $y\in\N$ is not necessarily an integer. This is absurd.
+
+Thus our assumption is false: There does not necessarily exist $x\in\N$ such that $f(x)=y$. There is a case where $f$ is not surjective. Therefore, $f$ is not surjective.\newline
+
+Hence, $f$ is neither injective nor surjective.$~\square$
+\item 
+\end{enumerate}
+\end{solution}
+\begin{question}
+    \begin{enumerate}
+        \item Let $A = \{1,2,3,4\}$ and $B = \{5,6,7\}$.
+        Let $f$ be the relation $ \left\{(1,5),(2,5),(3,6),(?,?)\right\} $ where the question marks are to be filled in by you. 
+        Give an example of $(?,?) \in A \times B$ so that: (Remember to explain your reasoning.)
+            \begin{enumerate}
+                \item The relation $f$ is not a function.
+                \item The relation is a function from $A$ to $B$ but not onto $B$.
+                \item The relation is a function from $A$ to $B$ and is onto $B$.
+            \end{enumerate}
+
+        \item     Let $A$ be an $n$-element set and let $i, j, k \in \mathbb{N}$ with $i+j+k = n$.
+        How many functions $f \colon A \to \{0,1,2\}$ are there for which all three of the below are satisfied:
+            \begin{itemize}
+                \item $\left|\left\{ a \in A : f(a) = 0 \right\} \right| = i$
+                \item $\left|\left\{ a \in A : f(a) = 1 \right\} \right| = j$
+                \item $\left|\left\{ a \in A : f(a) = 2 \right\} \right| = k$
+            \end{itemize}
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    \begin{enumerate}
+	\item There are five points inside an equilateral triangle of side length 2. 
+	Show that at least two of the points are within 1 unit distance from each other.
+	\item Let $A$ be a set of 10 distinct integers between 1 and 100 (both inclusive). 
+	Show that there are two nonempty and disjoint subsets of $A$ such that the sum of all its elements are the same.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+    Let $A = \{ x \in \Z ~:~ 3|x \}$.  Show that $A$ and $\mathbb{N}$ has the same cardinality.  {\it Hint:} Define $f: A \rightarrow \N$ such that
+\[ f(x) =\left\{\begin{array}{c c l} \frac{2}{3}x & & \text{if } x \geq 0 \\ ~ \\ -\frac{2}{3}x - 1 &  & \text{if } x < 0 \end{array} \right. .\]
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+
+
+
+\end{document}

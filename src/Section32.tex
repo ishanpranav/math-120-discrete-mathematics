@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
+\title{MATH-UA 120 Section 32}
+\author{Ishan Pranav}
+\date{November 7, 2023}
+\begin{document}
+\maketitle
+\section*{Conditional probability}
+Let $A$ and $B$ be events in a sample space $(S,P)$ and suppose $P(B)\neq 0$. The \textit{conditional probability} $P(A|B)$, the probability of $A$ given $B$, is
+\[P(A|B)=\frac{P(A\cap B)}{P(B)}.\]
+\section*{Independent events}
+Let $A$ and $B$ be events in a sample space. We say that these events are \textit{independent} provided
+\[P(A\cap B)=P(A)P(B).\]
+\section*{Repeated trials}
+Let $(S,P)$ be a sample space and let $n$ be a positive integer. Let $S^n$ denote the set of all length-$n$ lists of elements in $S$. Then $(S^n,P)$ is the \textit{$n$-fold repeated trial sample space} in which
+\[P[(s_1,s_2,\dots,s_n)]=P(s_1)P(s_2)\dots P(s_n).\]
+\section*{Proposition}
+Let $A,B$ be events in a sample space $(S,P)$ and suppose $P(A)$ and $P(B)$ are both nonzero. Then the following three statements are equivalent:
+\begin{equation}
+P(A|B)=P(A).
+\end{equation}
+\begin{equation}
+P(B|A)=P(B).
+\end{equation}
+\begin{equation}
+P(A\cap B)=P(A)P(B).
+\end{equation}
+\end{document}
