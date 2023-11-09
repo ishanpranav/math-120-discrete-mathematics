@@ -54,13 +54,14 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\im}{\operatorname{im}}
 \newcommand{\id}{\operatorname{id}}
 \usepackage{tikz}
 \usepackage{amsmath, amsthm}
 \usepackage{amsfonts}
 \usepackage{siunitx}
 \DeclareSIUnit\pound{lb}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\im}{im}
 \usepackage{hyperref}
 \newtheorem*{theorem}{Theorem}
 \theoremstyle{definition}
@@ -92,11 +93,13 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 
 \noindent First, we will eliminate the possibility that $n=0$. Assume, for the sake of contradiction, that $n=0$. We know
 \[a_1=b_1=n=0.\]
-On turn $j=1$, the first player chooses one pile and then removes $x\in\mathbb{N}$ cards from it, where $1\leq x\leq n$. But $n=0$, which is absurd. So our assumption is false: $n\neq 0$.
+On turn $j=1$, the first player chooses one pile and then removes $x_0\in\mathbb{N}$ cards from it, where $1\leq x_0\leq n$. But $n=0$, so $1\leq 0$, which is a contradiction. Thus our assumption is false: $n\neq 0$.\newline
+
+\noindent Now we will demonstrate that for every initial number of cards $n>0$, the second player can always win by induction on $n$.
 
 \begin{description}
 \item[Basis case.] Consider $n=1$. Then $a_1=b_1=1$. On turn $j=1$, suppose the first player chooses one pile and removes one card. Then $a_2=0$ and $b_2=1$. On turn $j=2$, if the second player chooses the other pile, then $a_3=0$ and $b_3=0$. Thus the second player wins. Therefore, if $n=1$, then the second player can win.
-\item[Inductive hypothesis.] Let $k\in\mathbb{N}$ such that $k\geq 1$. Assume that if $n=1,2,3,\dots,\text{ or }k$, then the second player can always win. In other words, if for some natural number $k$ greater than 1, the number of cards in both piles is between 1 and $k$, then the second player can win.
+\item[Inductive hypothesis.] Let $k\in\mathbb{N}$ such that $k\geq 1$. Assume that if $n=1,2,3,\dots,\text{ or }k$, then the second player can always win. In other words, if for some natural number $k$ greater than 1, the number of cards in both piles the same natural number $n$ between 1 and $k$, then the second player can win.
 \item[Inductive step.] Consider $n=k+1$.
 
 We know
@@ -105,7 +108,7 @@ On turn $j=1$, the first player chooses $x\in\mathbb{N}$ cards where $1\leq x\le
 
 Suppose $a_3=b_3=0$. Then the second player wins.
 
-Suppose instead $(a_3=b_3)\neq 0$. Then $1\leq(a_3=b_3)\leq k$. Thus the second player can win by the inductive hypothesis. This completes the inductive step.
+Suppose instead $(a_3=b_3)\neq 0$. Then $1\leq(a_3=b_3)\leq k$. Therefore the second player can win by the inductive hypothesis, thus completing the inductive step.
 \end{description}
 Hence, by the principle of mathematical induction, the second player can always win.$~\square$
 \end{solution}
@@ -127,7 +130,7 @@ Hence, by the principle of mathematical induction, the second player can always 
 
 (Not injective) Consider $1,-1\in\Z$. We have $f(1)=1^2+1=2$ and $f(-1)=(-1)^2+1=2$, thus $f(1)=f(-1)$. However, $1\neq -1$. Therefore, $f$ is not injective.
 
-(Not surjective) Let $y\in\Z$. Assume, for the sake of contradiction, that there exists $x\in\Z$ such that $f(x)=y$. Then $y=f(x)=x^2+1$, so $x^2=y-1$. Since $x\in\Z$, we have $x^2>0$. So $y-1\geq 0$, thus $y\geq 1$. But $y$ is an arbitrary integer, with no conditions, which is absurd. Thus our assumption is false: there exists does not necessarily exist $x\in\Z$ such that $f(x)=y$. Therefore, $f$ is not surjective.
+(Not surjective) Consider $0\in\Z$. Assume, for the sake of contradiction, that there exists $x\in\Z$ such that $f(x)=0$. Then $x^2+1=0$, so $x^2=-1$. But since $x\in\Z$, we have $x^2>0$. This is a contradiction. Thus our assumption is false: For $0\in\Z$, there does not exist $x\in\Z$ such that $f(x)=0$. Therefore, $f$ is not surjective.
 
 Hence, $f$ is neither injective nor surjective.$~\square$
 \item\textit{Claim. }Let $f:\Z\to\Z$ with 
@@ -202,14 +205,24 @@ for $x\in\N$. We want to show that $f$ is not injective and not surjective.\newl
 
 (Not injective) Consider $0,1\in\N$. We have $f(0)=2^0=1$ and $f(1)=1$, thus $f(0)=f(1)$. However $0\neq 1$. Therefore, $f$ is not injective.\newline
 
-(Not surjective) Let $y\in\N$. Assume, for the sake of contradiction, there exists $x\in\N$ such that $f(x)=y$. Then $x$ is even or $x$ is odd.
+(Not surjective) Consider $6\in\N$. Assume, for the sake of contradiction, there exists $x\in\N$ such that $f(x)=6$. Then $x$ is even or $x$ is odd.
 
-Suppose $x$ is even. Then there exists $k\in\Z$ such that $x=2k$. So $y=f(2k)=2^{2k}$. Thus $y=4^k$, so $k=\log_4{y}$. But $k$ is an arbitrary integer, and $\log_4{y}$ where $y\in\N$ is not necessarily an integer. This is absurd.
+Suppose $x$ is odd. Then $f(x)=x=6$. Then there exists $k_1\in\Z$ such that $x=2k_1-1$. So $2k_1=7$, so $k_1=\frac{7}{2}$. But $k_1$ is an integer. This is a contradiction.
 
-Thus our assumption is false: There does not necessarily exist $x\in\N$ such that $f(x)=y$. There is a case where $f$ is not surjective. Therefore, $f$ is not surjective.\newline
+Suppose $x$ is even. Then there exists $k_2\in\Z$ such that $x=2k_2$. So $f(2k_2)=2^{2k_2}$. Thus $6=4^{k_2}$, so $k_2=\log_4{6}$. Note $3<k_2<4$. But $k_2$ is an integer. This is a contradiction.
+
+In all cases, we arrive at a contradiction. Thus our assumption is false: For $6\in\N$, there does not exist $x\in\N$ such that $f(x)=6$. Therefore, $f$ is not surjective.\newline
 
 Hence, $f$ is neither injective nor surjective.$~\square$
-\item 
+\item\textit{Claim. }Let $f:\mathcal{P}(\Z)\to\mathcal{P}(\Z)$ with $f(A)=A\cup\{0\}$ for $A\in\mathcal{P}(\Z)$. Then $f$ is not one-to-one and $f$ is not onto.\newline
+
+\textit{Proof. }Let $f:\mathcal{P}(\Z)\to\mathcal{P}(\Z)$ with $f(A)=A\cup\{0\}$ for $A\in\mathcal{P}(\Z)$. Then $f$ is neither injective nor surjective.\newline
+
+(Not injective) Consider $\{1\},\{0,1\}\in\mathcal{P}(\Z)$. We have $f(\{1\})=\{1\}\cup\{0\}=\{0,1\}$ and $f(\{0,1\})=\{0,1\}\cup\{0\}=\{0,1\}$, thus $f(\{1\})=f(\{0,1\})$. However, $\{1\}\neq\{0,1\}$. Therefore, $f$ is not injective.\newline
+
+(Not surjective) Consider $\{1\}\in\mathcal{P}(\Z)$. Assume, for the sake of contradiction, that there exists $X\in\mathcal{P}(\Z)$ such that $f(X)=\{1\}$. But $f(X)=X\cup\{0\}$, so $\{1\}=X\cup\{0\}$. Of course $0\in(X\cup\{0\})$, but $0\notin\{1\}$. This is a contradiction. Thus our assumption is false: For $\{1\}\in\mathcal{P}(\Z)$, there does not exist $X\in\mathcal{P}(\Z)$ such that $f(X)=\{1\}$. Therefore, $f$ is not surjective.\newline
+
+Hence, $f$ is neither injective nor surjective.$~\square$
 \end{enumerate}
 \end{solution}
 \begin{question}
@@ -232,10 +245,16 @@ Hence, $f$ is neither injective nor surjective.$~\square$
             \end{itemize}
     \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+    \item\begin{enumerate}
+    \item Let $f$ be a relation where \[f=\{(1,5),(2,5),(3,6),(1,6)\}.\] Then $f$ is not a function because $1~f~5$ and $1~f~6$ and $5\neq 6$.
+    \item Let $f$ be a relation where \[f=\{(1,5),(2,5),(3,6),(4,6)\}.\] Then $f$ is a function because $(a,b)\in f$ and $(a,c)\in f$ implies $b=c$. In other words, for every input, there is exactly one output. We know $f(1)=5,f(2)=5,f(3)=6,$ and $f(4)=6$. So there are no repeated inputs with different outputs. Now \[\dom{f}=\{1,2,3,4\}=A.\] \[\im{f}=\{5,6\}\subseteq B.\] Since $f$ is a function, $\dom{f}=A$, and $\im{f}\subseteq B$, we have $f:A\to B$. Since $\im{f}\neq B$, we know $f$ is not surjective (onto $B$).
+    \item Let $f$ be a relation where \[f=\{(1,5),(2,5),(3,6),(4,7)\}.\] Then $f$ is a function because $(a,b)\in f$ and $(a,c)\in f$ implies $b=c$. In other words, for every input, there is exactly one output. We know $f(1)=5,f(2)=5,f(3)=6,$ and $f(4)=7$. So there are no repeated inputs with different outputs. Now \[\dom{f}=\{1,2,3,4\}=A.\] \[\im{f}=\{5,6,7\}=B.\] Since $f$ is a function, $\dom{f}=A$, and $\im{f}\subseteq B$, we have $f:A\to B$. Since $\im{f}=B$, we know $f$ is surjective (onto $B$).
+    \end{enumerate}
+    \item We want to count the number of functions $f:A\to\{0,1,2\}$. Since $\dom{f}=A$ and $|A|=n$, there are $n$ choices for each input and all $n$ elements must be used. Since $f$ is a function, repetition of inputs is not allowed. So there are $n!$ ways to construct the domain of $f$, holding the ordering of the codomain constant. We have $i$ instances of 0, $j$ instances of 1, and $k$ instances of 2 in the image. We have ``double-counted'' functions. For each unique domain constructed, there are $i!$ functions with identical images due to differences in placement of identical ``0''s, $j!$ functions with identical images due to rearrangements of ``1''s, and $k!$ functions with identical images due to rearrangements of ``2''. So we divide $n!$ by $i!,j!$, and $k!$, yielding $\frac{n!}{i!j!k!}$ possible functions that satisfy the requirements.
+\end{enumerate}
 \end{solution}
-
 \begin{question}
     \begin{enumerate}
 	\item There are five points inside an equilateral triangle of side length 2. 
@@ -244,21 +263,113 @@ Hence, $f$ is neither injective nor surjective.$~\square$
 	Show that there are two nonempty and disjoint subsets of $A$ such that the sum of all its elements are the same.
     \end{enumerate}
 \end{question}
-% Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+\item Let $A=(0,0)$, $B=(2,0)$, and $C=(1,\sqrt{3})$.
+
+\noindent If $A,B,$ and $C$ represent points in a plane, then the distance from $A$ to $B$ is $|2-0|=2$ units, the distance from $B$ to $C$ is $\sqrt{(1-2)^2+(\sqrt{3}-0)^2}=2$ units, and the distance from $C$ to $A$ is $\sqrt{1^2+\sqrt{3}^2}=2$ units. So $\{A,B,C\}$ is the set of vertices of an equilateral triangle with side lengths of 2 units.
+
+\noindent Let $a=\left(\frac{2+1}{2},\frac{0+\sqrt{3}}{2}\right)=\left(\frac{3}{2},\frac{\sqrt{3}}{2}\right)$ be the midpoint of the line segment from $B$ to $C$, $b=\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right)$ be the midpoint of the line segment from $A$ to $C$, and $c=\left(1,0\right)$ be the midpoint of the line segment from $A$ to $B$. Now we can construct 4 more equilateral triangles, each denoted by a set of vertices:
+\begin{align}
+\{a,b,c\}\\
+\{A,b,c\}\\
+\{a,B,c\}\\
+\{a,b,C\}
+\end{align}
+By construction, the side lengths of each of these triangles are 1 unit. Suppose there are 5 points within the outer triangle bounded by $A,B$, and $C$. Each of the 5 points (``pigeons'') is in one of 4 inner triangles (``pigeonholes'') listed above. Since $4<5$, at least 2 points lie within the same inner triangle by the pigeonhole principle. Since the vertices of each inner triangle are 1 unit apart, the maximum distance between 2 points in the same inner triangle is 1 unit.
+
+\noindent Hence, at least 2 of the 5 points lie within 1 unit of one another.$~\square$
+\item Let $A=\{a:a\in\Z,1\leq a\leq 100\}$ such that $|A|=10$. Then $2^A$ contains all subsets of $A$, including the empty set.
+
+Note if $A=\{1,2,3,4,5,6,7,8,9,10\}$, then $\sum_{a\in A}=55$. By construction, this set is the value of $A$ with the minimum sum of all elements.
+
+If $A=\{91,92,93,94,95,96,97,98,99,100\}$, then $\sum_{a\in A}{a}=955$. By construction, this set is the value of $A$ with the maximum sum of all elements.
+
+We can construct a value of $A$ such that the sum of all elements in $A$ is equal to any natural number from 55 (inclusive) to 955 (inclusive), so there are 901 possible sums of the elements in $A$ (``pigeonholes'').
+
+Let $n$ be the number of nonempty subsets of $A$. Then
+\begin{align*}
+n
+&=\left|2^A\right|-1\\
+&=2^{|A|}-1\\
+&=2^{10}-1\\
+&=1024-1\\
+&=1023.
+\end{align*}
+There are $n=1023$ nonempty subsets of $A$ (``pigeons''). Note $n>901$. By the pigeonhole principle, there are at least 2 distinct nonempty subsets of $A$ whose elements have the same sum.
+
+So there exist sets $P$ and $Q$ such that all of the following are true:
+\begin{itemize}
+    \item$P\neq Q$,
+    \item$P\neq\emptyset$,
+    \item$Q\neq\emptyset$,
+    \item$P\subseteq A$,
+    \item$Q\subseteq A$, and
+    \item$\sum_{p\in P}{p}=\sum_{q\in Q}{q}.$
+\end{itemize}
+Then either $P\cap Q=\emptyset$ or $P\cap Q\neq\emptyset$.
+
+Suppose $P\cap Q=\emptyset$. Therefore, there exist 2 nonempty and disjoint subsets of $A$ such that the sum of all elements are the same.
+
+Suppose $P\cap Q\neq\emptyset$. Let $P'=P-Q$ and $Q'=Q-P$. Since $P\neq Q$, we have $P'\neq Q'$, $P'\neq\emptyset$, and $Q'\neq\emptyset$. Since $P'\subseteq P$, we have $P'\subseteq A$. Since $Q'\subseteq Q$, we have $Q'\subseteq A$.
+
+Furthermore, since $P'=P-(P\cap Q)$ and $Q'=Q-(Q\cap P)$, we know \[\sum_{p'\in P'}{p'}=\left(\sum_{p\in P}{p}\right)-\left(\sum_{x\in P\cap Q}{x}\right)\] and \[\sum_{q'\in Q'}{q'}=\left(\sum_{q\in Q}{q}\right)-\left(\sum_{x\in P\cap Q}{x}\right).\] Since $\sum_{p\in P}{p}=\sum_{q\in Q}{q}$, we have $\sum_{p'\in P'}{p'}=\sum_{q'\in Q'}{q'}$.
+
+By construction, $P'\cap Q'=\emptyset$. Therefore, there exist 2 nonempty and disjoint subsets of $A$ such that the sum of all elements are the same.
+
+In all cases, the claim is true. Hence, in a set of 10 distinct integers between 1 (inclusive) and 100 (inclusive), there are 2 nonempty and disjoint subsets such that the sums of all the elements in each subset are equal.$~\square$
+\end{enumerate}
 \end{solution}
-
-
 \begin{question}
     Let $A = \{ x \in \Z ~:~ 3|x \}$.  Show that $A$ and $\mathbb{N}$ has the same cardinality.  {\it Hint:} Define $f: A \rightarrow \N$ such that
 \[ f(x) =\left\{\begin{array}{c c l} \frac{2}{3}x & & \text{if } x \geq 0 \\ ~ \\ -\frac{2}{3}x - 1 &  & \text{if } x < 0 \end{array} \right. .\]
 \end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
+\begin{solution}\newline
+
+\noindent\textit{Claim. }Let $A=\{x\in\Z:3\mid x\}$. Then $A$ and $\N$ have the same cardinality.
+\begin{proof}
+Let $A=\{x\in\Z:3\mid x\}$. We will demonstrate the existence of a one-to-one correspondence between $A$ and $\N$. \newline
+
+\noindent Let $f:A\to\N$ such that
+\[f(a) = \begin{cases} 
+\frac{2}{3}a&a\geq 0\\
+-\frac{2}{3}a-1&a<0
+\end{cases}
+\]
+for $a\in A$. We want to demonstrate that $f$ is bijective, requiring $f$ is injective and $f$ is surjective.\newline
+
+\noindent(Injective) Let $a_1,a_2\in A$. Suppose $f(a_1)=f(a_2)$. Then one of the following is true:
+\begin{itemize}
+    \item $a_1\geq 0$ and $a_2\geq 0$, or
+    \item $a_1<0$ and $a_2<0$, or
+    \item $a_1\geq 0$ and $a_2<0$ (symmetrically, this is the same as $a_2\geq 0$ and $a_1<0$).
+\end{itemize}
+
+Suppose $a_1\geq 0$ and $a_2\geq 0$. Since $f(a_1)=f(a_2)$, we have $\frac{2}{3}a_1=\frac{2}{3}a_2$. So $a_1=a_2$.\newline
+
+Suppose $a_1<0$ and $a_2<0$. Since $f(a_1)=f(a_2)$, we have $\left(-\frac{2}{3}a_1-1\right)=\left(-\frac{2}{3}a_2-1\right)$. Again $\frac{2}{3}a_1=\frac{2}{3}a_2$. So $a_1=a_2$.\newline
+
+Assume, for the sake of contradiction, $a_1\geq 0$ and $a_2<0$. Note $a_1\in A$, so $3\mid a_1$. Note also $a_2\in A$ and $a_2<0$, so $3\mid a_2$ and $(-1)\mid a_2$. So there exist $n_1,n_2\in\Z$ such that $a_1=3n_1$ and $a_2=-3n_2$. Observe
+\begin{align*}
+f(a_1)&=f(a_2)\\
+\frac{2}{3}a_1&=-\frac{2}{3}a_2-1\\
+\frac{2}{3}(3n_1)&=-\frac{2}{3}(-3n_2)-1\\
+2n_1&=2n_2-1.
+\end{align*}
+
+Note $2\mid n_1$. By definition, $2n_1$ is even and $2n_2-1$ is odd, so these quantities cannot be equal. We have arrived at a contradiction. Thus our assumption is false: It is not the case that $a_1\geq 0$ and $a_2<0$. The argument is symmetrical for the case where $a_2\geq 0$ and $a_1<0$. So it is not the case that $a_2\geq 0$ and $a_1<0$ either.\newline
+
+In all possible cases, we have $a_1=a_2$. Therefore, $f:A\to\N$ is injective.\newline
+
+\noindent(Surjective) Let $y\in\N$. Then $y$ is even or $y$ is odd.\newline
+
+Suppose $y$ is even. Then there exists $m_1\in\Z$ such that $y=2m_1$. Consider $\frac{3}{2}y=3m_1$. Note $3\mid\left(\frac{3}{2}y\right)$, so $\frac{3}{2}y\in A$. Of course, \[f\left(\frac{3}{2}y\right)=\left(\frac{2}{3}\right)\left(\frac{3}{2}y\right)=y\] so there exists $\frac{3}{2}y\in A$ such that $f\left(\frac{3}{2}y\right)=y$.\newline
+
+Suppose $y$ is odd. Then there exists $m_2\in\Z$ such that $y=2m_2-1$. Consider $-\frac{3}{2}y-\frac{3}{2}=-3m_2$. Since $-\frac{3}{2}y-\frac{3}{2}=3(-m_2)$, we have $3\mid\left(-\frac{3}{2}y-\frac{3}{2}\right)$, so $-\frac{3}{2}y-\frac{3}{2}\in A$. Of course, \[f\left(-\frac{3}{2}y-\frac{3}{2}\right)=-\left(\frac{2}{3}\right)\left(-\frac{3}{2}y-\frac{3}{2}\right)-1=y\] so there exists $-\frac{3}{2}y-\frac{3}{2}\in A$ such that $f\left(-\frac{3}{2}y-\frac{3}{2}\right)=y$.\newline
+
+In both cases, $f$ is surjective. Therefore, $f:A\to\N$ is surjective.\newline
+
+\noindent Hence, $f:A\to\N$ is bijective. Ergo $A$ and $\N$ have the same cardinality.
+\end{proof}
 \end{solution}
-
-
-
-
-
 \end{document}
