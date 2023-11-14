@@ -281,11 +281,13 @@ By construction, the side lengths of each of these triangles are 1 unit. Suppose
 \noindent Hence, at least 2 of the 5 points lie within 1 unit of one another.$~\square$
 \item Let $A=\{a:a\in\Z,1\leq a\leq 100\}$ such that $|A|=10$. Then $2^A$ contains all subsets of $A$, including the empty set.
 
-Note if $A=\{1,2,3,4,5,6,7,8,9,10\}$, then $\sum_{a\in A}=55$. By construction, this set is the value of $A$ with the minimum sum of all elements.
+Consider $A'\subseteq A$.
 
-If $A=\{91,92,93,94,95,96,97,98,99,100\}$, then $\sum_{a\in A}{a}=955$. By construction, this set is the value of $A$ with the maximum sum of all elements.
+Note if $A'=\{1\}$, then $\sum_{a'\in A'}{a'}=1$. By construction, this set is the value of $A'$ with the minimum sum of all elements.
 
-We can construct a value of $A$ such that the sum of all elements in $A$ is equal to any natural number from 55 (inclusive) to 955 (inclusive), so there are 901 possible sums of the elements in $A$ (``pigeonholes'').
+If $A'=\{91,92,93,94,95,96,97,98,99,100\}$, then $\sum_{a'\in A'}{a'}=955$. By construction, this set is the value of $A'$ with the maximum sum of all elements.
+
+We can construct a value of $A'$ such that the sum of all elements in $A'$ is equal to any natural number from 1 (inclusive) to 955 (inclusive), so there are 955 possible sums of the elements in $A'$ (``pigeonholes'').
 
 Let $n$ be the number of nonempty subsets of $A$. Then
 \begin{align*}
@@ -296,7 +298,7 @@ n
 &=1024-1\\
 &=1023.
 \end{align*}
-There are $n=1023$ nonempty subsets of $A$ (``pigeons''). Note $n>901$. By the pigeonhole principle, there are at least 2 distinct nonempty subsets of $A$ whose elements have the same sum.
+There are $n=1023$ nonempty subsets of $A$ (``pigeons''). Note $n>955$. By the pigeonhole principle, there are at least 2 distinct nonempty subsets of $A$ whose elements have the same sum.
 
 So there exist sets $P$ and $Q$ such that all of the following are true:
 \begin{itemize}
@@ -328,7 +330,7 @@ In all cases, the claim is true. Hence, in a set of 10 distinct integers between
 
 \noindent\textit{Claim. }Let $A=\{x\in\Z:3\mid x\}$. Then $A$ and $\N$ have the same cardinality.
 \begin{proof}
-Let $A=\{x\in\Z:3\mid x\}$. We will demonstrate the existence of a one-to-one correspondence between $A$ and $\N$. \newline
+Let $A=\{x\in\Z:3\mid x\}$. We will demonstrate the existence of a one-to-one correspondence between $A$ and $\N$.\newline
 
 \noindent Let $f:A\to\N$ such that
 \[f(a) = \begin{cases} 
