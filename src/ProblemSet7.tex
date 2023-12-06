@@ -1,0 +1,381 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 7}
+\author{%
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due December 1, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\id}{\operatorname{id}}
+\usepackage{tikz}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{ForestGreen}{rgb}{0.133,0.545,0.133}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\begin{document}
+\maketitle
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+
+\section*{Assigned Problems}
+\begin{question}
+        A fair coin is flipped 10 times.
+    \begin{enumerate}
+        \item What is the probability that there are an equal number of head and
+            tails?
+        \item What is the probability the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails and the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails or the first three flips are heads (or both)?
+        \item What is the probability that the first three flips are heads given
+            that an equal number of heads and tails are flipped?
+    \end{enumerate}
+\end{question}
+\begin{solution}
+The events ``heads'' ($X$) and ``tails'' ($\bar{X}$) are binary. The number of trials is known to be 10, and the trials are independent of one another. The probability of heads is the same across every trial, and the probability of tails is the same across every trial. Thus we have a binomial distribution. Let the probability of heads be $p_X=\frac{1}{2}$.
+\begin{enumerate}
+\item If there is an equal number of heads and tails, then there are $k=5$ heads and $(n-k)=(10-5)=5$ tails. Let $P_{\rm a}$ be the probability of the event where there is an equal number of heads and tails.
+\begin{align*}
+P_{\rm a}
+&=\binom{n}{k}p_X^k(1-p_X)^{n-k}\\
+&=\binom{10}{5}\left(\frac{1}{2}\right)^5\left(1-\frac{1}{2}\right)^{10-5}\\
+&=\binom{10}{5}\left(\frac{1}{2}\right)^{10}
+&\approx 24.6094\dots\%.
+\end{align*}
+\item The first 3 flips must be heads, and the remaining flips are unconstrained (either heads or tails). Since heads and tails are the only outcomes in the same space, the relevant probability for the remaining 7 flips is 1. In other words, all possible outcomes for the next 7 flips satisfy our conditions. Let $P_{\rm b}$ be the probability of the event where the first 3 flips are heads.
+\begin{align*}
+P_{\rm b}
+&=p_X^3\cdot 1\\
+&=\left(\frac{1}{2}\right)^3\cdot 1\\
+&=\frac{1}{8}.
+\end{align*}
+\item The first 3 flips must be heads, and of the remaining 7 flips, 2 must be heads and the remaining 5 must be tails. Let $P_{\rm c}$ be the probability of the event where the first 3 flips are heads\textit{ and }there is an equal number of heads and tails.
+\begin{align*}
+P_{\rm c}
+&=p_X^3\cdot\binom{10-3}{2}p_X^{2}(1-p_X)^{10-3-2}\\
+&=\binom{7}{2}p_X^5(1-p_X)^5\\
+&=\binom{7}{2}\left(\frac{1}{2}\right)^5\left(1-\frac{1}{2}\right)^5\\
+&=\binom{7}{2}\left(\frac{1}{2}\right)^{10}
+&\approx 2.0508\dots\%.
+\end{align*}
+\item The probability of the event where the first 3 flips are heads\textit{ or }there is an equal number of heads and tails is $P_{\rm d}=P_{\rm a}+P_{\rm b}-P_{\rm c}$:
+\begin{align*}
+P_{\rm d}
+&=P_{\rm a}+P_{\rm b}-P_{\rm c}\\
+&=\binom{10}{5}\left(\frac{1}{2}\right)^{10}+\frac{1}{8}-\binom{7}{2}\left(\frac{1}{2}\right)^{10}
+&\approx 35.0586\dots\%.
+\end{align*}
+\item The probability of the event where the first 3 flips are heads,\textit{ given }that there is an equal number of heads and tails is $P_{\rm e}=\frac{P_{\rm c}}{P_{\rm a}}$.
+\begin{align*}
+P_{\rm e}
+&=\frac{P_{\rm c}}{P_{\rm a}}\\
+&=\frac{\binom{7}{2}\left(\frac{1}{2}\right)^{10}}{\binom{10}{5}\left(\frac{1}{2}\right)^{10}}\\
+&=\frac{\binom{7}{2}}{\binom{10}{5}}
+&=\frac{1}{12}.
+\end{align*}
+\end{enumerate}
+\end{solution}
+\begin{question}
+    An unfair coin shows heads with probability $p$ and tails with probability
+    $1-p$. Suppose this coin is flipped $2$ times. Let $A$ be the event that the coin comes up first heads and
+    then tails.  Let $B$ be the event that the coin comes up first tails and
+    then heads.
+    \begin{enumerate}
+        \item  Find $P(A)$.
+        \item  Find $P(B)$.
+        \item  Find $P(A \mid A \cup B)$.
+        \item  Find $P(B \mid A \cup B)$.
+    \end{enumerate}
+    Explain how one could use this unfair coin to make a fair decision.
+\end{question}
+\begin{solution}
+The events ``heads'' ($X$) and ``tails'' ($\bar{X}$) are binary. The number of trials is known to be 2, and the trials are independent of one another. The probability of heads is the same across every trial, and the probability of tails is the same across every trial. Thus we have a binomial distribution. Let $p$ be the probability of heads.
+\begin{enumerate}
+\item Let $A$ be the event where the first flip is heads and the second flip is tails. Note that the trials are independent of one another. The product of each outcome's probability gives the result.
+\[P(A)=p(1-p).\]
+\item Let $B$ be the event where the first flip is tails and the second flip is heads. Note that the trials are independent of one another. The product of each outcome's probability gives the result.
+\[P(B)=(1-p)p.\]
+\item Since $A$ and $B$ are mutually exclusive, $P(A\cap B)=0$. Observe
+\begin{align*}
+P(A|(A\cup B))
+&=\frac{P(A\cap(A\cup B))}{P(A\cup B)}\\
+&=\frac{P(A)}{P(A\cup B)}\\
+&=\frac{P(A)}{P(A)+P(B)-P(A\cap B)}\\
+&=\frac{p(1-p)}{p(1-p)+(1-p)p}\\
+&=\frac{p(1-p)}{2p(1-p)}\\
+&=\frac{1}{2}.
+\end{align*}
+\item Since $A$ and $B$ are mutually exclusive, $P(A\cap B)=0$. Observe
+\begin{align*}
+P(B|(A\cup B))
+&=\frac{P(B\cap(A\cup B))}{P(A\cup B)}\\
+&=\frac{P(B)}{P(A\cup B)}\\
+&=\frac{P(B)}{P(A)+P(B)-P(A\cap B)}\\
+&=\frac{(1-p)p}{p(1-p)+(1-p)p}\\
+&=\frac{(1-p)p}{2(1-p)p}\\
+&=\frac{1}{2}.
+\end{align*}
+\end{enumerate}
+In practice, it is possible to achieve a fair result from an unfair coin:
+\begin{enumerate}
+    \item[1.] Open a fresh page.
+    \item[2.] Flip the coin and record heads or tails.
+    \item[3.] Flip the coin and record heads or tails.
+    \item[4.] If the result in step (2) is the same as the result in step (3), return to step (1).
+    \item[5.] Use the result in step (3) as the final outcome.
+\end{enumerate}
+Of course, it may take arbitrarily many rounds to determine the final outcome.
+
+\noindent Expressed as C-style pseudocode:
+
+\end{solution}
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{ForestGreen},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\begin{lstlisting}
+        typedef enum { HEADS, TAILS } Result;
+        
+        Result flip_unfair_coin();
+        
+        Result flip_fair_coin()
+        {
+            Result first, second; // Step 1
+        
+            do
+            {
+                first = flip_unfair_coin(); // Step 2
+                second = flip_unfair_coin(); // Step 3
+            }
+            while (first == second); // Step 4
+            
+            return second; // Step 5
+        }
+\end{lstlisting}
+\begin{question}
+    Suppose that $A$ and $B$ are events in a sample space $(S,P)$.
+    Prove or disprove:
+    \begin{enumerate}
+        \item If $P(A \cap B)=0$, then $P(A\mid B)=P(B\mid A)$ if and only
+            if $P(A)=P(B)$.
+        \item If $P(A)>0, P(B)>0$ but $P(A \cap B)=0$, then $P(A\mid
+            B)=P(B\mid A)$.  If proven, give an example of two such events
+            with $P(A) \ne P(B)$.
+    \end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item Consider the events $A$ and $B$ and sample space $(S,P)=\left(\{0,1\},\left\{(0,\frac{1}{3}),(1,\frac{2}{3})\right\}\right)$, where $A$ denotes the event where the outcome is 0, and $B$ denotes the event where the outcome is 1.
+
+Note $P(A\cap B)=0$ because $A$ and $B$ are mutually exclusive. Of course, $P(B)=\frac{2}{3}\neq 0$. Note
+\[P(A|B)=\frac{P(A\cap B)}{P(B)}=0.\] Of course, $P(A)=\frac{1}{3}\neq 0$. Observe
+\begin{align*}
+P(B|A)
+&=\frac{P(B\cap A)}{P(A)}\\
+&=\frac{P(A\cap B)}{P(A)}\\
+&=0.
+\end{align*}
+Thus $P(A|B)=P(B|A)$. However, $P(A)=\frac{1}{3}$ and $P(B)=\frac{2}{3}$, so $P(A)\neq P(B)$. Hence disproven.$~~\square$
+\item\textit{Claim. }Let $A$ and $B$ be events and $(S,P)$ be a sample space where $A,B\in(S,P)$. If $P(A)>0$, and $P(B)>0,$ and $P(A\cap B)=0$, then $P(A|B)=P(B|A)$.
+\begin{proof}
+Let $A$ and $B$ be events and $(S,P)$ be a sample space where $A,B\in(S,P)$. Suppose $P(A)>0$ and $P(B)>0$ and $P(A\cap B)=0$. Note
+\[P(A|B)=\frac{P(A\cap B)}{P(B)}=0.\] Observe
+\begin{align*}
+P(B|A)
+&=\frac{P(B\cap A)}{P(A)}\\
+&=\frac{P(A\cap B)}{P(A)}\\
+&=0.
+\end{align*}
+Ergo $P(A|B)=P(B|A)$.
+\end{proof}
+\begin{enumerate}
+\item[1.] Consider the counterexample given in part (a): Let $A$ and $B$ be events in the sample space $(S,P)=\left(\left\{0,1\right\},\left\{\left(0,\frac{1}{3}\right),\left(1,\frac{2}{3}\right)\right\}\right)$, where $A$ denotes the event where the outcome is 0 and $B$ denotes the event where the outcome is 1. Here $P(A\cap B)=0$ and $\left(P(A)=\frac{1}{3}\right)>0$ and $\left(P(A)=\frac{2}{3}\right)>0$ and $P(A|B)=P(B|A)=0$ but $P(A)\neq P(B)$.
+\item[2.] Consider the events $A$ and $B$ in the sample space \[(S,P)=\left(\left\{3,4\right\},\left\{\left(3,\frac{1}{5}\right),\left(4,\frac{4}{5}\right)\right\}\right)\] where $A$ denotes the event where the outcome is odd and $B$ denotes the event where the outcome is even. Here $P(A\cap B)=0$ and $\left(P(A)=\frac{1}{5}\right)>0$ and $\left(P(A)=\frac{4}{5}\right)>0$ and $P(A|B)=P(B|A)=0$ but $P(A)\neq P(B)$.
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+\begin{question}
+    Consider the sample space $S = \{ a, b, c \}$, with equal probability for each outcome. Define the random variables $X$ and  
+    $Y$ by $X(a) = -1, \quad X(b) = 0, \quad X(c) = 1, \quad Y(a) = Y(c) = 0, \quad Y(b) = 1.$ 
+    Check that $\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)$, but that $X$ and $Y$ are not independent.
+\end{question}
+\begin{solution}
+Consider the sample space $(S,P)$ where $S=\{a,b,c\}$ and for $s\in S$, we have $P(s)=\frac{1}{3}$. Let $X$ be a random variable where $X(a)=-1$ and $X(b)=0,$ and $X(c)=1$. Let $Y$ be a random variable where $Y(a)=0$ and $Y(b)=1,$ and $Y(c)=0$.
+
+\end{solution}
+\begin{center}
+\begin{tabular}{c|r|r|r|r}
+$s$&$X(s)$&$Y(s)$&$X(s)+Y(s)$&$P(s)$\\\hline
+$a$&$-1$&$0$&$-1$&$1/3$\\
+$b$&$0$&$1$&$1$&$1/3$\\
+$c$&$1$&$0$&$1$&$1/3$\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{c|r|r|r}
+$s$&$P(s)X(s)$&$P(s)Y(s)$&$P(s)(X(s)+Y(s))$\\\hline
+$a$&$-1/3$&$0$&$-1/3$\\
+$b$&$0$&$1/3$&$1/3$\\
+$c$&$1/3$&$0$&$1/3$\\
+\end{tabular}
+\end{center}
+Let $\mu_X$ represent the expected value of $X$. 
+\begin{align*}
+\mu_X
+&=\sum_{s\in S}{P(s)X(s)}\\
+&=-\frac{1}{3}+0+\frac{1}{3}\\
+&=0.
+\end{align*}
+Let $\mu_Y$ represent the expected value of $Y$.
+\begin{align*}
+\mu_Y
+&=\sum_{s\in S}{P(s)Y(s)}\\
+&=0+\frac{1}{3}+0\\
+&=\frac{1}{3}.
+\end{align*}
+Let $\mu_{X+Y}$ represent the expected value of $X+Y$. Of course $\mu_{X+Y}=(\mu_{X}+\mu_{Y})=\frac{1}{3}$.
+
+Let $\sigma_X^2$ represent the variance of $X$.
+\begin{align*}
+\sigma_X^2
+&=\sum_{s\in S}{P(s)(X(s)-\mu_X)^2}\\
+&=\frac{1}{3}\sum_{s\in S}{(X(s)-\mu_X)^2}\\
+&=\frac{1}{3}\left[\left(-1-0\right)^2+\left(0-0\right)^2+\left(1-0\right)^2\right]\\
+&=\frac{6}{9}.
+\end{align*}
+
+Let $\sigma_Y^2$ represent the variance of $Y$.
+\begin{align*}
+\sigma_Y^2
+&=\sum_{s\in S}{P(s)(Y(s)-\mu_Y)^2}\\
+&=\frac{1}{3}\sum_{s\in S}{(Y(s)-\mu_Y)^2}\\
+&=\frac{1}{3}\left[\left(0-\frac{1}{3}\right)^2+\left(1-\frac{1}{3}\right)^2+\left(0-\frac{1}{3}\right)^2\right]\\
+&=\frac{2}{9}.
+\end{align*}
+
+Let $\sigma_{X+Y}^2$ represent the variance of the sum of $X$ and $Y$.
+\begin{align*}
+\sigma_{X+Y}^2
+&=\sum_{s\in S}{P(s)((X(s)+Y(s))-\mu_{X+Y})^2}\\
+&=\frac{1}{3}\sum_{s\in S}{(Y(s)-\mu_{X+Y})^2}\\
+&=\frac{1}{3}\left[\left(-1-\frac{1}{3}\right)^2+\left(1-\frac{1}{3}\right)^2+\left(1-\frac{1}{3}\right)^2\right]\\
+&=\frac{8}{9}.
+\end{align*}
+
+Now since $\frac{8}{9}=\frac{6}{9}+\frac{2}{9}$, we have $\sigma_{X+Y}^2=\sigma_X^2+\sigma_Y^2$. However, $P(Y=0)=\frac{2}{3}$ and  $P(Y=0\mid X=-1)=1$. Since $P(Y=0)\neq P(Y=0\mid X=-1)$, we know that $X$ and $Y$ are not independent. Hence the claim is verified.\\
+\begin{question}
+    Provide an alternative proof to Proposition 31.7 using any of the statements in Proposition 31.8.
+    \begin{theorem}[Proposition 31.7]
+    Let $A$ and $B$ be events in a sample space $(S, P)$. Then 
+    \[ P(A) + P(B) = P(A\cup B) + P(A\cap B).\]
+    \end{theorem}
+\end{question}
+\begin{solution}
+\newline
+
+\noindent\textit{Proposition 31.7. }Let $A$ and $B$ be events in a sample space $(S,P)$. Then \[P(A)+P(B)=P(A\cup B)+P(A\cap B).\]
+\begin{proof}Let $A$ and $B$ be events in a sample space $(S,P)$.
+
+By Proposition 31.8, $P(B)=1-P(\bar{B})$. Thus \[P(A)=P\left((A\cap B)\cup(A\cap\bar{B})\right).\]
+
+Similarly, by Proposition 31.8, $P(A)=1-P(\bar{A})$. Thus \[P(B)=P\left((B\cap A)\cup(B\cap\bar{A})\right).\]
+
+Therefore \[P(A)+P(B)=P\left((A\cap B)\cup(A\cap\bar{B})\right)+P\left((B\cap A)\cup(B\cap\bar{A})\right).\]
+
+By construction, we have $(A\cap B)\cap(A\cap\bar{B})=\emptyset$.
+
+Similarly, by construction, we have $(B\cap A)\cap(B\cap\bar{A})=\emptyset$.
+
+Therefore, by Proposition 31.8,
+\begin{align*}
+P(A)+P(B)
+&=P(A\cap B)+P(A\cap\bar{B})+P(B\cap A)+P(B\cap\bar{A})\\
+&=P(A\cap B)+P(A\cap\bar{B})+P(A\cap B)+P(\bar{A}\cap B)\\
+&=2P(A\cap B)+P(\bar{A}\cap B)+P(A\cap\bar{B})\\
+&=2P(A\cap B)+P(A\cup B)-P(A\cap B)\\
+&=P(A\cap B)+P(A\cup B)\\
+&=P(A\cup B)+P(A\cap B).
+\end{align*}
+
+Ergo $\left(P(A)+P(B)\right)=\left(P(A\cup B)+P(A\cap B)\right)$.
+\end{proof}
+\end{solution}
+\end{document}
