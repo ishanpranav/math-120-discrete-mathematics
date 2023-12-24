@@ -1,0 +1,235 @@
+\documentclass{article}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\title{Problem Set 9}
+\author{%
+    Ishan Pranav
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due December 15, 2023}
+\usepackage[headings=runin-fixed-nr]{exsheets}
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\modulo}{\text{mod }}
+\newcommand{\divisor}{\text{ div }}
+\usepackage{tikz}
+\tikzstyle{vertex}=[circle,draw,fill=none,inner sep=0pt,outer sep=0pt, minimum width=1ex]
+\tikzstyle{edge}=[draw,thick]
+\usepackage{multirow, multicol}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newenvironment{note}{\noindent\emph{Note}.}{}
+\begin{document}
+\maketitle
+These are to be written up and turned in to Gradescope.\\
+
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+\section*{Assigned Problems}
+\begin{question}
+    Suppose $G$ is a subgraph of $H$.  Prove or disprove:
+\begin{enumerate}
+	\item $\alpha(G) \leq \alpha(H)$
+	\item $\omega(G) \leq \omega(H)$
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item The claim is false, we will disprove it by counterexample.
+
+\textit{Claim. }Suppose a graph $G$ is a subgraph of a graph $H$. 
+
+\begin{proof}
+Consider graph $H=(V_H,E_H)=(\{0,1,2\},\{\{0,1\},\{0,2\},\{1,2\}\})$ and graph $G=(V_G,E_G)=(\{0,1,2\},\{\{0,1\},\{0,2\}\})$. Note $G$ is a subgraph of $H$ because $V_G\subseteq V_H$ and $E_G\subseteq E_H$. However, $(\alpha(G)=2)>(\alpha(H)=1)$. Hence disproven.  
+\end{proof}
+\item\textit{Claim. }Suppose a graph $G$ is a subgraph of a graph $H$.
+\begin{proof}
+Let $G=(V_G,E_G)$ and $H=(V_H,E_H)$ be graphs where $G$ is a subgraph of $H$. Assume, for the sake of contradiction, that $\omega(G)>\omega(H)$. There exists a graph $I=(V_I,E_I)$ where $I$ is the largest complete subgraph of $G$. Note $V_I\subseteq V_G$ and $E_I\subseteq V_G$. Note also $\alpha(G)=|V_I|$. Since $V_I\subseteq V_G$ and $V_G\subseteq V_H$, we have $V_I\subseteq V_H$. Since $E_I\subseteq V_G$ and $V_G\subseteq V_H$, we have $V_I\subseteq V_H$. Therefore $I$ is a subgraph of $H$. Note $I$ is complete. By assumption, $\omega(G)>\omega(H)$, so $|V_I|>\omega(H)$. Thus there exists a graph $J=(V_J,E_J)$ where $J$ is the largest complete subgraph of $H$ and $|V_I|>|V_J|$. The existence of a complete subgraph $I$ in $H$ with more vertices than $J$ contradicts $J$ being the largest complete subgraph of $H$. Thus our assumption is false. Hence $\omega(G)\leq\omega(H)$.
+\end{proof}
+\end{enumerate}
+\end{solution}
+\begin{question}
+    Let $G=(V, E)$ be a graph with $V=\{v_1, v_2, \dots, v_n\}$. Its \textbf{degree sequence} is the list of degrees of its vertices, arranged in non-increasing order. That is, the degree sequence of $G$ is $(d(v_1), d(v_2), \dots, d(v_n))$ with the vertices arranged such that $d(v_1)\geq  d(v_2) \geq \dots \geq d(v_n)$. Below are different lists of possible degree sequences. Determine whether each case can be a graph with $n$ vertices. If not, explain why not. If so, describe a graph with these degrees: is the graph a complete graph, a cycle, a path, contains specific subgraphs, connected, etc?
+\begin{enumerate}
+	\item $n=7$ and $(6, 5, 4, 3, 2, 1, 0)$
+	\item $n=6$ and $(2, 2, 2, 2, 2, 2)$
+	\item $n=6$ and $(3, 2, 2, 2, 2, 2)$
+	\item $n=6$ and $(1, 1, 1, 1, 1, 1)$
+	\item $n=6$ and $(5, 3, 3, 3, 3, 3)$
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item\begin{description}
+\item[Does not exist. ]Assume, for the sake of contradiction, that there exists a graph $G=(V,E)$ where $|V|=7$ and where the degree sequence of $G$ is $(6, 5, 4, 3, 2, 1, 0)$. We know $\sum_{v\in V}{d_G(V)}=2|E|$. Since $|E|\in\Z$, we have $2\mid\left(\sum_{v\in V}{d_G(V)}\right)$. Note \[\sum_{v\in V}{d_G(V)}=(6+5+4+3+2+1+0)=21.\] However, $2\nmid 21$. This is a contradiction. Thus our assumption is false. Ergo there exists no such $G.~\square$
+\end{description}
+\item\begin{description}
+\item[Exists. ]Consider a graph \[G'=(V',E')=(\{0,1,2,3,4,5\},\{\{0,1\},\{0,2\},\{1,2\},\{3,4\},\{3,5\},\{4,5\}\}).\] By construction, $|V'|=6$ and the degree sequence of $G'$ is $(2,2,2,2,2,2)$.
+
+Let graph $G=(V,E)$ where $|V|=6$ and where the degree sequence of $G$ is $(2,2,2,2,2,2)$.
+
+\item[Not complete. ]Assume, for the sake of contradiction, that $G$ is complete. Then \[|E|=\frac{|V|(|V|-1)}{2}=\frac{6(6-1)}{2}=15.\] We know $\sum_{v\in V}{d_G(V)}=2|E|=30$. However, \[\sum_{v\in V}{d_G(V)}=(2+2+2+2+2+2)=12.\] Of course, $12\neq 30$. This is a contradiction. Thus our assumption is false. Ergo $G$ is not complete.
+\item[Cyclic. ]There are two cycles in the graph, since it can only be constructed using 2 disconnected triangular-shaped components.
+\item[Subgraphs. ]Note $G$ has two connected components disconnected from one another. Each of the two 3-vertex subgraphs of $G$ has the degree sequence $(2,2,2)$.
+\end{description}
+\item\begin{description}
+\item[Does not exist. ]Assume, for the sake of contradiction, that there exists a graph $G=(V,E)$ where $|V|=6$ and where the degree sequence of $G$ is $(3, 2, 2, 2, 2, 2)$. We know $\sum_{v\in V}{d_G(V)}=2|E|$. Since $|E|\in\Z$, we have $2\mid\left(\sum_{v\in V}{d_G(V)}\right)$. Note \[\sum_{v\in V}{d_G(V)}=(3+2+2+2+2+2)=13.\] However, $2\nmid 13$. This is a contradiction. Thus our assumption is false. Ergo there exists no such $G.~\square$
+\end{description}
+\item\begin{description}
+\item[Exists. ]Consider a graph \[G'=(V',E')=(\{0,1,2,3,4,5\},\{\{0,1\},\{2,3\},\{4,5\}).\] By construction, $|V'|=6$ and the degree sequence of $G'$ is $(1,1,1,1,1,1)$.
+
+Let graph $G=(V,E)$ where $|V|=6$ and where the degree sequence of $G$ is $(1,1,1,1,1,1)$.
+
+\item[Not complete. ]Assume, for the sake of contradiction, that $G$ is complete. Then \[|E|=\frac{|V|(|V|-1)}{2}=\frac{6(6-1)}{2}=15.\] We know $\sum_{v\in V}{d_G(V)}=2|E|=30$. However, \[\sum_{v\in V}{d_G(V)}=(1+1+1+1+1+1)=6.\] Of course, $6\neq 30$. This is a contradiction. Thus our assumption is false. Ergo $G$ is not complete.
+\item[Subgraphs. ]Note $G$ has three connected components disconnected from one another. Each of the three 2-vertex subgraphs of $G$ has the degree sequence $(1,1)$.
+\end{description}
+\item\begin{description}
+\item[Exists. ]Consider a graph
+\begin{align*}
+G=(V,E)=(\{0,1,2,3,4,5\},\{\\
+\{0,1\},\{0,2\},\{0,3\},\{0,4\},\{0,5\},\\
+\{1,2\},\{1,3\},\\
+\{2,5\},\{3,4\},\\
+\{4,5\}\}).
+\end{align*}
+By construction, $|V'|=6$ and the degree sequence of $G'$ is $(5,3,3,3,3,3)$.
+
+Let graph $G=(V,E)$ where $|V|=6$ and where the degree sequence of $G$ is $(5,3,3,3,3,3)$.
+
+\item[Not complete. ]Assume, for the sake of contradiction, that $G$ is complete. Then \[|E|=\frac{|V|(|V|-1)}{2}=\frac{6(6-1)}{2}=15.\] We know $\sum_{v\in V}{d_G(V)}=2|E|=30$. However, \[\sum_{v\in V}{d_G(V)}=(5+3+3+3+3+3)=20.\] Of course, $20\neq 30$. This is a contradiction. Thus our assumption is false. Ergo $G$ is not complete.
+\item[Connected. ]Since there is a vertex with degree 5, every other vertex is connected to that vertex. This means that $G$ is connected.
+\end{description}
+\end{enumerate}
+\end{solution}
+\begin{question}
+\begin{enumerate}
+	\item Given a graph with $n$ vertices. First, what is the maximum number of edges can the graph have and be disconnected? Then, what is the minimum number of edges we need to add to the previous graph to be connected?
+	\item A \textbf{complete bipartite graph} $K_{m,n}$ is a graph whose vertices can be partitioned $V=X\cup Y$ such that $|X|=m$ and  $|Y|=n$ for positive integers $m,n$, and $\{x, y\}$ is an edge in $K_{m,n}$ if and only if $x\in X$ and $y\in Y$. What is the number of edges in $K_{m,n}$?
+	\item Let integer $n\geq 3$. Given a cycle graph $C_n$, how many possible subgraphs of $C_n$ can there be?
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item
+The maximum number of edges that a disconnected graph $G$ with $n$ vertices can have is $\frac{(n-1)(n-2)}{2}$. At a minimum, one edge may be added to $G$ to produce a connected graph.
+\begin{proof} Let $n\in\N$ and consider a disconnected graph $G=(V,E)$ with the maximum $|E|$ for $|V|=n$. Then $|E|=\frac{(n-2)(n-1)}{2}$. Note $n>1$ since $G$ is disconnected. Note the claim is true for $n=2$, since $\frac{(2-2)(2-1)}{2}=0$ and the only disconnected graph with two vertices has 0 edges. Thus $|V|>2$. Of course, since $G$ is disconnected, there is at least one vertex $v\in V$ where $v$ is disconnected.
+
+Assume, for the sake of contradiction, that there is another disconnected vertex $u\in V$ where $u\neq v$. Since $|V|>2$, there exists $w\in V$ where $w\neq u$ and $w\neq v$. So we can construct a disconnected graph $G'=(V,E\cup\{\{u,w\}\})$. Note $|V|=|V|$. However, $|E\cup\{\{u,w\}\}|>|E|$, so $G$ does not have the maximum number of edges for a disconnected graph with $n$ vertices. This is a contradiction. Thus our assumption is false: There is no other disconnected vertex. There is exactly one disconnected vertex $v\in V$.
+
+Consider a graph $K=(V-\{v\},E)$ constructed by removing only the disconnected vertex $v$ from $V$. Note $|E|=|E|$ so the number of edges is still maximized, now for $n-1$ vertices. There are no disconnected vertices in $K$, therefore $K$ is complete. Ergo \[|E|=\frac{(n-1)((n-1)-1)}{2}=\frac{(n-1)(n-2)}{2}.\]
+
+Since $|V|>1$, there exists $x\in V$ where $x\neq v$. Since $v$ is the only disconnected vertex, $x$ is connected in $G$. Consider instead a connected graph $G''=(V,|E|\cup\{\{v,x\}\})$ constructed by adding an edge $\{v,x\}$. Since $v$ is disconnected in $G$, $\{v,x\}\notin E$. Since $x$ is connected in $G$, $v$ is connected in $G''$. Now there are no disconnected vertices in $G''$, so $G''$ is connected. Ergo constructing a connected graph from $G$ requires at minimum one additional edge.
+\end{proof}
+\item The number of edges in the above-mentioned bipartite graph $K_{n,m}$ is the product $mn$. For each of the $m$ members $x\in X$, we have for each of the $n$ members $y\in Y$ an edge $\{x,y\}$ in $K$. Since $X$ and $Y$ partition $V$, we have $X\cap Y=\emptyset$. This means the number of such edges is exactly $mn$.
+\item In a cycle graph, there exists a path between any two vertices. Counting the number of induced subgraphs (produced by removing vertices) is the same as counting the number of subsets of vertices. Thus, in a cycle graph $C=(V,E)$, the number of subgraphs is $|2^V|=2^{|V|}$. For the cycle graph $C_n$, the number of subgraphs is $2^n$.
+\end{enumerate}
+\end{solution}
+\begin{question}
+\begin{enumerate}
+	\item Prove that if a tree has $n$ vertices where $n\geq 4$ and is not a path graph $P_n$, then it has at least three vertices of degree 1.
+	\item A \textbf{complete bipartite graph} $K_{m,n}$ is a graph whose vertices can be partitioned $V=X\cup Y$ such that $|X|=m$ and  $|Y|=n$ for positive integers $m,n$, and $\{x, y\}$ is an edge in $K_{m,n}$ if and only if $x\in X$ and $y\in Y$. Prove that every cycle in $K_{m, n}$ has an even number of edges.
+	\end{enumerate}
+\end{question}
+\begin{solution}
+\begin{enumerate}
+\item\textit{Claim. }Let $T=(V,E)$ be a tree where $n=|V|$ with $n\geq 4$ and where $T$ is not a path graph. Then $T$ has at least 3 vertices with degree 1.
+\begin{proof}
+\item Let $T=(V,E)$ be a tree where $n=|V|$ with $n\geq 4$ and where $T$ is not a path graph. Note that the number of edges in a tree is $|E|=n-1$. Thus
+\[\sum_{v\in V}{d_G(v)}=2|E|=2(n-1).\]
+
+Assume, for the sake of contradiction, that the number of vertices in $T$ with degree 1 is less than 3. That is, the number of vertices in $T$ with degree 1 is 0, 1, or 2.
+
+Suppose there are 0 vertices in $T$ with degree 1. Then all $n$ vertices have at least degree 2. That is, \[\sum_{v\in V}{d_G(v)}\geq 2n.\] This contradicts the sum of the degrees being $2(n-1)$.
+
+Suppose there is exactly 1 vertex in $T$ with degree 1. Then there are $n-1$ vertices with at least degree 2 in addition to the 1 vertex with degree 1. That is, \[\sum_{v\in V}{d_G(v)}\geq 2(n-1)+1.\] 
+
+This too contradicts the sum of the degrees being $2(n-1)$.
+
+Suppose there are exactly 2 vertices in $T$ with degree 1. We know that the sum of vertices is exactly $2|E|=2(n-1)=2(n-2)+1+1$. Let $u,v\in V$ be those vertices with degree 1. The sum of the degrees of the remaining $n-2$ vertices in $V-\{u,v\}$ is $2(n-2)$. Thus for every vertex $w\in V-\{u,v\}$, we have $d_G(w)=2$. $T$ has two leaves and all other vertices (there are at least 2 others, since $n\geq 4$) have degree 2. Therefore $T$ is a path graph, which is a contradiction. 
+
+For all possible cases where the number of vertices with degree 1 is less than 3, we arrive at a contradiction. Thus our assumption is false: $T$ does have at least 3 vertices with degree 1.
+\end{proof}
+\item\textit{Claim. }Let $K_{m,n}=(X\cup Y,E_K)$ be a complete bipartite graph where $X\cap Y=\emptyset$ with $|X|=m$ and $|Y|=n$, and the edge $\{x,y\in E_K\}$ if and only if $x\in X$ and $y\in Y$. If a cycle $C=(V_C,E_C)$ is in $K_{m,n}$, then $|E_C|$ is even.
+\begin{proof}
+Let $K=(X\cup Y,E_K)$ be a complete bipartite graph where $X\cap Y=\emptyset$ with $|X|=m\in\N$ and $|Y|=n\in\N$, and where the edge $\{x,y\}\in E_K$ if and only if $x\in X$ and $y\in Y$. Suppose there is a cycle $C=(V_C,E_C)$ in $K$. Let $k=|E_C|\in\N$.
+
+Denote \[V_C=\{v_1,v_2,\dots,v_{k-1},v_{k}\}.\]
+
+There exist edges $\{v_1,v_2\},\{v_k,v_1\}\in E_C$. Without loss of generality, assume $v_1\in X$. Then $v_2\in Y$, $v_3\in X$, $v_4\in Y$, and so on. That is, for all $1\leq i\leq k$, we have $v_i\in Y$ if and only if $i$ is even, and $v_i\in X$ otherwise. Since $v_1\in X$ and there exists $\{v_k,v_1\}\in E_C$, we have $v_k\in Y$. Thus $k$ is even, so $|E_C|$ is even.
+\end{proof}
+\end{enumerate}
+\end{solution}
+\begin{question}
+    Prove by induction on $n$: Given integer $n\geq 1$. If  $T$ is a tree with $n$ vertices, then $T$ has $n-1$ edges. 
+\end{question}
+\begin{solution}
+
+\noindent\textit{Claim. }Let $n\in\Z$ where $n\geq 1$. Let $T=(V,E)$ be a tree where $|V|=n$. Then $|E|=n-1$. 
+\begin{proof}
+Let $n\in\Z$ where $n\geq 1$. Let $T=(V,E)$ be a tree where $|V|=n$. We will show that $|E|=n-1$ by induction on $n$.
+
+\begin{description}
+\item[Basis case. ]Consider $n=1$ and a tree $T_1=(V_1,E_1)$ where $|V_1|=1$. In an undirected graph, an edge must connect two unique vertices. Since $|V_1|<2$, there are no edges in $T_1$. Thus $|E_1|=(1-1)=0$.
+\item[Induction hypothesis. ]Let $k\in\N$ where $k>1$. Consider $n=k$ and a tree $T_k=(V_k,E_k)$ where $|V_k|=k$. Assume that $|E_k|=k-1$.
+\item[Inductive step. ]Consider $n=k+1$ and a tree $T^*=(V^*,E^*)$ where $|V^*|=k+1$. Note $E^*\neq\emptyset$ because $T^*$ is a tree (connected) with $|V^*|=k+1$ vertices and $k>1$. Since $T^*$ has at least one leaf, there exists $e=\{v,w\}\in E^*$ where $e$ connects a leaf $v\in V^*$ to a vertex $w\in V^*$. Construct $T'=(V^*,E^*-\{e\})$ by omitting an edge from $T^*$. The omission of $e$ results in a disconnected leaf $v$ and a subgraph of $T'$; call it $T''=(V^*-\{v\},E^*-\{e\})$. Now $T''$ is a tree and \[|V^*-\{v\}|=(k+1)-1=k.\] So $T''$ is a tree with $k$ vertices. Thus, by the induction hypothesis, $|E^*|-\{e\}=k-1$. Therefore $|E^*|=(k-1)+1$, thus completing the inductive step.
+\end{description}
+Hence, by the principle of mathematical induction, for all trees $T=(V,E)$, we have $|E|=|V|-1$.
+\end{proof}
+\end{solution}
+\end{document}
